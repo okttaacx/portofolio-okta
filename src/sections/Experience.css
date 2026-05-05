@@ -1,0 +1,385 @@
+/* ============================================================
+   EXPERIENCE SECTION — Final Complete CSS
+   Glassmorphism selaras project-card + icon glowing + GPA plain
+   ============================================================ */
+
+.experience {
+  padding: 5rem 0;
+}
+
+/* ── Section Header ── */
+.section-header {
+  text-align: left;
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-dark);
+  background: rgba(138, 180, 248, 0.12);
+  border: 1px solid rgba(138, 180, 248, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* ── Grid Layout ── */
+.exp__grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* ============================================================
+   KOLOM KIRI — Timeline Cards
+   ============================================================ */
+.exp__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exp__item {
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(226, 235, 245, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(138, 180, 248, 0.3);
+  border-right: 1px solid rgba(138, 180, 248, 0.3);
+
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+
+  box-shadow:
+    0 10px 30px rgba(138, 180, 248, 0.1),
+    inset 0 0 25px rgba(255, 255, 255, 0.6);
+
+  transition: var(--transition);
+}
+
+/* Top accent gradient bar */
+.exp__item::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue-dark), transparent);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Glow blob pojok kanan atas */
+.exp__item::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -20%;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp__item > * {
+  position: relative;
+  z-index: 2;
+}
+
+.exp__item:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 15px 35px rgba(138, 180, 248, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.9);
+}
+
+/* ── Card Header ── */
+.exp__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+}
+
+.exp__item-left {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Badge tipe */
+.exp__type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.70rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--blue-dark);
+  margin-bottom: 0.45rem;
+}
+
+.exp__type-badge svg {
+  opacity: 0.85;
+}
+
+/* Role */
+.exp__role {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.15rem;
+}
+
+/* Company */
+.exp__company {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Period pill */
+.exp__period {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-code);
+  font-size: 0.70rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(138, 180, 248, 0.4);
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Bullet Points ── */
+.exp__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(138, 180, 248, 0.18);
+}
+
+.exp__points li {
+  font-size: 0.82rem;
+  color: var(--dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  line-height: 1.65;
+}
+
+.exp__points li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  background: var(--blue-dark);
+  border-radius: 50%;
+  margin-top: 0.46rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   KOLOM KANAN — Education Card (Sticky + Glassmorphism)
+   ============================================================ */
+.edu__card {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+
+  background: rgba(226, 235, 245, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(138, 180, 248, 0.3);
+  border-right: 1px solid rgba(138, 180, 248, 0.3);
+
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem;
+  text-align: center;
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(138, 180, 248, 0.1),
+    inset 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Top accent bar */
+.edu__card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue-dark), transparent);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Glow blob */
+.edu__card::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -20%;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.edu__card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Icon GLOWING ── */
+.edu__icon-wrap {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+  border: none;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.35rem;
+  color: #ffffff;
+
+  /* Glow effect menyala */
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.45),
+    0 0 0 4px rgba(138, 180, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Degree & University ── */
+.edu__degree {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.edu__uni {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.edu__period {
+  font-size: 0.78rem;
+  font-family: var(--font-code);
+  color: var(--blue-dark);
+  font-weight: 700;
+  margin-bottom: 1.75rem;
+}
+
+/* ── GPA — TANPA CARD, PLAIN & BERSIH ── */
+.edu__gpa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0.25rem 0;
+  margin-bottom: 1.75rem;
+}
+
+.edu__gpa-label {
+  font-size: 0.70rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.25rem;
+}
+
+.edu__gpa-val {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--blue-dark);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+/* ── Thesis ── */
+.edu__thesis {
+  border-top: 1px solid rgba(138, 180, 248, 0.2);
+  padding-top: 1.35rem;
+}
+
+.edu__thesis-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.70rem;
+  font-weight: 800;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.65rem;
+}
+
+.edu__thesis-label svg {
+  color: var(--blue-dark);
+}
+
+.edu__thesis-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .exp__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edu__card {
+    position: static;
+  }
+
+  .exp__item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .exp__period {
+    align-self: flex-start;
+  }
+}

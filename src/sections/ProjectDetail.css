@@ -1,0 +1,167 @@
+/* Container Utama */
+.project-detail {
+  padding: 2rem 0 4rem;
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+/* Navigasi */
+.back-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  color: var(--blue-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+  color: var(--dark);
+}
+
+/* Layout Grid */
+.detail__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Kolom Info Kiri (Sticky di Desktop) */
+.detail__title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.detail__small-icon { font-size: 1.5rem; }
+.detail__title-main { font-size: 1.8rem; color: var(--dark); margin: 0; }
+.detail__subtitle-small { color: var(--text-muted); font-size: 0.95rem; }
+
+.detail__info h3 { margin: 1.5rem 0 1rem; color: var(--dark); font-size: 1.3rem; }
+.detail__desc-text { line-height: 1.7; color: var(--text-muted); font-size: 0.95rem; }
+.detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+/* --- STYLE FITUR & BINGKAI --- */
+
+.features-title { margin-bottom: 2rem; color: var(--dark); font-size: 1.4rem; }
+
+.feature-item { 
+  padding: 0; 
+  margin-bottom: 6rem; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Membuat Bingkai HP & Teks ke Tengah */
+  text-align: center;   /* Membuat Deskripsi Fitur Rata Tengah */
+  perspective: 1200px; /* Kedalaman untuk efek miring 3D */
+}
+
+/* Base Wrapper untuk Screenshot */
+.feature-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease-out;
+}
+
+/* 1. FRAME LAPTOP (SiJoker) */
+.desktop-frame {
+  width: 100%; /* Melebar memenuhi kolom */
+  max-width: 850px; /* Jaga agar tidak terlalu lebar */
+  padding: 12px 12px 4px 12px;
+  border-radius: 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.desktop-frame::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 5px;
+  background: #000;
+  border-radius: 0 0 5px 5px;
+}
+
+/* 2. FRAME SMARTPHONE (MOBILE 3D SLIM GLASSMorphism - FlowBoost) */
+.mobile-frame {
+  width: 280px; /* Ukuran Portrait HP */
+  padding: 10px; /* Bezel Tipis */
+  border-radius: 40px;
+  
+  /* --- EFEK PUTIH KACA (GLASSMORPHISM) --- */
+  background: rgba(255, 255, 255, 0.4); /* Putih Semi-Transparan */
+  backdrop-filter: blur(10px); /* Efek Buram di Belakang Kaca */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Border Putih Kaca */
+  
+  /* --- EFEK SHADOW 3D MELAYANG --- */
+  transform: rotateX(5deg) rotateY(-5deg);
+  box-shadow: 
+    30px 30px 60px rgba(0, 0, 0, 0.15), /* Bayangan Utama Miring */
+    -10px -10px 30px rgba(255, 255, 255, 0.1), /* Highlight Tepi Kaca */
+    inset 0 0 15px rgba(255, 255, 255, 0.2); /* Efek Kedalaman Bezel */
+}
+
+/* Hover Effect: HP jadi tegak saat disentuh kursor */
+.mobile-frame:hover {
+  transform: rotateX(0deg) rotateY(0deg) scale(1.03);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.1), /* Shadow lurus saat hover */
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Notch/Speaker HP Slim (Disesuaikan dengan warna kaca) */
+.mobile-frame::after {
+  content: '';
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 35px; height: 3px;
+  background: rgba(255, 255, 255, 0.6); /* Notch semi-transparan putih */
+  border-radius: 10px;
+}
+
+/* Gambar di Dalam Bingkai */
+.feature-img-wrapper img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.desktop-frame img { border-radius: 8px; }
+.mobile-frame img { 
+  border-radius: 32px; /* Melengkung mengikuti bezel HP */
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* Teks Deskripsi Fitur */
+.feature-text { 
+  padding: 2.5rem 0.5rem; 
+  width: 100%;
+  max-width: 600px;
+}
+
+.feature-text h4 { margin-bottom: 0.6rem; color: var(--dark); font-size: 1.25rem; }
+.feature-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+/* Responsive Desktop */
+@media (min-width: 992px) {
+  .detail__grid { grid-template-columns: 350px 1fr; }
+  .detail__info { position: sticky; top: 2rem; }
+  .feature-item { align-items: center; } 
+}
+
+/* Animasi Fade In */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
