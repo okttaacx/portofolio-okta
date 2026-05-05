@@ -1,45 +1,45 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react'; // Tambahkan ini
 import { projects } from '../data/content';
 import './ProjectDetail.css';
 
 export default function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = projects.find((p) => p.id === parseInt(id));
+  const location = useLocation();
 
-  // Mengatur agar saat masuk ke halaman detail, langsung instan ke atas
+  const project = projects.find((p) => String(p.id) === id);
+
+  // --- KODE PELINDUNG INSTAN SCROLL ---
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'auto'; // Matikan smooth sementara
-    window.scrollTo(0, 0); // Instan ke atas
+    // 1. Matikan smooth scroll di HTML
+    document.documentElement.style.scrollBehavior = 'auto';
     
+    // 2. Paksa layar pindah ke kordinat paling atas (0,0) secara instan
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // 3. Kembalikan efek smooth setelah 50ms agar web tetap enak dilihat
     const timeout = setTimeout(() => {
-      document.documentElement.style.scrollBehavior = 'smooth'; // Nyalakan lagi
+      document.documentElement.style.scrollBehavior = 'smooth';
     }, 50);
 
     return () => clearTimeout(timeout);
-  }, [id]);
+  }, [id]); 
+  // ------------------------------------
 
-  // Fungsi khusus agar saat klik "Kembali", langsung INSTAN di tempat semula
   const handleBack = () => {
-    document.documentElement.style.scrollBehavior = 'auto'; // Matikan animasi
-    navigate(-1); // Mundur secara instan
-    
-    // Nyalakan kembali animasi scroll untuk keperluan web lainnya
-    setTimeout(() => {
-      document.documentElement.style.scrollBehavior = 'smooth';
-    }, 100);
+    if (location.key !== 'default') {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
   };
 
   if (!project) {
     return (
       <div className="container" style={{ padding: '5rem 2rem', textAlign: 'center' }}>
         <h2>Project tidak ditemukan</h2>
-        <span 
-          onClick={handleBack} 
-          className="back-link"
-          style={{ cursor: 'pointer' }}
-        >
+        <span onClick={handleBack} className="back-link" style={{ cursor: 'pointer' }}>
           ← Kembali ke Beranda
         </span>
       </div>
@@ -49,10 +49,9 @@ export default function ProjectDetail() {
   return (
     <section className="project-detail animate-fade-in">
       <div className="container">
-        
-        {/* Tombol kembali utama dengan fungsi handleBack */}
-        <span 
-          onClick={handleBack} 
+
+        <span
+          onClick={handleBack}
           className="back-link"
           style={{ cursor: 'pointer', display: 'inline-block', marginBottom: '1.5rem' }}
         >
@@ -60,7 +59,7 @@ export default function ProjectDetail() {
         </span>
 
         <div className="detail__grid">
-          {/* Kolom Kiri: Info Singkat (Sticky) */}
+          {/* Kolom Kiri: Info Singkat */}
           <div className="detail__info card" style={{ textAlign: 'left' }}>
             <div className="detail__title-wrapper">
               <span
@@ -86,20 +85,6 @@ export default function ProjectDetail() {
                 </span>
               ))}
             </div>
-
-            <div className="detail__small-links" style={{ marginTop: '2rem' }}>
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-card__btn project-card__btn--gh"
-                  style={{ fontSize: '0.8rem', width: '100%', textAlign: 'center' }}
-                >
-                  Source Code GitHub
-                </a>
-              )}
-            </div>
           </div>
 
           {/* Kolom Kanan: Daftar Fitur */}
@@ -110,10 +95,6 @@ export default function ProjectDetail() {
               project.features.map((f, i) => (
                 <div key={i} className="feature-item">
                   <div
-                    /* 
-                       DIPERBAIKI DI SINI: 
-                       Sekarang mengecek project.type === 'mobile' 
-                    */
                     className={`feature-img-wrapper ${
                       project.type === 'mobile' ? 'mobile-frame' : 'desktop-frame'
                     }`}

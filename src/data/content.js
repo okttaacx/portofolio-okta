@@ -193,7 +193,7 @@ export const projects = [
     title: "Toko Sembako Berkah",
     type: "web",
     subtitle: "UI/UX Website Design",
-    description: "Merancang desain UI/UX website “Toko Sembako Berkah” menggunakan Figma dengan fokus pada tampilan yang modern, responsif, dan mudah digunakan. Project ini mencakup pembuatan wireframe, prototype, desain halaman produk, navigasi pengguna, serta penyusunan layout yang bertujuan meningkatkan kenyamanan dan pengalaman pengguna saat berbelanja secara online.",
+    description: "Merancang desain UI/UX website “Toko Sembako Berkah” menggunakan Figma dengan tampilan modern, responsif, dan mudah digunakan untuk meningkatkan kenyamanan pengguna saat berbelanja online.",
     stack: ["Figma", "UI/UX Design", "Wireframing", "Prototyping"],
     color: "blue",
     icon: `<svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H4v5h5V3zM24 3h-5v5h5V3zM9 20H4v5h5v-5zM24 20h-5v5h5v-5zM17 10h-6v8h6v-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -203,29 +203,64 @@ export const projects = [
     live: "",
     features: [
       {
-        name: "Halaman Beranda (Homepage)",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-sembako-1.png"
+        name: "Login User Page",
+        desc: "Halaman login dengan tampilan modern dan sederhana yang memudahkan pengguna masuk ke akun secara cepat dan nyaman.",
+        img: "/login-user-sembako.png"
       },
       {
-        name: "Katalog Produk Sembako",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-sembako-2.png"
+        name: "Register Page",
+        desc: "Halaman registrasi untuk pengguna yang belum memiliki akun dengan tampilan sederhana, responsif, serta tersedia tombol “Masuk Admin” untuk akses admin.",
+        img: "/register-sembako.png"
       },
       {
-        name: "Detail Produk",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-sembako-3.png"
+        name: "Admin Login Page",
+        desc: "Halaman login admin dengan tampilan sederhana dan profesional untuk memudahkan admin mengakses dashboard dan mengelola website.",
+        img: "/admin-sembako.png"
       },
       {
-        name: "Keranjang Belanja (Cart)",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-sembako-4.png"
+        name: "User Home Page",
+        desc: "Halaman utama pengguna untuk melihat dan membeli produk sembako dengan fitur kategori, produk rekomendasi, serta filter produk yang memudahkan pencarian barang.",
+        img: "/home-user-sembako.png"
       },
       {
-        name: "Proses Checkout",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-sembako-5.png"
+        name: "Product Category Page",
+        desc: "Halaman kategori produk sembako yang memudahkan pengguna melihat dan memilih produk berdasarkan jenis kategori yang tersedia.",
+        img: "/kategori-user-sembako.png"
+      },
+      {
+        name: "Product Detail Page",
+        desc: "Halaman detail produk yang menampilkan informasi lengkap produk sembako seperti gambar, harga, deskripsi, dan tombol tambah ke keranjang.",
+        img: "/detail-produk-user-sembako.png"
+      },
+      {
+        name: "Shopping Cart Page",
+        desc: "Halaman keranjang belanja untuk melihat daftar produk yang dipilih, mengatur jumlah barang, dan melihat total pembayaran.",
+        img: "/keranjang-user-sembako.png"
+      },
+      {
+        name: "Checkout & Payment Page",
+        desc: "Halaman checkout dan pembayaran untuk menyelesaikan pesanan dengan informasi alamat, detail produk, dan metode pembayaran.",
+        img: "/checkout-pembayaran-sembako.png"
+      },
+      {
+        name: "Order History Page",
+        desc: "Halaman riwayat pesanan untuk melihat daftar order, status pembelian, dan detail transaksi pengguna.",
+        img: "/riwayat-order-sembako.png"
+      },
+      {
+        name: "User Profile Page",
+        desc: "Halaman profil pengguna untuk melihat dan mengelola informasi akun serta data pribadi pengguna.",
+        img: "/profil-user-sembako.png"
+      },
+      {
+        name: "Admin Dashboard Page",
+        desc: "Halaman dashboard admin untuk melihat ringkasan data toko seperti total produk, pendapatan bulan ini, serta grafik penjualan.",
+        img: "/dashboard-admin.png"
+      },
+      {
+        name: "Product Management Page",
+        desc: "Halaman manajemen produk untuk menambah, mengedit, menghapus, dan mengelola data produk sembako pada website.",
+        img: "/product-management-admin.png"
       }
     ]
   },
@@ -244,25 +279,50 @@ export const projects = [
     live: "",
     features: [
       {
-        name: "Dashboard Pengguna",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/kategori_vidio.png"
+        name: "Splash Screen (Healtalk App)",
+        desc: "Halaman tampilan awal aplikasi “Healtalk” dengan desain UI/UX sederhana yang menampilkan logo dan nama aplikasi sebagai pengenalan sebelum masuk ke halaman utama.",
+        img: "/healtalk-android.png"
       },
       {
-        name: "Forum Diskusi Kesehatan",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-health-2.png"
+        name: "Login Page",
+        desc: "Halaman login dengan tampilan sederhana dan modern untuk memudahkan pengguna masuk ke akun dan mengakses fitur diskusi kesehatan.",
+        img: "/login-healtalk.png"
       },
       {
-        name: "Artikel & Berita Kesehatan",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-health-3.png"
+        name: "Register Page",
+        desc: "Halaman registrasi untuk pengguna baru dengan desain sederhana dan responsif agar proses pembuatan akun lebih mudah dan nyaman.",
+        img: "/signup-healtalk.png"
       },
       {
-        name: "Profil & Riwayat",
-        desc: "Isi deskripsi fitur di sini...",
-        img: "/placeholder-health-4.png"
-      }
+        name: "Home Page",
+        desc: "Halaman utama aplikasi untuk melihat diskusi kesehatan, topik populer, serta fitur pencarian agar pengguna lebih mudah menemukan informasi dan berbagi pengalaman kesehatan.",
+        img: "/home-popular-healtalk.png"
+      },
+      {
+        name: "Following Page",
+        desc: "Halaman untuk melihat postingan dan diskusi terbaru dari akun yang diikuti pengguna dalam aplikasi kesehatan.",
+        img: "/follows-healtalk.png"
+      },
+      {
+        name: "Ask & Post Page",
+        desc: "Halaman utama aplikasi untuk melihat diskusi kesehatan, topik populer, serta fitur pencarian agar pengguna lebih mudah menemukan informasi dan berbagi pengalaman kesehatan.",
+        img: "/ask-healtalk.png"
+      },
+      {
+        name: "Notification Page",
+        desc: "Halaman notifikasi untuk melihat informasi terbaru seperti balasan diskusi, aktivitas pengguna, dan update pada aplikasi.",
+        img: "/notification-healtalk.png"
+      },
+      {
+        name: "Profile Page",
+        desc: "Halaman profil pengguna untuk melihat dan mengelola informasi akun, postingan, serta aktivitas diskusi kesehatan pengguna.",
+        img: "/profile-healtalk.png"
+      },
+      {
+        name: "Search Page",
+        desc: "Halaman pencarian untuk menemukan topik kesehatan, pengguna, dan diskusi dengan lebih cepat dan mudah.",
+        img: "/search-healtalk.png"
+      },
     ]
   }
 ];
@@ -280,10 +340,20 @@ export const experiences = [
     ]
   },
   {
+    role: "Anggota Ekonomi Kreatif",
+    company: "Himpunan Mahasiswa Teknik Informatika — UMM",
+    period: "Oktober 2023 – Juli 2024",
+    type: "org",
+    points: [
+      "Mendesain konten promosi media sosial (Instagram) menggunakan Canva",
+      "Mengelola komunikasi dan koordinasi antar divisi sebagai bagian tim Humas"
+    ]
+  },
+  {
     role: "Divisi Publikasi, Dekorasi, dan Dokumentasi (PDD)",
     company: "Panitia Dies Natalis Informatika — UMM",
     period: "2024",
-    type: "org",
+    type: "committee",
     points: [
       "Mendesain materi publikasi acara (poster, banner, dan konten media sosial) menggunakan Canva untuk meningkatkan visibilitas kegiatan.",
       "Bertanggung jawab dalam pengelolaan dokumentasi acara berupa foto dan video sebagai arsip serta bahan publikasi."
@@ -293,20 +363,10 @@ export const experiences = [
     role: "Divisi Humas",
     company: "Panitia Musyawarah Wilayah PERMIKOMNAS Wilayah XI Jawa Timur",
     period: "2024",
-    type: "org",
+    type: "committee",
     points: [
       "Mengelola komunikasi dan koordinasi dengan ±25 perwakilan organisasi mahasiswa dari berbagai kampus di wilayah Jawa Timur.",
       "Berperan dalam menjaga hubungan eksternal serta mendukung kelancaran pelaksanaan kegiatan."
-    ]
-  },
-  {
-    role: "Anggota Ekonomi Kreatif",
-    company: "Himpunan Mahasiswa Teknik Informatika — UMM",
-    period: "Oktober 2023 – Juli 2024",
-    type: "org",
-    points: [
-      "Mendesain konten promosi media sosial (Instagram) menggunakan Canva",
-      "Mengelola komunikasi dan koordinasi antar divisi sebagai bagian tim Humas"
     ]
   }
 ];

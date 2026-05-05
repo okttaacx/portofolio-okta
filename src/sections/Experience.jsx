@@ -25,6 +25,14 @@ const IconOrg = () => (
   </svg>
 )
 
+// ICON BARU UNTUK KEPANITIAAN (Bendera/Event)
+const IconCommittee = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+    <line x1="4" y1="22" x2="4" y2="15"/>
+  </svg>
+)
+
 const IconBook = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -33,6 +41,20 @@ const IconBook = () => (
 )
 
 export default function Experience() {
+  // Fungsi bantuan untuk menentukan Icon berdasarkan tipe
+  const getBadgeIcon = (type) => {
+    if (type === 'org') return <IconOrg />;
+    if (type === 'committee') return <IconCommittee />;
+    return <IconBriefcase />; // Default untuk 'work'
+  };
+
+  // Fungsi bantuan untuk menentukan Teks berdasarkan tipe
+  const getBadgeText = (type) => {
+    if (type === 'org') return 'Organisasi';
+    if (type === 'committee') return 'Kepanitiaan';
+    return 'Pekerjaan'; // Default untuk 'work'
+  };
+
   return (
     <section id="experience" className="section experience">
       <div className="container">
@@ -42,15 +64,16 @@ export default function Experience() {
         </div>
 
         <div className="exp__grid">
-          {/* Kolom Kiri: 2 Card Terpisah TANPA EFEK HOVER */}
+          {/* Kolom Kiri: Card Terpisah */}
           <div className="exp__timeline">
             {experiences.map((e, i) => (
               <div key={i} className="exp__item">
                 <div className="exp__item-header">
                   <div className="exp__item-left">
+                    {/* Render Icon dan Teks Dinamis */}
                     <span className="exp__type-badge">
-                      {e.type === 'org' ? <IconOrg /> : <IconBriefcase />}
-                      {e.type === 'org' ? 'Organisasi' : 'Pekerjaan'}
+                      {getBadgeIcon(e.type)}
+                      {getBadgeText(e.type)}
                     </span>
                     <h3 className="exp__role">{e.role}</h3>
                     <p className="exp__company">{e.company}</p>
