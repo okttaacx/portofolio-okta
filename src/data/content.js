@@ -341,7 +341,7 @@ export const experiences = [
   },
   {
     role: "Anggota Ekonomi Kreatif",
-    company: "Himpunan Mahasiswa Teknik Informatika — UMM",
+    company: "Himpunan Mahasiswa Teknik Informatika — Universitas Muhammadiyah Malang",
     period: "Oktober 2023 – Juli 2024",
     type: "org",
     points: [
@@ -351,7 +351,7 @@ export const experiences = [
   },
   {
     role: "Divisi Publikasi, Dekorasi, dan Dokumentasi (PDD)",
-    company: "Panitia Dies Natalis Informatika — UMM",
+    company: "Panitia Dies Natalis Informatika — Universitas Muhammadiyah Malang",
     period: "2024",
     type: "committee",
     points: [
@@ -367,6 +367,27 @@ export const experiences = [
     points: [
       "Mengelola komunikasi dan koordinasi dengan ±25 perwakilan organisasi mahasiswa dari berbagai kampus di wilayah Jawa Timur.",
       "Berperan dalam menjaga hubungan eksternal serta mendukung kelancaran pelaksanaan kegiatan."
+    ]
+  },
+  {
+    role: "Divisi Liaison Officer (LO)",
+    company: "Panitia Informatics Connection — Universitas Muhammadiyah Malang ",
+    period: "2024",
+    type: "committee",
+    points: [
+      "Mendampingi mahasiswa baru selama rangkaian kegiatan Informatics Connection berlangsung.",
+      "Membantu peserta dalam memahami alur kegiatan dan informasi acara.",
+      "Mengarahkan peserta agar kegiatan berjalan tertib dan kondusif."
+    ]
+  },
+  {
+    role: "Divisi Humas dan Sponsorship",
+    company: "Panitia Diklat Kepemimpinan dan Manajemen Organisasi (DKMO) — Universitas Muhammadiyah Malang",
+    period: "2024",
+    type: "committee",
+    points: [
+      "Menjalin komunikasi dan kerja sama dengan pihak eksternal untuk mendukung kebutuhan acara.",
+      "Bertanggung jawab dalam pencarian serta pengelolaan sponsorship kegiatan."
     ]
   }
 ];
