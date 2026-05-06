@@ -1,16 +1,54 @@
-# React + Vite
+# Hi there, I'm Okta Ramji Saputra 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Web Developer • UI/UX Designer 
+*Crafting web experiences with clean code & thoughtful design*
 
-Currently, two official plugins are available:
+Saya adalah mahasiswa program studi **Rekayasa Perangkat Lunak** (Software Engineering) di **Universitas Muhammadiyah Malang** (2022 - Target Lulus 2026). Saya berfokus pada pengembangan aplikasi web yang responsif dan *scalable* menggunakan MERN Stack & Laravel, serta merancang pengalaman pengguna (UI/UX) yang intuitif.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+📫 **Reach me out:** [oktaramji10@gmail.com](mailto:oktaramji10@gmail.com) | [LinkedIn](https://linkedin.com/in/oktaramji) | 📍 Malang, Jawa Timur
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🛠️ Tech Stack & Tools
 
-## Expanding the ESLint configuration
+**Programming & Frameworks:**
+- HTML, CSS, JavaScript
+- PHP (Laravel)
+- React.js, Node.js
+- Flutter (Dart)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Databases:**
+- MySQL, phpMyAdmin
+- MongoDB
+
+**Design & Version Control:**
+- Figma, Canva
+- Git, GitHub, VS Code
+
+---
+
+### 🚀 Featured Projects
+
+*   **[SiJoker (Sistem Informasi Orang Kerja)](#)** - Sistem berbasis web untuk pengelolaan data pencari kerja Dinas Tenaga Kerja Kota Batu. Memiliki manajemen data terpusat, monitoring pelatihan, dan alur kerja *paperless*. *(Tech: PHP Laravel, MySQL, HTML, CSS, JS)*
+*   **[Toko Listrik Berkah](#)** - Aplikasi kasir dan manajemen inventaris berbasis web untuk toko kelistrikan. Dilengkapi laporan penjualan terintegrasi dan manajemen kasir & stok. *(Tech: MERN Stack - MongoDB, Express, React, Node.js)*
+*   **[FlowBoost](#)** - Aplikasi mobile motivasi dengan fitur video terintegrasi. Pendekatan *user-friendly* dengan tampilan responsif dan modern. *(Tech: Flutter, Dart, Figma)*
+*   **UI/UX Designs:** Merancang antarmuka untuk **Toko Sembako Berkah** (E-commerce) dan **HealthTalk** (Platform Diskusi Digital Kesehatan) menggunakan Figma dengan fokus pada modernitas dan kemudahan navigasi.
+
+---
+
+### 💼 Experience
+
+**Web Developer Intern | Dinas Tenaga Kerja Kota Batu** *(Juli 2025 – September 2025)*
+- Membangun 5 modul utama pada sistem SiJoker (berbasis Laravel & MySQL), mencakup autentikasi, manajemen dokumen, hingga pelaporan.
+- Memvalidasi dan mengklasifikasikan ±600 data peserta ke dalam 9 program pelatihan.
+- Memonitor serta mendokumentasikan pelaksanaan kegiatan pelatihan secara sistematis.
+
+---
+
+### 🏆 Licenses & Certifications
+
+*   **Hak Cipta (HKI): Document Scanner & Archive Digital (2025)** - Terdaftar resmi di Kementerian Hukum RI (No: 001077149). Program komputer pemindai dan arsip dokumen digital otomatis, dikembangkan bersama tim peneliti UMM.
+*   **Penelitian Ilmiah Terindeks SINTA 3** - "Pengembangan Sistem Informasi Jaringan Orang Kerja Dinas Tenaga Kerja Kota Batu Menggunakan Metode Prototyping".
+
+---
+*Dibuat dengan semangat belajar tinggi dan fokus pada problem-solving.* 💡
