@@ -6,8 +6,8 @@ export const profile = {
   phone: "08885963424",
   linkedin: "https://www.linkedin.com/in/oktaramji/",
   github: "https://github.com/okttaacx",
-  location: "Malang, Jawa Timur",
-  about: `Mahasiswa S1 Informatika Universitas Muhammadiyah Malang dengan fokus pada pengembangan web dan desain UI/UX. Berpengalaman membangun aplikasi web responsif dan scalable menggunakan PHP (Laravel), React.js, dan Node.js, serta merancang pengalaman pengguna yang intuitif melalui Figma. Berorientasi pada solusi, dengan semangat belajar tinggi dan kemampuan bekerja secara mandiri maupun dalam tim untuk menghasilkan produk digital yang fungsional dan bernilai.`,
+  location: "Semarang, Jawa Tengah",
+  about: `Lulusan S-1 Informatika Universitas Muhammadiyah Malang dengan fokus pada Web Development, Frontend Development, dan UI/UX Design. Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js, dan Node.js, serta merancang UI/UX modern dan user-friendly menggunakan Figma. Memiliki pengalaman internship di Dinas Tenaga Kerja Kota Batu dalam pengembangan sistem berbasis Laravel dan pengelolaan data pelatihan. Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.`,
   education: {
     degree: "S1 Informatika",
     university: "Universitas Muhammadiyah Malang",
