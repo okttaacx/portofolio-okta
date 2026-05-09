@@ -31,7 +31,7 @@ export const projects = [
     type: "desktop",
     subtitle: "Sistem Informasi Orang Kerja",
     description: "Sistem berbasis web untuk pengelolaan data pencari kerja Dinas Tenaga Kerja Kota Batu. Menggunakan metode prototyping untuk menciptakan solusi digital bagi penyaluran tenaga kerja lokal.",
-    stack: ["PHP Laravel", "MySQL", "HTML", "CSS", "JavaScript"],
+    stack: ["PHP Laravel", "MySQL", "HTML", "CSS"],
     color: "blue",
     icon: `<svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">  <rect x="3" y="6" width="22" height="16" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>  <path d="M8 10h12M8 14h8M8 18h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>  <circle cx="21" cy="18" r="4" fill="currentColor"/>  <path d="M19.5 18l1 1 2-2" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     highlights: ["Manajemen Data Terpusat", "Sistem Monitoring Pelatihan", "Alur Kerja Paperless"],

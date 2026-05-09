@@ -2,6 +2,42 @@ import { Link } from 'react-router-dom';
 import { projects } from '../data/content';
 import './Projects.css';
 
+// --- ICON PANAH BACA JURNAL ---
+const IconArrowUpRight = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="16" 
+    height="16" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <line x1="7" y1="17" x2="17" y2="7"></line>
+    <polyline points="7 7 17 7 17 17"></polyline>
+  </svg>
+);
+
+// --- ICON PANAH KANAN (Untuk GitHub, Figma, Detail) ---
+const IconArrowRight = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="16" 
+    height="16" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14"></path>
+    <path d="m12 5 7 7-7 7"></path>
+  </svg>
+);
+
 const colorMap = {
   blue:   { bg: 'rgba(226, 235, 245, 0.4)', border: 'rgba(138, 180, 248, 0.4)', accent: '#4A88DA' },
   coral:  { bg: 'rgba(255, 237, 235, 0.4)', border: 'rgba(248, 180, 172, 0.4)', accent: '#E8735A' },
@@ -74,7 +110,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="project-card__btn project-card__btn--gh"
                       >
-                        GitHub →
+                        GitHub <IconArrowRight />
                       </a>
                     )}
 
@@ -85,7 +121,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="project-card__btn project-card__btn--figma"
                       >
-                        Figma →
+                        Figma <IconArrowRight />
                       </a>
                     )}
 
@@ -96,14 +132,14 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="project-card__btn project-card__btn--live"
                       >
-                        Baca Jurnal ↗
+                        Baca Jurnal <IconArrowUpRight />
                       </a>
                     ) : (
                       <Link
                         to={`/project/${p.id}`}
                         className="project-card__btn project-card__btn--live"
                       >
-                        Lihat Detail
+                        Lihat Detail <IconArrowRight />
                       </Link>
                     )}
                   </div>
