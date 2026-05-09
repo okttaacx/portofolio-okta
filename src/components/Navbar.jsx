@@ -33,7 +33,7 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <a href="/cv-okta.pdf" className="navbar__cta" download>
+            <a href="/CV_Okta.pdf" className="navbar__cta" download>
               Download CV
             </a>
           </li>

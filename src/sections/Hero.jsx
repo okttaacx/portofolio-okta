@@ -45,7 +45,7 @@ export default function Hero() {
               Lihat Projects
             </a>
             {/* Tambahan optimasi: atribut download diberi nama file spesifik */}
-            <a href="/cv-okta.pdf" className="btn btn--outline" download="CV_Okta_Ramji_Saputra.pdf">
+            <a href="/CV_Okta.pdf" className="btn btn--outline" download="CV_Okta_Ramji_Saputra.pdf">
               Download CV
             </a>
           </div>
