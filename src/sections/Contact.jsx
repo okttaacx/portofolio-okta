@@ -93,7 +93,7 @@ export default function Contact() {
               <p className="contact__role">Web Developer • UI/UX Designer</p>
               <p className="contact__location">
                 <IconLocation />
-                Semarang, Jawa Timur
+                Semarang, Jawa Tengah
               </p>
               <a href={waLink} target="_blank" rel="noopener noreferrer" className="contact__wa-btn">
                 <IconWhatsApp />
