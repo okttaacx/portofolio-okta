@@ -58,7 +58,7 @@ export default function Hero() {
           <div className="hero__photo-card">
             <div className="hero__photo-frame">
               <img 
-                src="/photo.jpg" 
+                src="/foto-profil.jpeg" 
                 alt="Okta Ramji Saputra - Frontend & Fullstack Developer" 
                 className="hero__photo-img" 
               />

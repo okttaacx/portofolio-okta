@@ -1,12 +1,5 @@
-import { experiences, profile } from '../data/content'
+import { experiences } from '../data/content'
 import './Experience.css'
-
-const IconGraduate = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-)
 
 const IconBriefcase = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -25,7 +18,6 @@ const IconOrg = () => (
   </svg>
 )
 
-// ICON BARU UNTUK KEPANITIAAN (Bendera/Event)
 const IconCommittee = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
@@ -33,26 +25,17 @@ const IconCommittee = () => (
   </svg>
 )
 
-const IconBook = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-  </svg>
-)
-
 export default function Experience() {
-  // Fungsi bantuan untuk menentukan Icon berdasarkan tipe
   const getBadgeIcon = (type) => {
     if (type === 'org') return <IconOrg />;
     if (type === 'committee') return <IconCommittee />;
-    return <IconBriefcase />; // Default untuk 'work'
+    return <IconBriefcase />;
   };
 
-  // Fungsi bantuan untuk menentukan Teks berdasarkan tipe
   const getBadgeText = (type) => {
     if (type === 'org') return 'Organisasi';
     if (type === 'committee') return 'Kepanitiaan';
-    return 'Pekerjaan'; // Default untuk 'work'
+    return 'Pekerjaan';
   };
 
   return (
@@ -63,57 +46,31 @@ export default function Experience() {
           <h2 className="section-title">Perjalanan Karir</h2>
         </div>
 
+        {/* ✅ Card langsung jadi anak grid, tidak dibungkus exp__timeline */}
         <div className="exp__grid">
-          {/* Kolom Kiri: Card Terpisah */}
-          <div className="exp__timeline">
-            {experiences.map((e, i) => (
-              <div key={i} className="exp__item">
-                <div className="exp__item-header">
-                  <div className="exp__item-left">
-                    {/* Render Icon dan Teks Dinamis */}
-                    <span className="exp__type-badge">
-                      {getBadgeIcon(e.type)}
-                      {getBadgeText(e.type)}
-                    </span>
-                    <h3 className="exp__role">{e.role}</h3>
-                    <p className="exp__company">{e.company}</p>
-                  </div>
-                  <span className="exp__period">{e.period}</span>
+          {experiences.map((e, i) => (
+            <div key={i} className="exp__item">
+              <div className="exp__item-header">
+                <div className="exp__item-left">
+                  <span className="exp__type-badge">
+                    {getBadgeIcon(e.type)}
+                    {getBadgeText(e.type)}
+                  </span>
+                  <h3 className="exp__role">{e.role}</h3>
+                  <p className="exp__company">{e.company}</p>
                 </div>
-
-                <ul className="exp__points">
-                  {e.points.map((pt, j) => (
-                    <li key={j}>{pt}</li>
-                  ))}
-                </ul>
+                <span className="exp__period">{e.period}</span>
               </div>
-            ))}
-          </div>
 
-          {/* Kolom Kanan: Education Card (Sticky) */}
-          <div className="edu__card card">
-            <div className="edu__icon-wrap">
-              <IconGraduate />
+              <ul className="exp__points">
+                {e.points.map((pt, j) => (
+                  <li key={j}>{pt}</li>
+                ))}
+              </ul>
             </div>
-
-            <h3 className="edu__degree">{profile.education.degree}</h3>
-            <p className="edu__uni">{profile.education.university}</p>
-            <p className="edu__period">{profile.education.period}</p>
-
-            <div className="edu__gpa">
-              <span className="edu__gpa-label">IPK</span>
-              <span className="edu__gpa-val">{profile.education.gpa}</span>
-            </div>
-
-            <div className="edu__thesis">
-              <div className="edu__thesis-label">
-                <IconBook />
-                <span>Skripsi</span>
-              </div>
-              <p className="edu__thesis-text">{profile.education.thesis}</p>
-            </div>
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   )

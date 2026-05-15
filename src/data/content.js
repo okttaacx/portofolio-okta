@@ -7,14 +7,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/oktaramji/",
   github: "https://github.com/okttaacx",
   location: "Semarang, Jawa Tengah",
-  about: `Lulusan S-1 Informatika Universitas Muhammadiyah Malang dengan fokus pada Web Development, Frontend Development, dan UI/UX Design. Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js, dan Node.js, serta merancang UI/UX modern dan user-friendly menggunakan Figma. Memiliki pengalaman internship di Dinas Tenaga Kerja Kota Batu dalam pengembangan sistem berbasis Laravel dan pengelolaan data pelatihan. Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.`,
-  education: {
-    degree: "S1 Informatika",
-    university: "Universitas Muhammadiyah Malang",
-    period: "2022 – 2026",
-    gpa: "3.77 / 4.00",
-    thesis: "Pengembangan Sistem Informasi Jaringan Orang Kerja Dinas Tenaga Kerja Kota Batu Menggunakan Metode Prototyping"
-  }
+  about: `Berfokus pada Web Development, Frontend Development, dan UI/UX Design. Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js, dan Node.js, serta merancang UI/UX modern dan user-friendly menggunakan Figma. Memiliki pengalaman internship di Dinas Tenaga Kerja Kota Batu dalam pengembangan sistem berbasis Laravel dan pengelolaan data pelatihan. Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.`
 };
 
 export const skills = {
