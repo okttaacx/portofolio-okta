@@ -12,7 +12,7 @@ export const profile = {
     degree: "S1 Informatika",
     university: "Universitas Muhammadiyah Malang",
     period: "2022 – 2026",
-    gpa: "3.76 / 4.00",
+    gpa: "3.77 / 4.00",
     thesis: "Pengembangan Sistem Informasi Jaringan Orang Kerja Dinas Tenaga Kerja Kota Batu Menggunakan Metode Prototyping"
   }
 };
