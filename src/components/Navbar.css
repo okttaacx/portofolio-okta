@@ -8,16 +8,11 @@
 }
 
 .navbar--scrolled {
-  /* Warna Biru Langit Transparan (Aesthetic Blue) */
   background: rgba(226, 235, 245, 0.8); 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 0.9rem 0;
-  
-  /* Pembatas garis biru tipis */
   border-bottom: 1px solid rgba(138, 180, 248, 0.2);
-  
-  /* Bayangan lembut bernuansa biru */
   box-shadow: 0 4px 20px rgba(21, 36, 64, 0.05);
 }
 
@@ -34,7 +29,7 @@
   font-family: var(--font-head);
   font-weight: 800;
   font-size: 1.15rem;
-  color: var(--dark); /* Navy Elegant */
+  color: var(--dark);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -44,7 +39,6 @@
 .navbar__logo-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  /* Titik logo jadi Biru Cerah */
   background: var(--blue); 
   display: inline-block;
   box-shadow: 0 0 10px rgba(138, 180, 248, 0.5);
@@ -66,14 +60,13 @@
   transition: var(--transition);
 }
 
-/* Hover link jadi biru muda transparan */
 .navbar__links a:hover { 
   color: var(--blue-dark); 
   background: var(--coral-light); 
 }
 
 .navbar__cta {
-  background: var(--dark) !important; /* Navy button */
+  background: var(--dark) !important;
   color: var(--white) !important;
   padding: 0.45rem 1.1rem !important;
   border-radius: var(--radius-sm) !important;
@@ -109,24 +102,45 @@
 .navbar__burger span.open:nth-child(2) { opacity: 0; }
 .navbar__burger span.open:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
+/* ── Overlay ── */
+.navbar__overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navbar__burger { display: flex; }
+
   .navbar__links {
     position: fixed;
-    inset: 0; top: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
-    
-    /* PERBAIKAN: Tambahkan warna putih murni sebagai backup jika var(--cream) bermasalah */
-    background-color: var(--cream, #f0f8ff); 
-    
-    /* PERBAIKAN: Pastikan z-index tinggi agar menimpa konten di bawahnya */
-    z-index: 999; 
-    
+    background: var(--cream, #f0f8ff);
+    z-index: 999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .navbar__links--open { transform: translateX(0); }
-  .navbar__links a { font-size: 1.2rem; }
+
+  .navbar__links--open { 
+    transform: translateX(0); 
+  }
+
+  .navbar__links a { 
+    font-size: 1.2rem; 
+  }
+
+  .navbar__overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 31, 61, 0.3);
+    z-index: 998;
+  }
 }

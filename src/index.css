@@ -52,21 +52,21 @@ body {
   overflow-x: clip;
 }
 
-#root {
-  position: relative;
-  z-index: 1;
-}
-
-#root::before,
-#root::after {
+/* ✅ Background ombak dipindah ke body::before & body::after
+   agar position: fixed bekerja di iOS Safari, Android, semua browser */
+body::before,
+body::after {
   content: '';
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-#root::before {
+body::before {
   top: -40vh;
   left: -20vw;
   width: 150vw;
@@ -81,10 +81,10 @@ body {
   box-shadow:
     0 12px 36px rgba(58, 123, 213, 0.2),
     inset 0 -4px 18px rgba(255, 255, 255, 0.55);
-  transform: rotate(-6deg);
+  transform: rotate(-6deg) translateZ(0);
 }
 
-#root::after {
+body::after {
   bottom: -40vh;
   right: -25vw;
   width: 140vw;
@@ -99,7 +99,7 @@ body {
   box-shadow:
     0 -12px 36px rgba(58, 123, 213, 0.2),
     inset 0 4px 18px rgba(255, 255, 255, 0.55);
-  transform: rotate(10deg);
+  transform: rotate(10deg) translateZ(0);
 }
 
 /* ========================================================
@@ -108,34 +108,40 @@ body {
 
 /* Untuk Tablet (layar menengah) */
 @media (max-width: 1024px) {
-  #root::before {
+  body::before {
     width: 250vw;
     left: -75vw;
     top: -25vh;
   }
-  #root::after {
+  body::after {
     width: 250vw;
     right: -75vw;
     bottom: -25vh;
   }
 }
 
-/* Untuk Mobile / HP (layar kecil memanjang ke bawah) */
+/* Untuk Mobile / HP */
 @media (max-width: 768px) {
-  #root::before {
+  body::before {
     width: 350vw;
     height: 60vh;
     left: -125vw;
     top: -15vh;
-    transform: rotate(-10deg);
+    transform: rotate(-10deg) translateZ(0);
   }
-  #root::after {
+  body::after {
     width: 350vw;
     height: 60vh;
     right: -125vw;
     bottom: -15vh;
-    transform: rotate(12deg);
+    transform: rotate(12deg) translateZ(0);
   }
+}
+
+/* ✅ #root tidak perlu position relative lagi */
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 section,
@@ -146,7 +152,7 @@ section,
 .contact {
   background: transparent !important;
   position: relative;
-  z-index: 20;
+  z-index: 2;
 }
 
 .section-header,
@@ -224,4 +230,4 @@ img {
 
 .animate-fade-up { animation: fadeUp .7s ease both; }
 .animate-fade-in { animation: fadeIn .7s ease both; }
-.animate-float   { animation: float 4s ease-in-out infinite; }
+.animate-float   { animation: float 4s ease-in-out infinite; -webkit-animation: float 4s ease-in-out infinite; }

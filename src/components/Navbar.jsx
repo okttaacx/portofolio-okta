@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
-// Menambahkan 'Certifications' di antara Experience dan Contact
 const links = ['About', 'Projects', 'Experience', 'Certifications', 'Contact']
 
 export default function Navbar() {
@@ -14,6 +13,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // ✅ Lock scroll body saat menu terbuka
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
@@ -25,8 +30,6 @@ export default function Navbar() {
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
           {links.map(l => (
             <li key={l}>
-              {/* Gunakan split(' ')[0].toLowerCase() jika nanti ada spasi, 
-                  tapi karena 'Certifications' 1 kata, ini sudah aman */}
               <a href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
                 {l}
               </a>
@@ -39,12 +42,25 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <button className="navbar__burger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button
+          className="navbar__burger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
           <span className={menuOpen ? 'open' : ''} />
           <span className={menuOpen ? 'open' : ''} />
           <span className={menuOpen ? 'open' : ''} />
         </button>
       </div>
+
+      {/* ✅ Overlay gelap di belakang menu mobile */}
+      {menuOpen && (
+        <div
+          className="navbar__overlay"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
     </nav>
   )
 }
