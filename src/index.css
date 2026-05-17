@@ -102,6 +102,42 @@ body {
   transform: rotate(10deg);
 }
 
+/* ========================================================
+   RESPONSIVE BACKGROUND OMBAK KACA (TABLET & MOBILE)
+======================================================== */
+
+/* Untuk Tablet (layar menengah) */
+@media (max-width: 1024px) {
+  #root::before {
+    width: 250vw;
+    left: -75vw;
+    top: -25vh;
+  }
+  #root::after {
+    width: 250vw;
+    right: -75vw;
+    bottom: -25vh;
+  }
+}
+
+/* Untuk Mobile / HP (layar kecil memanjang ke bawah) */
+@media (max-width: 768px) {
+  #root::before {
+    width: 350vw;
+    height: 60vh;
+    left: -125vw;
+    top: -15vh;
+    transform: rotate(-10deg);
+  }
+  #root::after {
+    width: 350vw;
+    height: 60vh;
+    right: -125vw;
+    bottom: -15vh;
+    transform: rotate(12deg);
+  }
+}
+
 section,
 .hero,
 .about,

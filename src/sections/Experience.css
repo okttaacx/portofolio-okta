@@ -103,7 +103,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 1.25rem; /* Tambahkan jarak agar pas dengan garis bawahnya */
+  margin-bottom: 1.25rem;
 }
 
 .exp__item-left {
@@ -148,7 +148,7 @@
 .exp__period {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-code, monospace);
+  font-family: 'Poppins', sans-serif; /* ✅ Sudah diperbaiki */
   font-size: 0.70rem;
   font-weight: 700;
   color: var(--blue-dark, #2563eb);
@@ -168,7 +168,7 @@
   gap: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(138, 180, 248, 0.18);
-  flex-grow: 1; /* <-- Kunci perbaikan: Ruang sisa didorong ke dalam list, jadi garis atasnya akan sejajar dengan header */
+  flex-grow: 1;
 }
 
 .exp__points li {
