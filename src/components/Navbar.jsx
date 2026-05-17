@@ -13,7 +13,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // ✅ Lock scroll body saat menu terbuka
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -21,18 +20,19 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+
+      {/* Bar atas — selalu terlihat */}
       <div className="navbar__inner">
         <a href="#hero" className="navbar__logo">
           <span className="navbar__logo-dot" />
           okta.dev
         </a>
 
-        <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
+        {/* Desktop links */}
+        <ul className="navbar__links">
           {links.map(l => (
             <li key={l}>
-              <a href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
-                {l}
-              </a>
+              <a href={`#${l.toLowerCase()}`}>{l}</a>
             </li>
           ))}
           <li>
@@ -42,25 +42,48 @@ export default function Navbar() {
           </li>
         </ul>
 
+        {/* Burger button */}
         <button
           className="navbar__burger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Buka menu"
           aria-expanded={menuOpen}
         >
-          <span className={menuOpen ? 'open' : ''} />
-          <span className={menuOpen ? 'open' : ''} />
-          <span className={menuOpen ? 'open' : ''} />
+          <span /><span /><span />
         </button>
       </div>
 
-      {/* ✅ Overlay gelap di belakang menu mobile */}
-      {menuOpen && (
-        <div
-          className="navbar__overlay"
+      {/* Mobile panel — geser dari kanan */}
+      <div className={`navbar__panel ${menuOpen ? 'navbar__panel--open' : ''}`} aria-hidden={!menuOpen}>
+        <button
+          className="navbar__close"
           onClick={() => setMenuOpen(false)}
-        />
-      )}
+          aria-label="Tutup menu"
+        >
+          ✕
+        </button>
+        
+        <ul className="navbar__panel-links">
+          {links.map(l => (
+            <li key={l}>
+              <a href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
+                {l}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/CV_Okta.pdf" className="navbar__cta" download onClick={() => setMenuOpen(false)}>
+              Download CV
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Overlay gelap */}
+      <div 
+        className={`navbar__overlay ${menuOpen ? 'navbar__overlay--open' : ''}`} 
+        onClick={() => setMenuOpen(false)} 
+      />
     </nav>
   )
 }

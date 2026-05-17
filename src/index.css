@@ -52,8 +52,6 @@ body {
   overflow-x: clip;
 }
 
-/* ✅ Background ombak dipindah ke body::before & body::after
-   agar position: fixed bekerja di iOS Safari, Android, semua browser */
 body::before,
 body::after {
   content: '';
@@ -102,43 +100,42 @@ body::after {
   transform: rotate(10deg) translateZ(0);
 }
 
-/* ========================================================
-   RESPONSIVE BACKGROUND OMBAK KACA (TABLET & MOBILE)
-======================================================== */
-
-/* Untuk Tablet (layar menengah) */
+/* ── TABLET ── */
 @media (max-width: 1024px) {
   body::before {
-    width: 250vw;
-    left: -75vw;
+    width: 180vw;
+    left: -40vw;
     top: -25vh;
+    height: 70vh;
+    transform: rotate(-7deg) translateZ(0);
   }
   body::after {
-    width: 250vw;
-    right: -75vw;
+    width: 180vw;
+    right: -40vw;
     bottom: -25vh;
+    height: 70vh;
+    transform: rotate(9deg) translateZ(0);
   }
 }
 
-/* Untuk Mobile / HP */
+/* ── MOBILE / HP ── */
 @media (max-width: 768px) {
   body::before {
-    width: 350vw;
-    height: 60vh;
-    left: -125vw;
-    top: -15vh;
-    transform: rotate(-10deg) translateZ(0);
+    width: 200vw;
+    height: 50vh;
+    left: -50vw;
+    top: -18vh;
+    transform: rotate(-8deg) translateZ(0);
   }
   body::after {
-    width: 350vw;
-    height: 60vh;
-    right: -125vw;
-    bottom: -15vh;
-    transform: rotate(12deg) translateZ(0);
+    width: 200vw;
+    height: 50vh;
+    right: -50vw;
+    bottom: -18vh;
+    transform: rotate(8deg) translateZ(0);
   }
 }
 
-/* ✅ #root tidak perlu position relative lagi */
 #root {
   position: relative;
   z-index: 1;
