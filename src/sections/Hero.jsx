@@ -54,7 +54,7 @@ export default function Hero() {
         {/* =======================================
             KOLOM KANAN: KARTU FOTO
         ======================================= */}
-        <div className="hero__photo-wrap animate-float">
+        <div className="hero__photo-wrap">
           <div className="hero__photo-card">
             <div className="hero__photo-frame">
               <img 

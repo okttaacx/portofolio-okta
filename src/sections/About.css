@@ -7,9 +7,9 @@
   font-family: var(--font-code);
   font-size: .78rem;
   font-weight: 500;
-  color: var(--blue-dark);
+  color: #333333; /* Abu-abu gelap */
   background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(138, 180, 248, 0.4);
+  border: 1px solid rgba(150, 150, 150, 0.4); /* Border abu-abu transparan */
   backdrop-filter: blur(4px);
   padding: .3rem .9rem;
   border-radius: 999px;
@@ -20,21 +20,21 @@
 .section-title {
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
   letter-spacing: -.03em;
 }
 
 /* Glassmorphism Card */
 .card {
-  background: rgba(226, 235, 245, 0.5);
+  background: rgba(240, 240, 240, 0.5); /* Abu-abu terang transparan */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(138, 180, 248, 0.3);
-  border-right: 1px solid rgba(138, 180, 248, 0.3);
+  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+  border-right: 1px solid rgba(150, 150, 150, 0.3);
   border-radius: var(--radius-lg);
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(138, 180, 248, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6); /* Shadow monokrom */
   position: relative;
   overflow: hidden;
   transition: var(--transition);
@@ -74,7 +74,7 @@
 
 .about__bio {
   font-size: .95rem;
-  color: var(--text-muted);
+  color: #666666; /* Abu-abu medium */
   line-height: 1.8;
   margin-bottom: 1.75rem;
   flex: 1; /* dorong meta ke bawah agar card terisi penuh */
@@ -99,16 +99,16 @@
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-sm);
-  box-shadow: 0 4px 10px rgba(138, 180, 248, 0.12);
-  color: var(--blue-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Shadow monokrom */
+  color: #333333; /* Abu-abu gelap */
   transition: var(--transition);
 }
 
 .about__meta-item:hover .about__meta-icon {
-  background: var(--blue-dark);
-  color: #fff;
-  border-color: var(--blue-dark);
-  box-shadow: 0 6px 16px rgba(66, 133, 244, 0.25);
+  background: #333333; /* Hover background gelap */
+  color: #ffffff;
+  border-color: #333333;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .about__meta-item > div {
@@ -122,12 +122,12 @@
   font-family: var(--font-head);
   font-size: .85rem;
   font-weight: 600;
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
 }
 
 .about__meta-item > div > span {
   font-size: .82rem;
-  color: var(--text-muted);
+  color: #666666; /* Abu-abu medium */
 }
 
 /* ===== SKILLS GRID (kolom kanan) ===== */
@@ -152,13 +152,14 @@
 
 .skill-group:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(138, 180, 248, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.9);
 }
 
-.skill-group--blue  { border-top: 3px solid var(--blue-dark); }
-.skill-group--coral { border-top: 3px solid var(--blue); }
-.skill-group--sage  { border-top: 3px solid var(--blue-dark); }
-.skill-group--amber { border-top: 3px solid var(--blue); }
+/* Border atas tiap grup skill divariasikan dengan skala monokrom */
+.skill-group--blue  { border-top: 3px solid #111111; } /* Hitam pekat */
+.skill-group--coral { border-top: 3px solid #666666; } /* Abu-abu medium */
+.skill-group--sage  { border-top: 3px solid #333333; } /* Abu-abu gelap */
+.skill-group--amber { border-top: 3px solid #999999; } /* Abu-abu terang */
 
 /* Label skill dengan icon SVG */
 .skill-group__label {
@@ -167,7 +168,7 @@
   gap: .5rem;
   font-size: .8rem;
   font-weight: 700;
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
   margin-bottom: .75rem;
   letter-spacing: .03em;
   flex-shrink: 0;
@@ -180,9 +181,9 @@
   width: 26px;
   height: 26px;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(138, 180, 248, 0.3);
+  border: 1px solid rgba(150, 150, 150, 0.3);
   border-radius: 6px;
-  color: var(--blue-dark);
+  color: #333333; /* Abu-abu gelap */
   flex-shrink: 0;
 }
 
@@ -197,18 +198,18 @@
 .skill-chip {
   font-family: var(--font-code);
   font-size: .75rem;
-  color: var(--blue-dark);
+  color: #333333; /* Abu-abu gelap */
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(138, 180, 248, 0.4);
+  border: 1px solid rgba(150, 150, 150, 0.4);
   padding: .25rem .65rem;
   border-radius: var(--radius-sm);
   transition: var(--transition);
 }
 
 .skill-chip:hover {
-  background: var(--blue-dark);
-  color: var(--white);
-  border-color: var(--blue-dark);
+  background: #333333; /* Hover background gelap */
+  color: #ffffff; /* Teks putih */
+  border-color: #333333;
 }
 
 /* ===== RESPONSIVE ===== */

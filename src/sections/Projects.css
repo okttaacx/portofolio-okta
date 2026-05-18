@@ -6,13 +6,15 @@
 }
 
 .project-card {
-  background: rgba(226, 235, 245, 0.5);
+  /* Background abu-abu sangat terang transparan */
+  background: rgba(240, 240, 240, 0.5);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(138, 180, 248, 0.3);
-  border-right: 1px solid rgba(138, 180, 248, 0.3);
+  /* Border shadow diganti ke abu-abu */
+  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+  border-right: 1px solid rgba(150, 150, 150, 0.3);
   
   border-radius: var(--radius-lg);
   padding: 1.75rem;
@@ -23,7 +25,8 @@
   overflow: hidden;
   height: 100%;
   
-  box-shadow: 0 10px 30px rgba(138, 180, 248, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6);
+  /* Shadow disesuaikan ke hitam/abu-abu transparan */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6);
 }
 
 .project-card::after {
@@ -31,7 +34,8 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--blue-dark), transparent);
+  /* Gradien garis atas menjadi abu-abu gelap ke transparan */
+  background: linear-gradient(90deg, #333333, transparent);
   opacity: 0.8;
   z-index: 1;
 }
@@ -54,7 +58,8 @@
 
 .project-card:hover { 
   transform: translateY(-8px); 
-  box-shadow: 0 15px 35px rgba(138, 180, 248, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.9); 
+  /* Shadow hover menjadi hitam transparan */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.9); 
 }
 
 /* ── Layout Top & Bottom Card ── */
@@ -96,18 +101,18 @@
 .project-card__title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
 }
 
 .project-card__subtitle {
   font-size: .78rem;
-  color: var(--text-muted);
+  color: #666666; /* Abu-abu medium */
   margin-top: .15rem;
 }
 
 .project-card__desc {
   font-size: .85rem;
-  color: var(--text-muted);
+  color: #666666; /* Abu-abu medium */
   line-height: 1.7;
 }
 
@@ -120,7 +125,7 @@
 
 .project-card__highlights li {
   font-size: .82rem;
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -128,7 +133,7 @@
 
 .project-card__bullet {
   width: 6px; height: 6px;
-  background: var(--blue-dark);
+  background: #333333; /* Abu-abu gelap */
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -142,9 +147,9 @@
 .project-card__tag {
   font-family: var(--font-code);
   font-size: .72rem;
-  color: var(--blue-dark);
+  color: #333333; /* Abu-abu gelap */
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(138, 180, 248, 0.4);
+  border: 1px solid rgba(150, 150, 150, 0.4); /* Border abu-abu transparan */
   padding: .2rem .6rem;
   border-radius: var(--radius-sm);
 }
@@ -160,7 +165,7 @@
   width: 100%;
 }
 
-/* Semua tombol solid navy gelap by default */
+/* Semua tombol solid hitam by default */
 .project-card__btn {
   /* Font dan Padding diperkecil */
   font-size: 0.72rem; 
@@ -180,18 +185,18 @@
   gap: 0.25rem; 
   white-space: nowrap;
   line-height: 1;
-  color: var(--white);
-  background: var(--dark);
-  border: 1px solid var(--dark);
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+  color: #ffffff; /* Teks putih */
+  background: #111111; /* Background hitam pekat */
+  border: 1px solid #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Shadow hitam transparan */
 }
 
-/* Hover: ghost outline navy */
+/* Hover: ghost outline hitam */
 .project-card__btn:hover {
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--dark);
-  border-color: var(--dark);
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.85); /* Putih transparan */
+  color: #111111; /* Teks hitam */
+  border-color: #111111; /* Border hitam */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1000px) { .projects__grid { grid-template-columns: 1fr 1fr; } }

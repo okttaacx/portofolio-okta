@@ -20,12 +20,14 @@ const IconArrowUpRight = () => (
   </svg>
 );
 
+// Nama properti tetap sama agar tidak error dengan data di content.js
+// Tapi semua nilainya diubah menjadi variasi skala monokrom
 const colorMap = {
-  blue:   { bg: 'rgba(226, 235, 245, 0.4)', border: 'rgba(138, 180, 248, 0.4)', accent: '#4A88DA' },
-  coral:  { bg: 'rgba(255, 237, 235, 0.4)', border: 'rgba(248, 180, 172, 0.4)', accent: '#E8735A' },
-  yellow: { bg: 'rgba(255, 249, 219, 0.4)', border: 'rgba(250, 204, 21,  0.4)', accent: '#EAB308' },
-  sage:   { bg: 'rgba(228, 240, 232, 0.4)', border: 'rgba(134, 194, 150, 0.4)', accent: '#5A9E6F' },
-  purple: { bg: 'rgba(243, 232, 255, 0.4)', border: 'rgba(216, 180, 254, 0.4)', accent: '#A855F7' }, // Tambahan untuk HKI
+  blue:   { bg: 'rgba(240, 240, 240, 0.4)', border: 'rgba(150, 150, 150, 0.4)', accent: '#333333' },
+  coral:  { bg: 'rgba(245, 245, 245, 0.4)', border: 'rgba(160, 160, 160, 0.4)', accent: '#444444' },
+  yellow: { bg: 'rgba(250, 250, 250, 0.4)', border: 'rgba(180, 180, 180, 0.4)', accent: '#555555' },
+  sage:   { bg: 'rgba(235, 235, 235, 0.4)', border: 'rgba(140, 140, 140, 0.4)', accent: '#222222' },
+  purple: { bg: 'rgba(230, 230, 230, 0.4)', border: 'rgba(120, 120, 120, 0.4)', accent: '#111111' }, // Tambahan untuk HKI
 };
 
 export default function Certifications() {

@@ -2,7 +2,7 @@
 .project-detail {
   padding: 2rem 0 4rem;
   min-height: 100vh;
-  background: var(--cream);
+  background: #FAFAFA; /* Abu-abu sangat terang */
 }
 
 /* Navigasi */
@@ -10,7 +10,7 @@
   display: inline-block;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
-  color: var(--blue-dark);
+  color: #333333; /* Abu-abu gelap */
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
@@ -18,7 +18,7 @@
 
 .back-link:hover {
   transform: translateX(-5px);
-  color: var(--dark);
+  color: #111111; /* Hitam pekat */
 }
 
 /* Layout Grid */
@@ -38,16 +38,16 @@
 }
 
 .detail__small-icon { font-size: 1.5rem; }
-.detail__title-main { font-size: 1.8rem; color: var(--dark); margin: 0; }
-.detail__subtitle-small { color: var(--text-muted); font-size: 0.95rem; }
+.detail__title-main { font-size: 1.8rem; color: #111111; margin: 0; }
+.detail__subtitle-small { color: #666666; font-size: 0.95rem; }
 
-.detail__info h3 { margin: 1.5rem 0 1rem; color: var(--dark); font-size: 1.3rem; }
-.detail__desc-text { line-height: 1.7; color: var(--text-muted); font-size: 0.95rem; }
+.detail__info h3 { margin: 1.5rem 0 1rem; color: #111111; font-size: 1.3rem; }
+.detail__desc-text { line-height: 1.7; color: #666666; font-size: 0.95rem; }
 .detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
 /* --- STYLE FITUR & BINGKAI --- */
 
-.features-title { margin-bottom: 2rem; color: var(--dark); font-size: 1.4rem; }
+.features-title { margin-bottom: 2rem; color: #111111; font-size: 1.4rem; }
 
 .feature-item { 
   padding: 0; 
@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Membuat Bingkai HP & Teks ke Tengah */
-  text-align: center;   /* Membuat Deskripsi Fitur Rata Tengah */
+  text-align: center;  /* Membuat Deskripsi Fitur Rata Tengah */
   perspective: 1200px; /* Kedalaman untuk efek miring 3D */
 }
 
@@ -73,7 +73,7 @@
   padding: 12px 12px 4px 12px;
   border-radius: 16px;
   background: #1a1a1a;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
@@ -83,7 +83,7 @@
   top: 0; left: 50%;
   transform: translateX(-50%);
   width: 60px; height: 5px;
-  background: #000;
+  background: #000000;
   border-radius: 0 0 5px 5px;
 }
 
@@ -146,8 +146,8 @@
   max-width: 600px;
 }
 
-.feature-text h4 { margin-bottom: 0.6rem; color: var(--dark); font-size: 1.25rem; }
-.feature-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+.feature-text h4 { margin-bottom: 0.6rem; color: #111111; font-size: 1.25rem; }
+.feature-text p { font-size: 0.95rem; color: #666666; line-height: 1.6; }
 
 /* Responsive Desktop */
 @media (min-width: 992px) {
