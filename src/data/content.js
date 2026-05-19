@@ -22,7 +22,7 @@ export const projects = [
     id: 1,
     title: "SiJoker",
     type: "desktop",
-    subtitle: "Sistem Informasi Orang Kerja",
+    subtitle: "Sistem Informasi Jaringan Orang Kerja",
     description: "Sistem berbasis web untuk pengelolaan data pencari kerja Dinas Tenaga Kerja Kota Batu. Menggunakan metode prototyping untuk menciptakan solusi digital bagi penyaluran tenaga kerja lokal.",
     stack: ["PHP Laravel", "MySQL", "HTML", "CSS"],
     color: "blue",

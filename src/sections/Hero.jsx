@@ -1,7 +1,7 @@
 import { profile } from '../data/content'
 import './Hero.css'
 
-const techBadges = ['React', 'Laravel', 'Flutter', 'Figma', 'MySQL']
+const techBadges = ['React', 'Laravel', 'Figma', 'MySQL']
 
 export default function Hero() {
   return (
