@@ -106,7 +106,7 @@ export default function Contact() {
       </div>
 
       <footer className="footer">
-        <p>© 2026 Okta Ramji Saputra · Dibuat dengan React + Vite · Deploy di Vercel</p>
+        <p>© 2026 Okta Ramji Saputra</p>
       </footer>
     </section>
   )

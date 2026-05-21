@@ -59,7 +59,7 @@ export default function About() {
       <div className="container">
         <div className="section-header">
           <span className="section-tag">About Me</span>
-          <h2 className="section-title">Siapa Okta?</h2>
+          <h2 className="section-title">Halo, saya Okta</h2>
         </div>
 
         <div className="about__grid">
