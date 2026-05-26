@@ -43,31 +43,6 @@ function Typewriter({ text, delay = 0, speed = 100, pause = 2000 }) {
   )
 }
 
-function CountUp({ end, duration = 1200, delay = 0, suffix = '' }) {
-  const [count, setCount] = useState(0)
-  const [started, setStarted] = useState(false)
-
-  useEffect(() => {
-    const t = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(t)
-  }, [delay])
-
-  useEffect(() => {
-    if (!started) return
-    let startTime = null
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      const ease = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.floor(ease * end))
-      if (progress < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [started, end, duration])
-
-  return <span>{count}{suffix}</span>
-}
-
 function LoopingChips({ badges }) {
   const [visibleIndex, setVisibleIndex] = useState(-1)
 
@@ -100,7 +75,6 @@ function LoopingChips({ badges }) {
   )
 }
 
-/* ── Floating particles di sekitar orbit ── */
 function OrbitParticles() {
   const particles = [
     { size: 3, radius: 110, angle: 30,  speed: 12, color: '#7F77DD' },
@@ -133,7 +107,27 @@ function OrbitParticles() {
 export default function Hero() {
   const mounted = useMounted()
   const photoRef = useRef(null)
+  const dropdownRef = useRef(null)
 
+  // Cukup gunakan state ini untuk buka-tutup menu
+  const [showCVMenu, setShowCVMenu] = useState(false)
+
+  // Tutup dropdown kalau klik di luar
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setShowCVMenu(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  }, [])
+
+  // 3D tilt foto
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!photoRef.current) return
@@ -192,19 +186,71 @@ export default function Hero() {
             <LoopingChips badges={techBadges} />
           </div>
 
+          {/* ═══ CTA ═══ */}
           <div className={`hero__ctas ${mounted ? 'anim-in' : ''}`} style={{ '--d': '720ms' }}>
-            <a href="#projects" className="btn btn--primary">
+
+            {/* Tombol 1: Lihat Projects */}
+            <a href="#projects" className="btn btn--primary hero__cta-btn">
               <span>Lihat Projects</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
-            <a href="/CV_Okta.pdf" className="btn btn--outline" download="CV_Okta_Ramji_Saputra.pdf">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-              </svg>
-              <span>Download CV</span>
-            </a>
+
+            {/* Tombol 2: Download CV + Dropdown */}
+            <div className="hero__cv-wrapper" ref={dropdownRef}>
+              <button
+                className="btn btn--outline hero__cta-btn"
+                onClick={() => setShowCVMenu(prev => !prev)}
+                aria-expanded={showCVMenu}
+                aria-haspopup="true"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                <span>Download CV</span>
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  style={{
+                    transition: 'transform 0.25s ease',
+                    transform: showCVMenu ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }}
+                >
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+
+              {/* Dropdown Menu Asli, rapi & bersih */}
+              {showCVMenu && (
+                <div className="hero__cv-dropdown">
+                  <a
+                    href="/CV_Okta_ID.pdf"
+                    download="CV_Okta_Ramji_Saputra_ID.pdf"
+                    className="hero__cv-option"
+                    onClick={() => setShowCVMenu(false)}
+                  >
+                    <span>🇮🇩</span>
+                    <span>Versi Indonesia</span>
+                  </a>
+                  
+                  <a
+                    href="/CV_Okta_EN.pdf"
+                    download="CV_Okta_Ramji_Saputra_EN.pdf"
+                    className="hero__cv-option"
+                    onClick={() => setShowCVMenu(false)}
+                  >
+                    <span>🇬🇧</span>
+                    <span>English Version</span>
+                  </a>
+                </div>
+              )}
+            </div>
+
           </div>
 
         </div>
@@ -212,25 +258,20 @@ export default function Hero() {
         {/* ═══ KOLOM KANAN: FOTO ═══ */}
         <div className={`hero__photo-wrap ${mounted ? 'anim-in' : ''}`} style={{ '--d': '200ms' }}>
 
-          {/* Floating micro-particles */}
           <OrbitParticles />
 
-          {/* Ring 1 — outer, lambat, searah jarum jam */}
           <div className="hero__orbit hero__orbit--outer" aria-hidden="true">
             <div className="hero__orbit-dot" />
           </div>
 
-          {/* Ring 2 — mid, medium, berlawanan jarum jam */}
           <div className="hero__orbit hero__orbit--mid" aria-hidden="true">
             <div className="hero__orbit-dot hero__orbit-dot--mid" />
           </div>
 
-          {/* Ring 3 — inner, cepat */}
           <div className="hero__orbit hero__orbit--inner" aria-hidden="true">
             <div className="hero__orbit-dot hero__orbit-dot--sm" />
           </div>
 
-          {/* Kartu foto */}
           <div className="hero__photo-card" ref={photoRef}>
             <div className="hero__photo-shimmer" />
             <div className="hero__photo-frame">
@@ -246,15 +287,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Scroll cue — mouse + cascade chevrons ── */}
       <div className={`hero__scroll-cue ${mounted ? 'anim-in' : ''}`} style={{ '--d': '1100ms' }}>
         <div className="hero__scroll-mouse">
           <div className="hero__scroll-wheel" />
         </div>
         <div className="hero__scroll-chevrons" aria-hidden="true">
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </div>
         <span className="hero__scroll-label">scroll</span>
       </div>

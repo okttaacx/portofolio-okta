@@ -82,18 +82,6 @@ export default function Navbar() {
               <a href={`#${l.toLowerCase()}`}>{l}</a>
             </li>
           ))}
-          <li>
-            {/* Animasi scale saat tombol hover/tap */}
-            <motion.a 
-              href="/CV_Okta.pdf" 
-              className="navbar__cta" 
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download CV
-            </motion.a>
-          </li>
         </ul>
 
         {/* ── Burger button ── */}
@@ -145,11 +133,6 @@ export default function Navbar() {
                     </a>
                   </motion.li>
                 ))}
-                <motion.li variants={mobileItemVariants}>
-                  <a href="/CV_Okta.pdf" className="navbar__cta" download onClick={() => setMenuOpen(false)}>
-                    Download CV
-                  </a>
-                </motion.li>
               </ul>
             </motion.div>
           </>
