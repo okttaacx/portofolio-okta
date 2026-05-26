@@ -1,22 +1,27 @@
+/* ============================================================
+   Navbar.css — Teroptimasi untuk Framer Motion & Tema "Slate/Silver Glass"
+   ============================================================ */
+
 /* ── BASE ── */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 9990; 
   padding: 1.25rem 0;
-  transition: all 0.3s ease;
   border-bottom: 1px solid transparent;
   box-sizing: border-box;
   background: transparent;
 }
 
+/* ── STATE SAAT DI-SCROLL (Efek Slate Glass) ── */
 .navbar--scrolled {
-  background: rgba(255, 255, 255, 0.95); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(206, 212, 218, 0.85); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(150, 150, 150, 0.2); /* Border abu-abu transparan */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Shadow monokrom */
+  border-bottom: 1px solid rgba(238, 240, 243, 0.5); 
+  box-shadow: 0 4px 24px rgba(140, 148, 165, 0.15); 
+  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* ── INNER BAR ── */
@@ -35,10 +40,10 @@
 
 /* ── LOGO ── */
 .navbar__logo {
-  font-family: var(--font-head, sans-serif);
-  font-weight: 800;
+  font-family: var(--font-head, 'Poppins', sans-serif);
+  font-weight: 700;
   font-size: 1.15rem;
-  color: #111111; /* Hitam pekat */
+  color: #111111; 
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -52,9 +57,9 @@
 .navbar__logo-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #666666; /* Titik abu-abu medium */
+  background: #555555; 
   display: inline-block;
-  box-shadow: 0 0 10px rgba(150, 150, 150, 0.5); /* Shadow abu-abu */
+  box-shadow: 0 0 10px rgba(85, 85, 85, 0.3);
 }
 
 /* ── DESKTOP LINKS ── */
@@ -70,39 +75,51 @@
 .navbar__links a {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #666666; /* Teks abu-abu */
+  color: #555555; 
   padding: 0.4rem 0.8rem;
-  border-radius: var(--radius-sm, 6px);
-  transition: all 0.3s ease;
+  border-radius: var(--radius-sm, 8px);
+  /* Transisi di-set agar perubahan warna hover terasa mulus */
+  transition: all 0.3s ease; 
   text-decoration: none;
   white-space: nowrap;
 }
 
+/* ── EFEK SAAT KURSOR DIARAHKAN (HOVER STATE) ── */
 .navbar__links a:hover {
-  color: #000000; /* Hover hitam */
-  background: #e0e0e0; /* Background abu-abu terang */
+  color: #111111;
+  /* Berubah jadi putih kaca saat kursor nyentuh */
+  background:rgba(140, 148, 165, 0.4); 
+  /* Kasih bayangan tipis biar seolah-olah timbul sedikit */
+  box-shadow: 0 2px 10px rgba(140, 148, 165, 0.15); 
 }
 
-/* ── CTA (Gaya Umum & Desktop) ── */
+/* Efek saat diklik (opsional, biar makin interaktif) */
+.navbar__links a:active {
+  transform: scale(0.96);
+  background: rgba(140, 148, 165, 0.4); 
+}
+
+/* ── CTA BUTTON (Desktop) ── */
 .navbar__cta {
-  background-color: #111111 !important; /* Tombol hitam pekat */
+  background-color: #111111 !important; 
   color: #ffffff !important; 
-  padding: 0.3rem 0.8rem !important; 
-  font-size: 0.75rem !important;      
-  border-radius: var(--radius-sm, 6px);
+  padding: 0.4rem 1rem !important; 
+  font-size: 0.8rem !important;      
+  border-radius: var(--radius-sm, 8px);
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow monokrom */
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15); 
   text-decoration: none;
   white-space: nowrap;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  border: none;
 }
 
-.navbar__cta:hover {
-  background-color: #333333 !important; /* Hover abu-abu gelap */
-  transform: translateY(-2px);
+.navbar__cta:active {
+  background-color: #333333 !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ── BURGER ── */
@@ -111,11 +128,11 @@
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.05); /* Background abu-abu tipis */
+  background: rgba(220, 223, 228, 0.65); 
   border: none;
   padding: 10px;
   border-radius: 50%;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
   position: relative;
   z-index: 9992;
 }
@@ -123,30 +140,30 @@
 .navbar__burger span {
   display: block;
   width: 20px; height: 2px;
-  background: #111111; /* Garis burger hitam */
+  background: #111111; 
   border-radius: 2px;
 }
 
-/* ── MENCEGAH ELEMEN MOBILE BOCOR KE DESKTOP ── */
-.navbar__panel, .navbar__close {
-  display: none;
+.navbar__burger:active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(0.95);
+}
+
+/* ── MOBILE PANEL ── */
+.navbar__panel {
+  display: none; 
 }
 
 /* ── OVERLAY ── */
 .navbar__overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* Overlay hitam transparan */
+  background: rgba(140, 148, 165, 0.4); 
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 9995;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
 }
 
-.navbar__overlay--open {
-  opacity: 1;
-  visibility: visible;
-}
 
 /* ══════════════════════════════════
    MOBILE ONLY (max 768px)
@@ -164,50 +181,47 @@
     display: flex;
   }
 
+  /* ── MOBILE MENU FULL SCREEN ── */
   .navbar__panel {
-    display: flex;
+    display: flex; 
     position: fixed;
-    /* 👇 DIBUAT FULL SCREEN (Memenuhi seluruh layar) 👇 */
     inset: 0; 
     width: 100%;
     height: 100vh;
-    background: #ffffff; 
+    background: #f8f9fa; 
     z-index: 9999; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem 1.5rem;
-    transform: translateX(100%);
-    visibility: hidden;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
     box-sizing: border-box;
     overflow-y: auto;
-  }
-
-  .navbar__panel--open {
-    transform: translateX(0);
-    visibility: visible;
   }
 
   .navbar__close {
     display: flex;
     position: absolute;
     top: 1.5rem; right: 1.5rem;
-    background: rgba(0, 0, 0, 0.05); /* Background tombol close transparan */
+    background: rgba(220, 223, 228, 0.65); 
     border: none;
     border-radius: 50%;
-    width: 46px; height: 46px; /* Diperbesar sedikit karena layar full */
+    width: 46px; height: 46px; 
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #111111; /* Icon hitam */
-    font-size: 1.4rem;
-    transition: background 0.2s;
+    color: #111111; 
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
     z-index: 10000;
   }
 
   .navbar__close:hover {
-    background: rgba(0, 0, 0, 0.12); /* Hover abu-abu sedikit lebih gelap */
+    background: rgba(200, 205, 212, 0.50); 
+  }
+  
+  .navbar__close:active {
+    background: rgba(255, 255, 255, 0.95);
+    transform: scale(0.9);
   }
 
   .navbar__panel-links {
@@ -216,7 +230,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem; /* Jarak antar link diperlebar sedikit agar lebih lega */
+    gap: 1.25rem; 
     margin: 0;
     padding: 0;
   }
@@ -225,19 +239,25 @@
     display: block;
     width: 100%;
     text-align: center;
-    font-size: 1.25rem; /* Font diperbesar sedikit karena layar full */
+    font-size: 1.25rem; 
     font-weight: 500;
-    color: #444444; /* Teks menu mobile abu-abu */
+    color: #444444; 
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm, 8px);
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
     box-sizing: border-box;
   }
 
+  /* EFEK PUTIH SAAT KURSOR DIARAHKAN (MOBILE) */
   .navbar__panel-links a:hover {
-    color: #000000; /* Teks menu hover hitam */
-    background: rgba(150, 150, 150, 0.1); /* Background hover abu-abu terang */
+    color: #111111; 
+    background: rgba(255, 255, 255, 0.95); 
+    box-shadow: 0 2px 10px rgba(140, 148, 165, 0.15); 
+  }
+
+  .navbar__panel-links a:active {
+    transform: scale(0.96); 
   }
 
   /* TOMBOL CTA MOBILE */
@@ -245,8 +265,13 @@
     margin-top: 1.5rem; 
     display: inline-block !important; 
     width: auto !important;           
-    padding: 0.4rem 1rem !important; 
-    font-size: 0.85rem !important;
+    padding: 0.6rem 1.5rem !important; 
+    font-size: 0.95rem !important;
     text-align: center;
+  }
+  
+  .navbar__panel-links .navbar__cta:active {
+    transform: scale(0.95) !important;
+    background-color: #333333 !important;
   }
 }

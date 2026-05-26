@@ -38,35 +38,24 @@ const IconArrowRight = () => (
   </svg>
 );
 
-const colorMap = {
-  blue:   { bg: 'rgba(226, 235, 245, 0.4)', border: 'rgba(138, 180, 248, 0.4)', accent: '#4A88DA' },
-  coral:  { bg: 'rgba(255, 237, 235, 0.4)', border: 'rgba(248, 180, 172, 0.4)', accent: '#E8735A' },
-  yellow: { bg: 'rgba(255, 249, 219, 0.4)', border: 'rgba(250, 204, 21,  0.4)', accent: '#EAB308' },
-  sage:   { bg: 'rgba(228, 240, 232, 0.4)', border: 'rgba(134, 194, 150, 0.4)', accent: '#5A9E6F' },
-};
-
 export default function Projects() {
   return (
     <section id="projects" className="section projects">
       <div className="container">
+        
+        {/* Header Tanpa Animasi */}
         <div className="section-header">
           <span className="section-tag">Projects</span>
           <h2 className="section-title">Yang Sudah Dibuat</h2>
         </div>
 
+        {/* Grid Tanpa Animasi */}
         <div className="projects__grid">
-          {projects.map((p, i) => {
-            const c = colorMap[p.color] ?? colorMap.blue;
+          {projects.map((p) => {
             return (
               <div
                 key={p.id}
                 className="project-card"
-                style={{
-                  '--c-bg': c.bg,
-                  '--c-border': c.border,
-                  '--c-accent': c.accent,
-                  animationDelay: `${i * 0.1}s`
-                }}
               >
                 {/* BAGIAN ATAS: Header, Deskripsi, Highlights */}
                 <div className="project-card__content-top">
@@ -96,7 +85,10 @@ export default function Projects() {
                 <div className="project-card__content-bottom">
                   <div className="project-card__stack">
                     {p.stack.map((s) => (
-                      <span key={s} className="project-card__tag">
+                      <span 
+                        key={s} 
+                        className="project-card__tag"
+                      >
                         {s}
                       </span>
                     ))}

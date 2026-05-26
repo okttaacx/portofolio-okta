@@ -41,15 +41,20 @@ export default function Experience() {
   return (
     <section id="experience" className="section experience">
       <div className="container">
+        
+        {/* HEADER: Tanpa animasi */}
         <div className="section-header">
           <span className="section-tag">Experience</span>
           <h2 className="section-title">Perjalanan Karir</h2>
         </div>
 
-        {/* ✅ Card langsung jadi anak grid, tidak dibungkus exp__timeline */}
+        {/* GRID: Tanpa animasi */}
         <div className="exp__grid">
           {experiences.map((e, i) => (
-            <div key={i} className="exp__item">
+            <div 
+              key={i} 
+              className="exp__item card"
+            >
               <div className="exp__item-header">
                 <div className="exp__item-left">
                   <span className="exp__type-badge">
