@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import Groq from 'groq-sdk';
 import { profile, skills, projects, experiences, certifications } from '../data/content';
 
-// ── Groq client ───────────────────────────────────────────────────────────────
-const groq = new Groq({
+// ── Lazy init — tidak crash kalau env belum ada saat load ─────────────────────
+const getGroqClient = () => new Groq({
   apiKey: import.meta.env.VITE_GROQ_API_KEY,
   dangerouslyAllowBrowser: true,
 });
@@ -68,7 +68,7 @@ ${JSON.stringify(certSummary, null, 2)}
   `.trim();
 };
 
-// ── Inline styles (selaras Projects.css) ─────────────────────────────────────
+// ── Inline styles selaras Projects.css ───────────────────────────────────────
 const styles = {
   wrapper: {
     position: 'fixed',
@@ -286,10 +286,12 @@ export default function AIAssistant() {
   const inputRef = useRef(null);
   const systemPrompt = buildSystemPrompt();
 
+  // Auto-scroll ke pesan terbaru
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
+  // Fokus input saat dibuka
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 100);
   }, [isOpen]);
@@ -299,7 +301,6 @@ export default function AIAssistant() {
     if (!trimmed || isLoading) return;
 
     const userMessage = { role: 'user', content: trimmed };
-    // Batasi history 20 pesan terakhir agar token tidak membengkak
     const recentHistory = messages.slice(-20);
 
     setMessages((prev) => [...prev, userMessage]);
@@ -307,6 +308,9 @@ export default function AIAssistant() {
     setIsLoading(true);
 
     try {
+      // Groq client dibuat di sini (lazy) — tidak crash saat halaman load
+      const groq = getGroqClient();
+
       const response = await groq.chat.completions.create({
         model: 'llama-3.3-70b-versatile',
         temperature: 0.5,
@@ -385,7 +389,12 @@ export default function AIAssistant() {
                   <p style={styles.headerSub}>Tanya apapun soal Okta ✦</p>
                 </div>
               </div>
-              <button style={styles.closeBtn} className="ai-close-btn" onClick={() => setIsOpen(false)} aria-label="Tutup">
+              <button
+                style={styles.closeBtn}
+                className="ai-close-btn"
+                onClick={() => setIsOpen(false)}
+                aria-label="Tutup"
+              >
                 <IconClose />
               </button>
             </div>
