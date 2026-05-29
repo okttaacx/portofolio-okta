@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { certifications } from '../data/content';
 import './Certifications.css';
 
@@ -20,8 +20,8 @@ const IconArrowUpRight = () => (
   </svg>
 );
 
-// Warna monokrom
-const colorMap = {
+// ── PALET WARNA LIGHT MODE (Sesuai Aslimu: Monokrom Abu-abu) ──
+const colorMapLight = {
   blue:   { bg: 'rgba(240, 240, 240, 0.4)', border: 'rgba(150, 150, 150, 0.4)', accent: '#333333' },
   coral:  { bg: 'rgba(245, 245, 245, 0.4)', border: 'rgba(160, 160, 160, 0.4)', accent: '#444444' },
   yellow: { bg: 'rgba(250, 250, 250, 0.4)', border: 'rgba(180, 180, 180, 0.4)', accent: '#555555' },
@@ -29,8 +29,40 @@ const colorMap = {
   purple: { bg: 'rgba(230, 230, 230, 0.4)', border: 'rgba(120, 120, 120, 0.4)', accent: '#111111' },
 };
 
+// ── PALET WARNA DARK MODE (Neon Pastel agar terlihat keren di latar gelap) ──
+const colorMapDark = {
+  blue:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(56, 189, 248, 0.3)', accent: '#38BDF8' }, // Sky Blue
+  coral:  { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(244, 114, 182, 0.3)', accent: '#F472B6' }, // Pink/Coral
+  yellow: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(251, 191, 36, 0.3)', accent: '#FBBF24' },  // Amber/Yellow
+  sage:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(52, 211, 153, 0.3)', accent: '#34D399' },  // Emerald/Sage
+  purple: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(167, 139, 250, 0.3)', accent: '#A78BFA' }, // Purple
+};
+
 export default function Certifications() {
-  
+  // STATE UNTUK DETEKSI DARK MODE
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Cek awal
+    setIsDark(document.body.classList.contains('dark-mode'));
+
+    // Bikin observer kalau-kalau tombol toggle diklik
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setIsDark(document.body.classList.contains('dark-mode'));
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Tentukan mana palet warna yang lagi aktif
+  const activeColorMap = isDark ? colorMapDark : colorMapLight;
+
   return (
     <section id="certifications" className="section certifications">
       <div className="container">
@@ -44,7 +76,7 @@ export default function Certifications() {
         {/* Grid tanpa animasi */}
         <div className="certs__grid">
           {certifications.map((c) => {
-            const color = colorMap[c.color] ?? colorMap.purple;
+            const color = activeColorMap[c.color] ?? activeColorMap.purple;
             return (
               <div
                 key={c.id}

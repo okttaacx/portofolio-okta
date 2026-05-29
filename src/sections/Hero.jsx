@@ -76,12 +76,13 @@ function LoopingChips({ badges }) {
 }
 
 function OrbitParticles() {
+  // Warna partikel bisa dibiarkan atau diubah kalau mau (sudah aku sesuaikan di CSS)
   const particles = [
-    { size: 3, radius: 110, angle: 30,  speed: 12, color: '#7F77DD' },
-    { size: 2, radius: 95,  angle: 160, speed: 18, color: '#1D9E75' },
-    { size: 4, radius: 120, angle: 250, speed: 9,  color: '#AFA9EC' },
-    { size: 2, radius: 88,  angle: 70,  speed: 22, color: '#5DCAA5' },
-    { size: 3, radius: 130, angle: 320, speed: 14, color: '#7F77DD' },
+    { size: 3, radius: 110, angle: 30,  speed: 12, color: 'var(--particle-c1, #7F77DD)' },
+    { size: 2, radius: 95,  angle: 160, speed: 18, color: 'var(--particle-c2, #1D9E75)' },
+    { size: 4, radius: 120, angle: 250, speed: 9,  color: 'var(--particle-c3, #AFA9EC)' },
+    { size: 2, radius: 88,  angle: 70,  speed: 22, color: 'var(--particle-c4, #5DCAA5)' },
+    { size: 3, radius: 130, angle: 320, speed: 14, color: 'var(--particle-c1, #7F77DD)' },
   ]
 
   return (
@@ -108,9 +109,31 @@ export default function Hero() {
   const mounted = useMounted()
   const photoRef = useRef(null)
   const dropdownRef = useRef(null)
-
-  // Cukup gunakan state ini untuk buka-tutup menu
   const [showCVMenu, setShowCVMenu] = useState(false)
+  
+  // ── 1. STATE UNTUK MENDETEKSI DARK MODE SECARA REAL-TIME ──
+  const [isDark, setIsDark] = useState(false)
+
+  // Observer untuk memantau perubahan class pada <body>
+  useEffect(() => {
+    // Cek awal saat komponen dimuat
+    if (document.body.classList.contains('dark-mode')) {
+      setIsDark(true)
+    }
+
+    // Buat observer yang akan merespons setiap kali atribut 'class' pada body berubah
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setIsDark(document.body.classList.contains('dark-mode'))
+        }
+      })
+    })
+
+    observer.observe(document.body, { attributes: true })
+
+    return () => observer.disconnect()
+  }, [])
 
   // Tutup dropdown kalau klik di luar
   useEffect(() => {
@@ -189,7 +212,6 @@ export default function Hero() {
           {/* ═══ CTA ═══ */}
           <div className={`hero__ctas ${mounted ? 'anim-in' : ''}`} style={{ '--d': '720ms' }}>
 
-            {/* Tombol 1: Lihat Projects */}
             <a href="#projects" className="btn btn--primary hero__cta-btn">
               <span>Lihat Projects</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -197,7 +219,6 @@ export default function Hero() {
               </svg>
             </a>
 
-            {/* Tombol 2: Download CV + Dropdown */}
             <div className="hero__cv-wrapper" ref={dropdownRef}>
               <button
                 className="btn btn--outline hero__cta-btn"
@@ -225,7 +246,6 @@ export default function Hero() {
                 </svg>
               </button>
 
-              {/* Dropdown Menu Asli, rapi & bersih */}
               {showCVMenu && (
                 <div className="hero__cv-dropdown">
                   <a
@@ -275,8 +295,9 @@ export default function Hero() {
           <div className="hero__photo-card" ref={photoRef}>
             <div className="hero__photo-shimmer" />
             <div className="hero__photo-frame">
+              {/* ── 2. LOGIKA PERTUKARAN FOTO BERDASARKAN TEMA ── */}
               <img
-                src="/foto-profil.jpeg"
+                src={isDark ? "/foto-profil-dark.jpeg" : "/foto-profil.jpeg"}
                 alt="Okta Ramji Saputra - Frontend & Fullstack Developer"
                 className="hero__photo-img"
               />

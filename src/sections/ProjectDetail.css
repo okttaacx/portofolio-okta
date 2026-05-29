@@ -1,8 +1,82 @@
+/* ========================================================
+   PROJECT DETAIL COMPONENT CSS
+   Monochrome Glass & Automatic Obsidian Dark Mode
+======================================================== */
+
+/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
+:root {
+  /* Layout & Background */
+  --detail-bg: #FAFAFA;
+  
+  /* Text & Link Colors */
+  --detail-back-link: #333333;
+  --detail-back-link-hover: #111111;
+  --detail-title-main: #111111;
+  --detail-subtitle: #666666;
+  --detail-heading: #111111;
+  --detail-desc-text: #666666;
+
+  /* Feature Sections */
+  --feature-title: #111111;
+  --feature-item-title: #111111;
+  --feature-item-desc: #666666;
+
+  /* Frames (Laptop / Mobile) */
+  --frame-laptop-bg: #1a1a1a;
+  --frame-laptop-border: #333333;
+  --frame-laptop-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  
+  --frame-mobile-bg: rgba(255, 255, 255, 0.4);
+  --frame-mobile-border: rgba(255, 255, 255, 0.5);
+  --frame-mobile-shadow-1: 30px 30px 60px rgba(0, 0, 0, 0.15);
+  --frame-mobile-shadow-2: -10px -10px 30px rgba(255, 255, 255, 0.1);
+  --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.2);
+  --frame-mobile-notch: rgba(255, 255, 255, 0.6);
+  --frame-mobile-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
+body.dark-mode {
+  /* Layout & Background */
+  --detail-bg: transparent; /* Agar background body Obsidian terlihat */
+  
+  /* Text & Link Colors */
+  --detail-back-link: #94A3B8;
+  --detail-back-link-hover: #F8FAFC;
+  --detail-title-main: #F8FAFC;
+  --detail-subtitle: #94A3B8;
+  --detail-heading: #F8FAFC;
+  --detail-desc-text: #94A3B8;
+
+  /* Feature Sections */
+  --feature-title: #F8FAFC;
+  --feature-item-title: #F8FAFC;
+  --feature-item-desc: #94A3B8;
+
+  /* Frames (Laptop / Mobile) - Dark Mode Adjustments */
+  --frame-laptop-bg: #0B0F19; /* Lebih gelap untuk dark mode */
+  --frame-laptop-border: rgba(255, 255, 255, 0.1);
+  --frame-laptop-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  
+  /* Efek Glass untuk Mobile di Dark Mode */
+  --frame-mobile-bg: rgba(15, 23, 42, 0.6);
+  --frame-mobile-border: rgba(255, 255, 255, 0.15);
+  --frame-mobile-shadow-1: 30px 30px 60px rgba(0, 0, 0, 0.6);
+  --frame-mobile-shadow-2: -5px -5px 20px rgba(255, 255, 255, 0.03);
+  --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.05);
+  --frame-mobile-notch: rgba(255, 255, 255, 0.2);
+  --frame-mobile-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ── 3. STRUKTUR UTAMA CSS ── */
+
 /* Container Utama */
 .project-detail {
   padding: 2rem 0 4rem;
   min-height: 100vh;
-  background: #FAFAFA; /* Abu-abu sangat terang */
+  background: var(--detail-bg);
+  transition: background 0.4s ease;
 }
 
 /* Navigasi */
@@ -10,15 +84,15 @@
   display: inline-block;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
-  color: #333333; /* Abu-abu gelap */
+  color: var(--detail-back-link);
   font-weight: 600;
   text-decoration: none;
-  transition: var(--transition);
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .back-link:hover {
   transform: translateX(-5px);
-  color: #111111; /* Hitam pekat */
+  color: var(--detail-back-link-hover);
 }
 
 /* Layout Grid */
@@ -38,25 +112,49 @@
 }
 
 .detail__small-icon { font-size: 1.5rem; }
-.detail__title-main { font-size: 1.8rem; color: #111111; margin: 0; }
-.detail__subtitle-small { color: #666666; font-size: 0.95rem; }
+.detail__title-main { 
+  font-size: 1.8rem; 
+  color: var(--detail-title-main); 
+  margin: 0; 
+  transition: color 0.3s ease;
+}
+.detail__subtitle-small { 
+  color: var(--detail-subtitle); 
+  font-size: 0.95rem; 
+  transition: color 0.3s ease;
+}
 
-.detail__info h3 { margin: 1.5rem 0 1rem; color: #111111; font-size: 1.3rem; }
-.detail__desc-text { line-height: 1.7; color: #666666; font-size: 0.95rem; }
+.detail__info h3 { 
+  margin: 1.5rem 0 1rem; 
+  color: var(--detail-heading); 
+  font-size: 1.3rem; 
+  transition: color 0.3s ease;
+}
+.detail__desc-text { 
+  line-height: 1.7; 
+  color: var(--detail-desc-text); 
+  font-size: 0.95rem; 
+  transition: color 0.3s ease;
+}
 .detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
 /* --- STYLE FITUR & BINGKAI --- */
 
-.features-title { margin-bottom: 2rem; color: #111111; font-size: 1.4rem; }
+.features-title { 
+  margin-bottom: 2rem; 
+  color: var(--feature-title); 
+  font-size: 1.4rem; 
+  transition: color 0.3s ease;
+}
 
 .feature-item { 
   padding: 0; 
   margin-bottom: 6rem; 
   display: flex;
   flex-direction: column;
-  align-items: center; /* Membuat Bingkai HP & Teks ke Tengah */
-  text-align: center;  /* Membuat Deskripsi Fitur Rata Tengah */
-  perspective: 1200px; /* Kedalaman untuk efek miring 3D */
+  align-items: center;
+  text-align: center;
+  perspective: 1200px;
 }
 
 /* Base Wrapper untuk Screenshot */
@@ -68,13 +166,14 @@
 
 /* 1. FRAME LAPTOP (SiJoker) */
 .desktop-frame {
-  width: 100%; /* Melebar memenuhi kolom */
-  max-width: 850px; /* Jaga agar tidak terlalu lebar */
+  width: 100%;
+  max-width: 850px;
   padding: 12px 12px 4px 12px;
   border-radius: 16px;
-  background: #1a1a1a;
-  border: 1px solid #333333;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  background: var(--frame-laptop-bg);
+  border: 1px solid var(--frame-laptop-border);
+  box-shadow: var(--frame-laptop-shadow);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .desktop-frame::after {
@@ -89,41 +188,44 @@
 
 /* 2. FRAME SMARTPHONE (MOBILE 3D SLIM GLASSMorphism - FlowBoost) */
 .mobile-frame {
-  width: 280px; /* Ukuran Portrait HP */
-  padding: 10px; /* Bezel Tipis */
+  width: 280px;
+  padding: 10px;
   border-radius: 40px;
   
   /* --- EFEK PUTIH KACA (GLASSMORPHISM) --- */
-  background: rgba(255, 255, 255, 0.4); /* Putih Semi-Transparan */
-  backdrop-filter: blur(10px); /* Efek Buram di Belakang Kaca */
+  background: var(--frame-mobile-bg);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Border Putih Kaca */
+  border: 1px solid var(--frame-mobile-border);
   
   /* --- EFEK SHADOW 3D MELAYANG --- */
   transform: rotateX(5deg) rotateY(-5deg);
   box-shadow: 
-    30px 30px 60px rgba(0, 0, 0, 0.15), /* Bayangan Utama Miring */
-    -10px -10px 30px rgba(255, 255, 255, 0.1), /* Highlight Tepi Kaca */
-    inset 0 0 15px rgba(255, 255, 255, 0.2); /* Efek Kedalaman Bezel */
+    var(--frame-mobile-shadow-1),
+    var(--frame-mobile-shadow-2),
+    var(--frame-mobile-inset);
+  
+  transition: all 0.4s ease;
 }
 
 /* Hover Effect: HP jadi tegak saat disentuh kursor */
 .mobile-frame:hover {
   transform: rotateX(0deg) rotateY(0deg) scale(1.03);
   box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.1), /* Shadow lurus saat hover */
-    inset 0 0 15px rgba(255, 255, 255, 0.3);
+    var(--frame-mobile-hover-shadow),
+    var(--frame-mobile-inset);
 }
 
-/* Notch/Speaker HP Slim (Disesuaikan dengan warna kaca) */
+/* Notch/Speaker HP Slim */
 .mobile-frame::after {
   content: '';
   position: absolute;
   top: 8px; left: 50%;
   transform: translateX(-50%);
   width: 35px; height: 3px;
-  background: rgba(255, 255, 255, 0.6); /* Notch semi-transparan putih */
+  background: var(--frame-mobile-notch);
   border-radius: 10px;
+  transition: background 0.4s ease;
 }
 
 /* Gambar di Dalam Bingkai */
@@ -135,7 +237,7 @@
 
 .desktop-frame img { border-radius: 8px; }
 .mobile-frame img { 
-  border-radius: 32px; /* Melengkung mengikuti bezel HP */
+  border-radius: 32px;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
@@ -146,8 +248,18 @@
   max-width: 600px;
 }
 
-.feature-text h4 { margin-bottom: 0.6rem; color: #111111; font-size: 1.25rem; }
-.feature-text p { font-size: 0.95rem; color: #666666; line-height: 1.6; }
+.feature-text h4 { 
+  margin-bottom: 0.6rem; 
+  color: var(--feature-item-title); 
+  font-size: 1.25rem; 
+  transition: color 0.3s ease;
+}
+.feature-text p { 
+  font-size: 0.95rem; 
+  color: var(--feature-item-desc); 
+  line-height: 1.6; 
+  transition: color 0.3s ease;
+}
 
 /* Responsive Desktop */
 @media (min-width: 992px) {

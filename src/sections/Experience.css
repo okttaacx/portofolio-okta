@@ -1,40 +1,98 @@
 /* ============================================================
-   EXPERIENCE SECTION — Disamakan dengan Projects Layout (Monochrome)
+   EXPERIENCE SECTION — Monochrome Glass
+   With Automatic Obsidian Dark Mode Support
    ============================================================ */
+
+/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
+:root {
+  /* Layout & Header */
+  --exp-header-tag-bg: rgba(150, 150, 150, 0.12);
+  --exp-header-tag-border: rgba(150, 150, 150, 0.3);
+  --exp-header-tag-text: #333333;
+  --exp-header-title: #111111;
+
+  /* Card Glassmorphism */
+  --exp-card-bg: rgba(240, 240, 240, 0.5);
+  --exp-card-border: rgba(255, 255, 255, 0.8);
+  --exp-card-border-bot: rgba(150, 150, 150, 0.3);
+  --exp-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --exp-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
+  --exp-card-glow: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  --exp-card-top-line: linear-gradient(90deg, #333333, transparent);
+  
+  /* Card Hover */
+  --exp-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --exp-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.9);
+
+  /* Card Text Colors */
+  --exp-badge-text: #333333;
+  --exp-role-text: #111111;
+  --exp-company-text: #666666;
+  
+  /* Period Pill */
+  --exp-period-bg: rgba(255, 255, 255, 0.7);
+  --exp-period-border: rgba(150, 150, 150, 0.4);
+  --exp-period-text: #333333;
+
+  /* Bullet Points */
+  --exp-points-border: rgba(150, 150, 150, 0.18);
+  --exp-points-text: #111111;
+  --exp-points-bullet: #333333;
+}
+
+/* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
+body.dark-mode {
+  /* Layout & Header */
+  --exp-header-tag-bg: rgba(30, 41, 59, 0.6);
+  --exp-header-tag-border: rgba(255, 255, 255, 0.15);
+  --exp-header-tag-text: #F8FAFC;
+  --exp-header-title: #F8FAFC;
+
+  /* Card Glassmorphism */
+  --exp-card-bg: rgba(15, 23, 42, 0.45);
+  --exp-card-border: rgba(255, 255, 255, 0.15);
+  --exp-card-border-bot: rgba(0, 0, 0, 0.4);
+  --exp-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --exp-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
+  --exp-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  --exp-card-top-line: linear-gradient(90deg, #60A5FA, transparent);
+  
+  /* Card Hover */
+  --exp-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
+  --exp-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.1);
+
+  /* Card Text Colors */
+  --exp-badge-text: #94A3B8;
+  --exp-role-text: #F8FAFC;
+  --exp-company-text: #94A3B8;
+  
+  /* Period Pill */
+  --exp-period-bg: rgba(30, 41, 59, 0.6);
+  --exp-period-border: rgba(255, 255, 255, 0.15);
+  --exp-period-text: #CBD5E1;
+
+  /* Bullet Points */
+  --exp-points-border: rgba(255, 255, 255, 0.1);
+  --exp-points-text: #E2E8F0;
+  --exp-points-bullet: #38BDF8;
+}
+
+
+/* ── 3. STRUKTUR UTAMA CSS ── */
 
 .experience {
   padding: 5rem 0;
 }
 
-/* ── Section Header (Rata Kiri) ── */
-.section-header {
+/* Karena .section-header, .section-tag, .section-title sudah dipindah 
+   dan diatur di index.css, kita TIDAK MENYERTAKAN mereka di sini lagi 
+   untuk menghindari bentrok, KECUALI styling layout khusus untuk halaman ini */
+.experience .section-header {
   text-align: left;
   margin-bottom: 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.section-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #333333; /* Abu-abu gelap */
-  background: rgba(150, 150, 150, 0.12); /* Latar abu-abu sangat transparan */
-  border: 1px solid rgba(150, 150, 150, 0.3); /* Border abu-abu transparan */
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
-  margin-bottom: 0.85rem;
-}
-
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  color: #111111; /* Hitam pekat */
-  letter-spacing: -0.03em;
-  line-height: 1.15;
 }
 
 /* ── Grid Layout (3 Kolom seperti Projects) ── */
@@ -47,27 +105,24 @@
 
 /* ── Item Card ── */
 .exp__item {
-  /* Background abu-abu sangat terang transparan */
-  background: rgba(240, 240, 240, 0.5);
+  background: var(--exp-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  /* Border shadow diganti ke abu-abu */
-  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
-  border-right: 1px solid rgba(150, 150, 150, 0.3);
+  border: 1px solid var(--exp-card-border);
+  border-bottom: 1px solid var(--exp-card-border-bot);
+  border-right: 1px solid var(--exp-card-border-bot);
   
   border-radius: var(--radius-lg, 16px);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: var(--transition, all 0.3s ease);
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
   height: 100%;
   
-  /* Shadow disesuaikan ke hitam/abu-abu transparan */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6);
+  box-shadow: var(--exp-card-shadow), var(--exp-card-inset);
 }
 
 .exp__item::after {
@@ -75,10 +130,10 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  /* Gradien garis atas menjadi abu-abu gelap ke transparan */
-  background: linear-gradient(90deg, #333333, transparent);
+  background: var(--exp-card-top-line);
   opacity: 0.8;
   z-index: 1;
+  transition: background 0.4s ease;
 }
 
 .exp__item::before {
@@ -86,10 +141,11 @@
   position: absolute;
   top: -30%; right: -20%;
   width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  background: var(--exp-card-glow);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  transition: background 0.4s ease;
 }
 
 .exp__item > * {
@@ -99,8 +155,7 @@
 
 .exp__item:hover { 
   transform: translateY(-8px); 
-  /* Shadow hover menjadi hitam transparan */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.9); 
+  box-shadow: var(--exp-card-shadow-hover), var(--exp-card-inset-hover); 
 }
 
 /* ── Content Top ── */
@@ -124,8 +179,9 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #333333; /* Abu-abu gelap */
+  color: var(--exp-badge-text);
   margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
 }
 
 .exp__type-badge svg {
@@ -136,17 +192,19 @@
 .exp__role {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #111111; /* Hitam pekat */
+  color: var(--exp-role-text);
   line-height: 1.3;
   margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
 }
 
 /* Company / Tempat */
 .exp__company {
   font-size: 0.78rem;
-  color: #666666; /* Abu-abu medium */
+  color: var(--exp-company-text);
   font-weight: 500;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
 }
 
 /* Period pill */
@@ -156,13 +214,14 @@
   font-family: 'Poppins', sans-serif;
   font-size: 0.70rem;
   font-weight: 700;
-  color: #333333; /* Abu-abu gelap */
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(150, 150, 150, 0.4); /* Border abu-abu transparan */
+  color: var(--exp-period-text);
+  background: var(--exp-period-bg);
+  border: 1px solid var(--exp-period-border);
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
   white-space: nowrap;
   letter-spacing: 0.02em;
+  transition: all 0.3s ease;
 }
 
 /* ── Bullet Points ── */
@@ -172,17 +231,19 @@
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(150, 150, 150, 0.18); /* Garis batas abu-abu ringan */
+  border-top: 1px solid var(--exp-points-border);
   flex-grow: 1;
+  transition: border-color 0.3s ease;
 }
 
 .exp__points li {
   font-size: 0.82rem;
-  color: #111111; /* Hitam pekat */
+  color: var(--exp-points-text);
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
   line-height: 1.65;
+  transition: color 0.3s ease;
 }
 
 .exp__points li::before {
@@ -191,10 +252,11 @@
   width: 6px;
   height: 6px;
   min-width: 6px;
-  background: #333333; /* Bullet abu-abu gelap */
+  background: var(--exp-points-bullet);
   border-radius: 50%;
   margin-top: 0.46rem;
   flex-shrink: 0;
+  transition: background 0.3s ease;
 }
 
 /* ── Responsive ── */

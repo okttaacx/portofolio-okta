@@ -1,13 +1,136 @@
 /* =============================================
-   CONTACT SECTION (Monochrome Version)
+   CONTACT SECTION (Monochrome Glass)
+   With Automatic Obsidian Dark Mode Support
 ============================================= */
+
+/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
+:root {
+  /* Inner Wrapper */
+  --contact-inner-bg: rgba(240, 240, 240, 0.5);
+  --contact-inner-border-top: rgba(255, 255, 255, 0.8);
+  --contact-inner-border-bot: rgba(150, 150, 150, 0.3);
+  --contact-inner-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --contact-inner-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
+  
+  /* Decorative Clouds */
+  --contact-cloud-1: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
+  --contact-cloud-2: radial-gradient(circle, rgba(150,150,150,0.18) 0%, rgba(255,255,255,0) 70%);
+
+  /* Text Colors */
+  --contact-desc-color: #666666;
+  --contact-label-color: #999999;
+  --contact-val-color: #111111;
+
+  /* Links */
+  --contact-link-bg: rgba(255, 255, 255, 0.65);
+  --contact-link-bg-hover: rgba(255, 255, 255, 0.9);
+  --contact-link-border-top: rgba(255, 255, 255, 0.9);
+  --contact-link-border-bot: rgba(150, 150, 150, 0.2);
+  --contact-link-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --contact-link-inset: inset 0 0 12px rgba(255, 255, 255, 0.5);
+  --contact-link-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --contact-link-inset-hover: inset 0 0 16px rgba(255, 255, 255, 0.8);
+
+  /* Link Icons */
+  --contact-icon-bg: rgba(255, 255, 255, 0.7);
+  --contact-icon-border: rgba(150, 150, 150, 0.35);
+  --contact-icon-color: #111111;
+  --contact-icon-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --contact-icon-hover-bg: #111111;
+  --contact-icon-hover-color: #ffffff;
+  --contact-icon-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+
+  /* Profile Card (Right) */
+  --contact-card-bg: rgba(255, 255, 255, 0.75);
+  --contact-card-border-top: rgba(255, 255, 255, 0.95);
+  --contact-card-border-bot: rgba(150, 150, 150, 0.25);
+  --contact-card-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --contact-card-inset: inset 0 0 20px rgba(255, 255, 255, 0.7);
+  
+  --contact-avatar-bg: linear-gradient(135deg, #A0A0A0, #333333);
+  --contact-avatar-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  --contact-card-title: #111111;
+
+  /* WA Button */
+  --contact-wa-bg: linear-gradient(135deg, #666666, #111111);
+  --contact-wa-border: rgba(255, 255, 255, 0.2);
+  --contact-wa-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  --contact-wa-bg-hover: linear-gradient(135deg, #444444, #000000);
+  --contact-wa-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.35);
+
+  /* Footer */
+  --contact-footer-text: #999999;
+  --contact-footer-border: rgba(0, 0, 0, 0.1);
+}
+
+/* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
+body.dark-mode {
+  /* Inner Wrapper */
+  --contact-inner-bg: rgba(15, 23, 42, 0.45);
+  --contact-inner-border-top: rgba(255, 255, 255, 0.15);
+  --contact-inner-border-bot: rgba(0, 0, 0, 0.4);
+  --contact-inner-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --contact-inner-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
+  
+  /* Decorative Clouds */
+  --contact-cloud-1: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  --contact-cloud-2: radial-gradient(circle, rgba(96,165,250,0.08) 0%, rgba(255,255,255,0) 70%);
+
+  /* Text Colors */
+  --contact-desc-color: #94A3B8;
+  --contact-label-color: #64748B;
+  --contact-val-color: #F8FAFC;
+
+  /* Links */
+  --contact-link-bg: rgba(30, 41, 59, 0.5);
+  --contact-link-bg-hover: rgba(15, 23, 42, 0.8);
+  --contact-link-border-top: rgba(255, 255, 255, 0.15);
+  --contact-link-border-bot: rgba(0, 0, 0, 0.3);
+  --contact-link-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --contact-link-inset: inset 0 0 12px rgba(255, 255, 255, 0.05);
+  --contact-link-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --contact-link-inset-hover: inset 0 0 16px rgba(255, 255, 255, 0.1);
+
+  /* Link Icons */
+  --contact-icon-bg: rgba(15, 23, 42, 0.6);
+  --contact-icon-border: rgba(255, 255, 255, 0.15);
+  --contact-icon-color: #CBD5E1;
+  --contact-icon-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --contact-icon-hover-bg: #F8FAFC;
+  --contact-icon-hover-color: #0F172A;
+  --contact-icon-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+
+  /* Profile Card (Right) */
+  --contact-card-bg: rgba(15, 23, 42, 0.6);
+  --contact-card-border-top: rgba(255, 255, 255, 0.15);
+  --contact-card-border-bot: rgba(0, 0, 0, 0.4);
+  --contact-card-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+  --contact-card-inset: inset 0 0 20px rgba(255, 255, 255, 0.05);
+  
+  --contact-avatar-bg: linear-gradient(135deg, #475569, #0F172A);
+  --contact-avatar-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --contact-card-title: #F8FAFC;
+
+  /* WA Button */
+  --contact-wa-bg: linear-gradient(135deg, #334155, #0F172A);
+  --contact-wa-border: rgba(255, 255, 255, 0.1);
+  --contact-wa-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --contact-wa-bg-hover: linear-gradient(135deg, #1E293B, #000000);
+  --contact-wa-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.6);
+
+  /* Footer */
+  --contact-footer-text: #64748B;
+  --contact-footer-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ── 3. STRUKTUR UTAMA CSS ── */
 
 .contact {
   padding: 4rem 0 0;
   position: relative;
 }
 
-/* Wrapper glassmorphism — konsisten dengan About & Projects */
+/* Wrapper glassmorphism */
 .contact__inner {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -15,16 +138,16 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: rgba(240, 240, 240, 0.5); /* Abu-abu terang transparan */
+  background: var(--contact-inner-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(150, 150, 150, 0.3); /* Abu-abu transparan */
-  border-right: 1px solid rgba(150, 150, 150, 0.3);
+  border: 1px solid var(--contact-inner-border-top);
+  border-bottom: 1px solid var(--contact-inner-border-bot);
+  border-right: 1px solid var(--contact-inner-border-bot);
   border-radius: var(--radius-xl);
   padding: 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), /* Shadow hitam transparan */
-              inset 0 0 25px rgba(255, 255, 255, 0.6);
+  box-shadow: var(--contact-inner-shadow), var(--contact-inner-inset);
+  transition: all 0.4s ease;
 }
 
 /* Efek awan dekoratif di dalam card */
@@ -33,16 +156,17 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  transition: background 0.4s ease;
 }
 .contact__cloud--1 {
   top: -40%; right: -10%;
   width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
+  background: var(--contact-cloud-1);
 }
 .contact__cloud--2 {
   bottom: -40%; left: 30%;
   width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(150,150,150,0.18) 0%, rgba(255,255,255,0) 70%); /* Abu-abu lembut */
+  background: var(--contact-cloud-2);
 }
 
 /* Semua konten di atas efek awan */
@@ -58,10 +182,11 @@
 
 .contact__desc {
   font-size: .95rem;
-  color: #666666; /* Abu-abu medium */
+  color: var(--contact-desc-color);
   line-height: 1.7;
   margin: .5rem 0 1.5rem;
   max-width: 380px;
+  transition: color 0.3s ease;
 }
 
 .contact__links {
@@ -76,26 +201,24 @@
   align-items: center;
   gap: .85rem;
   padding: .85rem 1.1rem;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(150, 150, 150, 0.2);
-  border-right: 1px solid rgba(150, 150, 150, 0.2);
+  background: var(--contact-link-bg);
+  border: 1px solid var(--contact-link-border-top);
+  border-bottom: 1px solid var(--contact-link-border-bot);
+  border-right: 1px solid var(--contact-link-border-bot);
   border-radius: var(--radius-md);
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05),
-              inset 0 0 12px rgba(255, 255, 255, 0.5);
-  transition: var(--transition);
+  box-shadow: var(--contact-link-shadow), var(--contact-link-inset);
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .contact__link:hover {
   transform: translateX(5px);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1),
-              inset 0 0 16px rgba(255, 255, 255, 0.8);
+  background: var(--contact-link-bg-hover);
+  box-shadow: var(--contact-link-shadow-hover), var(--contact-link-inset-hover);
 }
 
-/* Icon container — konsisten dengan About */
+/* Icon container */
 .contact__link-icon {
   display: flex;
   align-items: center;
@@ -103,20 +226,20 @@
   width: 40px;
   height: 40px;
   min-width: 40px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(150, 150, 150, 0.35);
+  background: var(--contact-icon-bg);
+  border: 1px solid var(--contact-icon-border);
   border-radius: var(--radius-sm);
-  color: #111111; /* Hitam pekat */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: var(--transition);
+  color: var(--contact-icon-color);
+  box-shadow: var(--contact-icon-shadow);
+  transition: all 0.3s ease;
 }
 
-/* Semua icon hover → hitam pekat (selaras tombol "Lihat Projects") */
+/* Semua icon hover */
 .contact__link:hover .contact__link-icon {
-  background: #111111;
-  color: #fff;
-  border-color: #111111;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  background: var(--contact-icon-hover-bg);
+  color: var(--contact-icon-hover-color);
+  border-color: var(--contact-icon-hover-bg);
+  box-shadow: var(--contact-icon-hover-shadow);
 }
 
 .contact__link > div {
@@ -128,15 +251,17 @@
 .contact__link-label {
   font-size: .7rem;
   font-weight: 700;
-  color: #999999; /* Abu-abu terang */
+  color: var(--contact-label-color);
   letter-spacing: .06em;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .contact__link-val {
   font-size: .88rem;
   font-weight: 600;
-  color: #111111; /* Hitam pekat */
+  color: var(--contact-val-color);
+  transition: color 0.3s ease;
 }
 
 /* =============================================
@@ -152,21 +277,21 @@
   position: relative;
   text-align: center;
   padding: 3rem 2.5rem 3.5rem; 
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--contact-card-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgba(150, 150, 150, 0.25);
-  border-right: 1px solid rgba(150, 150, 150, 0.25);
+  border: 1px solid var(--contact-card-border-top);
+  border-bottom: 1px solid var(--contact-card-border-bot);
+  border-right: 1px solid var(--contact-card-border-bot);
   border-radius: var(--radius-xl);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08),
-              inset 0 0 20px rgba(255, 255, 255, 0.7);
+  box-shadow: var(--contact-card-shadow), var(--contact-card-inset);
   overflow: hidden;
   width: 100%;
   max-width: 360px; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.4s ease;
 }
 
 /* Awan dekoratif di dalam profile card */
@@ -174,10 +299,11 @@
   position: absolute;
   top: -30%; right: -20%;
   width: 160px; height: 160px;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  background: var(--contact-cloud-1);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  transition: background 0.4s ease;
 }
 
 .contact__card-big > *:not(.contact__card-cloud) {
@@ -189,8 +315,7 @@
   width: 76px; 
   height: 76px;
   border-radius: 50%;
-  /* Gradasi abu-abu ke abu-abu gelap/hitam */
-  background: linear-gradient(135deg, #A0A0A0, #333333);
+  background: var(--contact-avatar-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,20 +324,23 @@
   font-weight: 800;
   color: #fff;
   margin: 0 auto 1.25rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--contact-avatar-shadow);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .contact__card-big h3 {
   font-size: 1.15rem; 
   font-weight: 700;
-  color: #111111; /* Hitam pekat */
+  color: var(--contact-card-title);
   margin-bottom: .35rem;
+  transition: color 0.3s ease;
 }
 
 .contact__role {
   font-size: .88rem;
-  color: #666666; /* Abu-abu medium */
+  color: var(--contact-desc-color);
   margin-bottom: .75rem;
+  transition: color 0.3s ease;
 }
 
 .contact__location {
@@ -220,11 +348,12 @@
   align-items: center;
   gap: .3rem;
   font-size: .85rem;
-  color: #999999; /* Abu-abu terang */
+  color: var(--contact-label-color);
   margin-bottom: 0;
+  transition: color 0.3s ease;
 }
 
-/* Tombol WA — gradasi abu-abu/hitam */
+/* Tombol WA */
 .contact__wa-btn {
   display: inline-flex;
   align-items: center;
@@ -233,23 +362,21 @@
   margin-top: 2rem;
   padding: .85rem 1.6rem;
   width: 100%; 
-  /* Gradien abu-abu ke hitam pekat */
-  background: linear-gradient(135deg, #666666, #111111);
+  background: var(--contact-wa-bg);
   color: #fff;
   font-size: .9rem;
   font-weight: 700;
   border-radius: var(--radius-md);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--contact-wa-border);
+  box-shadow: var(--contact-wa-shadow);
   transition: all 0.3s ease;
 }
 
 .contact__wa-btn:hover {
-  /* Gradien hover hitam pekat */
-  background: linear-gradient(135deg, #444444, #000000);
+  background: var(--contact-wa-bg-hover);
   transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--contact-wa-shadow-hover);
 }
 
 /* =============================================
@@ -260,9 +387,10 @@
   text-align: center;
   padding: 1.5rem;
   font-size: .75rem;
-  color: #999999; /* Abu-abu terang */
+  color: var(--contact-footer-text);
   margin-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Garis abu-abu/hitam tipis */
+  border-top: 1px solid var(--contact-footer-border);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* =============================================

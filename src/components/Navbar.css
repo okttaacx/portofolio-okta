@@ -1,6 +1,49 @@
 /* ============================================================
-   Navbar.css — Teroptimasi untuk Framer Motion & Tema "Slate/Silver Glass"
+   Navbar.css — Teroptimasi untuk Framer Motion & Dark Mode
    ============================================================ */
+
+/* ── CSS VARIABLES UNTUK LIGHT & DARK MODE ── */
+:root {
+  --nav-bg: transparent;
+  --nav-bg-scrolled: rgba(206, 212, 218, 0.85);
+  --nav-border: rgba(238, 240, 243, 0.5);
+  --nav-shadow: rgba(140, 148, 165, 0.15);
+  --nav-text: #555555;
+  --nav-text-hover: #111111;
+  --nav-text-hover-bg: rgba(140, 148, 165, 0.4);
+  --nav-logo: #111111;
+  --nav-logo-dot: #555555;
+  --nav-burger-bg: rgba(220, 223, 228, 0.65);
+  --nav-burger-line: #111111;
+  --nav-panel-bg: #f8f9fa;
+  --nav-overlay: rgba(140, 148, 165, 0.4);
+  
+  /* Toggle Variables */
+  --switch-track: #d1d5db;
+  --switch-handle: #ffffff;
+  --switch-icon: #f59e0b; /* Warna matahari */
+}
+
+/* Override variabel saat dark mode aktif pada body */
+body.dark-mode {
+  --nav-bg-scrolled: rgba(15, 23, 42, 0.75);
+  --nav-border: rgba(30, 41, 59, 0.5);
+  --nav-shadow: rgba(0, 0, 0, 0.3);
+  --nav-text: #94a3b8;
+  --nav-text-hover: #f8fafc;
+  --nav-text-hover-bg: rgba(30, 41, 59, 0.6);
+  --nav-logo: #f8fafc;
+  --nav-logo-dot: #60a5fa;
+  --nav-burger-bg: rgba(30, 41, 59, 0.65);
+  --nav-burger-line: #f8fafc;
+  --nav-panel-bg: #0f172a;
+  --nav-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Toggle Variables */
+  --switch-track: #334155;
+  --switch-handle: #1e293b;
+  --switch-icon: #f8fafc; /* Warna bulan */
+}
 
 /* ── BASE ── */
 .navbar {
@@ -10,18 +53,18 @@
   padding: 1.25rem 0;
   border-bottom: 1px solid transparent;
   box-sizing: border-box;
-  background: transparent;
+  background: var(--nav-bg);
 }
 
-/* ── STATE SAAT DI-SCROLL (Efek Slate Glass) ── */
+/* ── STATE SAAT DI-SCROLL (Efek Glass) ── */
 .navbar--scrolled {
-  background: rgba(206, 212, 218, 0.85); 
+  background: var(--nav-bg-scrolled); 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(238, 240, 243, 0.5); 
-  box-shadow: 0 4px 24px rgba(140, 148, 165, 0.15); 
-  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  border-bottom: 1px solid var(--nav-border); 
+  box-shadow: 0 4px 24px var(--nav-shadow); 
+  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 /* ── INNER BAR ── */
@@ -31,8 +74,6 @@
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
   position: relative;
   z-index: 9991;
   box-sizing: border-box;
@@ -43,7 +84,7 @@
   font-family: var(--font-head, 'Poppins', sans-serif);
   font-weight: 700;
   font-size: 1.15rem;
-  color: #111111; 
+  color: var(--nav-logo); 
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -52,17 +93,19 @@
   flex-shrink: 0;
   position: relative;
   z-index: 9992;
+  transition: color 0.3s ease;
 }
 
 .navbar__logo-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #555555; 
+  background: var(--nav-logo-dot); 
   display: inline-block;
   box-shadow: 0 0 10px rgba(85, 85, 85, 0.3);
+  transition: background-color 0.3s ease;
 }
 
-/* ── DESKTOP LINKS ── */
+/* ── DESKTOP LINKS (Didorong ke kanan mendekati toggle) ── */
 .navbar__links {
   display: flex;
   align-items: center;
@@ -70,56 +113,65 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-left: auto; /* Ini yang membuat menu terdorong ke kanan */
+  margin-right: 1.5rem; /* Jarak antara menu terakhir dengan tombol dark mode */
 }
 
 .navbar__links a {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #555555; 
+  color: var(--nav-text); 
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius-sm, 8px);
-  /* Transisi di-set agar perubahan warna hover terasa mulus */
   transition: all 0.3s ease; 
   text-decoration: none;
   white-space: nowrap;
 }
 
-/* ── EFEK SAAT KURSOR DIARAHKAN (HOVER STATE) ── */
 .navbar__links a:hover {
-  color: #111111;
-  /* Berubah jadi putih kaca saat kursor nyentuh */
-  background:rgba(140, 148, 165, 0.4); 
-  /* Kasih bayangan tipis biar seolah-olah timbul sedikit */
-  box-shadow: 0 2px 10px rgba(140, 148, 165, 0.15); 
+  color: var(--nav-text-hover);
+  background: var(--nav-text-hover-bg); 
+  box-shadow: 0 2px 10px var(--nav-shadow); 
 }
 
-/* Efek saat diklik (opsional, biar makin interaktif) */
 .navbar__links a:active {
   transform: scale(0.96);
-  background: rgba(140, 148, 165, 0.4); 
+  background: var(--nav-text-hover-bg); 
 }
 
-/* ── CTA BUTTON (Desktop) ── */
-.navbar__cta {
-  background-color: #111111 !important; 
-  color: #ffffff !important; 
-  padding: 0.4rem 1rem !important; 
-  font-size: 0.8rem !important;      
-  border-radius: var(--radius-sm, 8px);
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.15); 
-  text-decoration: none;
-  white-space: nowrap;
-  display: inline-flex;
+/* ── ACTIONS CONTAINER (Toggle + Burger) ── */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── TOGGLE SWITCH (DARK MODE) ── */
+.navbar__switch {
+  width: 52px;
+  height: 28px;
+  background-color: var(--switch-track);
+  border-radius: 50px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.navbar__switch-handle {
+  width: 22px;
+  height: 22px;
+  background-color: var(--switch-handle);
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: none;
-}
-
-.navbar__cta:active {
-  background-color: #333333 !important;
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3) !important;
+  color: var(--switch-icon);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ── BURGER ── */
@@ -128,7 +180,7 @@
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  background: rgba(220, 223, 228, 0.65); 
+  background: var(--nav-burger-bg); 
   border: none;
   padding: 10px;
   border-radius: 50%;
@@ -140,30 +192,29 @@
 .navbar__burger span {
   display: block;
   width: 20px; height: 2px;
-  background: #111111; 
+  background: var(--nav-burger-line); 
   border-radius: 2px;
+  transition: background-color 0.3s ease;
 }
 
 .navbar__burger:active {
-  background: rgba(255, 255, 255, 0.9);
   transform: scale(0.95);
 }
 
-/* ── MOBILE PANEL ── */
+/* ── MOBILE PANEL & OVERLAY ── */
 .navbar__panel {
   display: none; 
 }
 
-/* ── OVERLAY ── */
 .navbar__overlay {
   position: fixed;
   inset: 0;
-  background: rgba(140, 148, 165, 0.4); 
+  background: var(--nav-overlay); 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 9995;
+  transition: background-color 0.3s ease;
 }
-
 
 /* ══════════════════════════════════
    MOBILE ONLY (max 768px)
@@ -171,10 +222,11 @@
 @media (max-width: 768px) {
   .navbar__inner {
     padding: 0 1.25rem;
+    justify-content: space-between; /* Menjaga logo dan actions terpisah di ujung */
   }
 
-  .navbar__links {
-    display: none;
+  .navbar__links, .navbar__desktop-toggle {
+    display: none; /* Sembunyikan links dan toggle versi desktop di mobile */
   }
 
   .navbar__burger {
@@ -188,39 +240,40 @@
     inset: 0; 
     width: 100%;
     height: 100vh;
-    background: #f8f9fa; 
+    background: var(--nav-panel-bg); 
     z-index: 9999; 
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
     padding: 2rem 1.5rem;
     box-sizing: border-box;
     overflow-y: auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Header untuk Panel Mobile (Posisi Toggle & Close Button) */
+  .navbar__panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3rem;
   }
 
   .navbar__close {
     display: flex;
-    position: absolute;
-    top: 1.5rem; right: 1.5rem;
-    background: rgba(220, 223, 228, 0.65); 
+    background: var(--nav-burger-bg); 
     border: none;
     border-radius: 50%;
     width: 46px; height: 46px; 
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #111111; 
+    color: var(--nav-text-hover); 
     font-size: 1.2rem;
     transition: all 0.2s ease;
-    z-index: 10000;
   }
 
-  .navbar__close:hover {
-    background: rgba(200, 205, 212, 0.50); 
-  }
-  
   .navbar__close:active {
-    background: rgba(255, 255, 255, 0.95);
     transform: scale(0.9);
   }
 
@@ -241,7 +294,7 @@
     text-align: center;
     font-size: 1.25rem; 
     font-weight: 500;
-    color: #444444; 
+    color: var(--nav-text); 
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm, 8px);
     transition: all 0.3s ease;
@@ -249,29 +302,13 @@
     box-sizing: border-box;
   }
 
-  /* EFEK PUTIH SAAT KURSOR DIARAHKAN (MOBILE) */
   .navbar__panel-links a:hover {
-    color: #111111; 
-    background: rgba(255, 255, 255, 0.95); 
-    box-shadow: 0 2px 10px rgba(140, 148, 165, 0.15); 
+    color: var(--nav-text-hover); 
+    background: var(--nav-text-hover-bg); 
+    box-shadow: 0 2px 10px var(--nav-shadow); 
   }
 
   .navbar__panel-links a:active {
     transform: scale(0.96); 
-  }
-
-  /* TOMBOL CTA MOBILE */
-  .navbar__panel-links .navbar__cta {
-    margin-top: 1.5rem; 
-    display: inline-block !important; 
-    width: auto !important;           
-    padding: 0.6rem 1.5rem !important; 
-    font-size: 0.95rem !important;
-    text-align: center;
-  }
-  
-  .navbar__panel-links .navbar__cta:active {
-    transform: scale(0.95) !important;
-    background-color: #333333 !important;
   }
 }

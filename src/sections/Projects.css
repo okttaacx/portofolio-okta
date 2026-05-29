@@ -1,3 +1,99 @@
+/* ========================================================
+   PROJECTS COMPONENT CSS — Monochrome Glass
+   With Automatic Obsidian Dark Mode Support
+======================================================== */
+
+/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
+:root {
+  /* Project Card */
+  --project-card-bg: rgba(240, 240, 240, 0.5);
+  --project-card-border: rgba(255, 255, 255, 0.8);
+  --project-card-border-bot: rgba(150, 150, 150, 0.3);
+  --project-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --project-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
+  --project-card-glow: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  --project-card-top-line: linear-gradient(90deg, #333333, transparent);
+  
+  /* Project Card Hover */
+  --project-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --project-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.9);
+
+  /* Icon Container */
+  --project-icon-bg: rgba(255, 255, 255, 0.6);
+  --project-icon-border: rgba(255, 255, 255, 0.9);
+  
+  /* Text Colors */
+  --project-title-color: #111111;
+  --project-subtitle-color: #666666;
+  --project-desc-color: #666666;
+  --project-highlight-color: #111111;
+  --project-bullet-color: #333333;
+
+  /* Tech Tags */
+  --project-tag-bg: rgba(255, 255, 255, 0.7);
+  --project-tag-border: rgba(150, 150, 150, 0.4);
+  --project-tag-text: #333333;
+
+  /* Buttons */
+  --project-btn-bg: #111111;
+  --project-btn-text: #ffffff;
+  --project-btn-border: #111111;
+  --project-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  
+  /* Buttons Hover */
+  --project-btn-hover-bg: rgba(255, 255, 255, 0.85);
+  --project-btn-hover-text: #111111;
+  --project-btn-hover-border: #111111;
+  --project-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
+body.dark-mode {
+  /* Project Card */
+  --project-card-bg: rgba(15, 23, 42, 0.45);
+  --project-card-border: rgba(255, 255, 255, 0.15);
+  --project-card-border-bot: rgba(0, 0, 0, 0.4);
+  --project-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --project-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
+  --project-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  --project-card-top-line: linear-gradient(90deg, #60A5FA, transparent);
+  
+  /* Project Card Hover */
+  --project-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
+  --project-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.1);
+
+  /* Icon Container */
+  --project-icon-bg: rgba(30, 41, 59, 0.6);
+  --project-icon-border: rgba(255, 255, 255, 0.2);
+  
+  /* Text Colors */
+  --project-title-color: #F8FAFC;
+  --project-subtitle-color: #94A3B8;
+  --project-desc-color: #94A3B8;
+  --project-highlight-color: #E2E8F0;
+  --project-bullet-color: #38BDF8;
+
+  /* Tech Tags */
+  --project-tag-bg: rgba(30, 41, 59, 0.6);
+  --project-tag-border: rgba(255, 255, 255, 0.15);
+  --project-tag-text: #CBD5E1;
+
+  /* Buttons */
+  --project-btn-bg: #F8FAFC;
+  --project-btn-text: #0F172A;
+  --project-btn-border: #F8FAFC;
+  --project-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  
+  /* Buttons Hover */
+  --project-btn-hover-bg: rgba(15, 23, 42, 0.6);
+  --project-btn-hover-text: #F8FAFC;
+  --project-btn-hover-border: #F8FAFC;
+  --project-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ── 3. STRUKTUR UTAMA CSS ── */
+
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -6,27 +102,24 @@
 }
 
 .project-card {
-  /* Background abu-abu sangat terang transparan */
-  background: rgba(240, 240, 240, 0.5);
+  background: var(--project-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  /* Border shadow diganti ke abu-abu */
-  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
-  border-right: 1px solid rgba(150, 150, 150, 0.3);
+  border: 1px solid var(--project-card-border);
+  border-bottom: 1px solid var(--project-card-border-bot);
+  border-right: 1px solid var(--project-card-border-bot);
   
   border-radius: var(--radius-lg);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: var(--transition);
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
   height: 100%;
   
-  /* Shadow disesuaikan ke hitam/abu-abu transparan */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 25px rgba(255, 255, 255, 0.6);
+  box-shadow: var(--project-card-shadow), var(--project-card-inset);
 }
 
 .project-card::after {
@@ -34,10 +127,10 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  /* Gradien garis atas menjadi abu-abu gelap ke transparan */
-  background: linear-gradient(90deg, #333333, transparent);
+  background: var(--project-card-top-line);
   opacity: 0.8;
   z-index: 1;
+  transition: background 0.4s ease;
 }
 
 .project-card::before {
@@ -45,10 +138,11 @@
   position: absolute;
   top: -30%; right: -20%;
   width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  background: var(--project-card-glow);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  transition: background 0.4s ease;
 }
 
 .project-card > * {
@@ -58,8 +152,7 @@
 
 .project-card:hover { 
   transform: translateY(-8px); 
-  /* Shadow hover menjadi hitam transparan */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.9); 
+  box-shadow: var(--project-card-shadow-hover), var(--project-card-inset-hover); 
 }
 
 /* ── Layout Top & Bottom Card ── */
@@ -74,7 +167,6 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* Kunci agar bagian bawah mentok ke dasar card */
   margin-top: auto; 
   padding-top: 1.25rem;
 }
@@ -88,32 +180,36 @@
 .project-card__icon {
   font-size: 1.8rem;
   width: 48px; height: 48px;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--project-icon-bg);
   backdrop-filter: blur(4px);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--project-icon-border);
   flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card__title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #111111; /* Hitam pekat */
+  color: var(--project-title-color);
+  transition: color 0.3s ease;
 }
 
 .project-card__subtitle {
   font-size: .78rem;
-  color: #666666; /* Abu-abu medium */
+  color: var(--project-subtitle-color);
   margin-top: .15rem;
+  transition: color 0.3s ease;
 }
 
 .project-card__desc {
   font-size: .85rem;
-  color: #666666; /* Abu-abu medium */
+  color: var(--project-desc-color);
   line-height: 1.7;
+  transition: color 0.3s ease;
 }
 
 .project-card__highlights {
@@ -125,17 +221,19 @@
 
 .project-card__highlights li {
   font-size: .82rem;
-  color: #111111; /* Hitam pekat */
+  color: var(--project-highlight-color);
   display: flex;
   align-items: center;
   gap: .5rem;
+  transition: color 0.3s ease;
 }
 
 .project-card__bullet {
   width: 6px; height: 6px;
-  background: #333333; /* Abu-abu gelap */
+  background: var(--project-bullet-color);
   border-radius: 50%;
   flex-shrink: 0;
+  transition: background 0.3s ease;
 }
 
 .project-card__stack {
@@ -147,17 +245,17 @@
 .project-card__tag {
   font-family: var(--font-code);
   font-size: .72rem;
-  color: #333333; /* Abu-abu gelap */
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(150, 150, 150, 0.4); /* Border abu-abu transparan */
+  color: var(--project-tag-text);
+  background: var(--project-tag-bg);
+  border: 1px solid var(--project-tag-border);
   padding: .2rem .6rem;
   border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
 }
 
 /* ── Tombol ── */
 .project-card__links {
   display: flex;
-  /* Gap antar tombol diperkecil agar lebih rapat */
   gap: 0.3rem; 
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -165,38 +263,32 @@
   width: 100%;
 }
 
-/* Semua tombol solid hitam by default */
 .project-card__btn {
-  /* Font dan Padding diperkecil */
   font-size: 0.72rem; 
   font-weight: 600;
   padding: 0.35rem 0.5rem; 
-  
-  /* Tinggi tombol dikurangi jadi 30px */
   min-height: 30px; 
   box-sizing: border-box;
   
   border-radius: var(--radius-sm);
-  transition: var(--transition);
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Jarak teks dengan icon panah dirapatkan */
   gap: 0.25rem; 
   white-space: nowrap;
   line-height: 1;
-  color: #ffffff; /* Teks putih */
-  background: #111111; /* Background hitam pekat */
-  border: 1px solid #111111;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Shadow hitam transparan */
+  color: var(--project-btn-text);
+  background: var(--project-btn-bg);
+  border: 1px solid var(--project-btn-border);
+  box-shadow: var(--project-btn-shadow);
 }
 
-/* Hover: ghost outline hitam */
 .project-card__btn:hover {
-  background: rgba(255, 255, 255, 0.85); /* Putih transparan */
-  color: #111111; /* Teks hitam */
-  border-color: #111111; /* Border hitam */
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  background: var(--project-btn-hover-bg);
+  color: var(--project-btn-hover-text);
+  border-color: var(--project-btn-hover-border);
+  box-shadow: var(--project-btn-hover-shadow);
 }
 
 @media (max-width: 1000px) { .projects__grid { grid-template-columns: 1fr 1fr; } }

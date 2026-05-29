@@ -27,7 +27,17 @@ const mobileItemVariants = {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [hidden, setHidden] = useState(false) // State baru untuk menyembunyikan navbar
+  const [hidden, setHidden] = useState(false) // State untuk menyembunyikan navbar
+
+  /* ── State Dark Mode ── */
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme')
+      if (savedTheme) return savedTheme === 'dark'
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
+    return false
+  })
 
   const { scrollY } = useScroll()
 
@@ -44,22 +54,66 @@ export default function Navbar() {
 
     // Logika Hide on Scroll Down, Show on Scroll Up
     if (latest > 150 && latest > previous) {
-      // Scroll ke BAWAH dan sudah melewati 150px -> Sembunyikan
       setHidden(true);
     } else {
-      // Scroll ke ATAS atau di paling atas -> Tampilkan
       setHidden(false);
     }
   });
 
+  // Efek mematikan scroll body saat menu mobile terbuka
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  // Efek mengaktifkan Dark Mode di tag <body>
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.body.classList.remove('dark-mode')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [darkMode])
+
+  /* ── Komponen Toggle Switch (Menggunakan SVG) ── */
+  const ToggleSwitch = () => (
+    <div 
+      className="navbar__switch"
+      onClick={() => setDarkMode(!darkMode)}
+      style={{ justifyContent: darkMode ? 'flex-end' : 'flex-start' }}
+    >
+      <motion.div 
+        className="navbar__switch-handle" 
+        layout 
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      >
+        {darkMode ? (
+          // SVG Moon Icon
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        ) : (
+          // SVG Sun Icon
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        )}
+      </motion.div>
+    </div>
+  )
+
   return (
     <motion.nav 
-      // Animasi masuk awal (mount) dan animasi sembunyi saat scroll
       initial={{ y: -100, opacity: 0 }}
       animate={{ 
         y: hidden ? -100 : 0, 
@@ -68,7 +122,6 @@ export default function Navbar() {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
     >
-      {/* ── Bar atas — selalu terlihat ── */}
       <div className="navbar__inner">
         <a href="#hero" className="navbar__logo">
           <span className="navbar__logo-dot" />
@@ -84,22 +137,27 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* ── Burger button ── */}
-        <button
-          className="navbar__burger"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Buka menu"
-          aria-expanded={menuOpen}
-        >
-          <span /><span /><span />
-        </button>
+        {/* ── Container Kanan (Toggle + Burger) ── */}
+        <div className="navbar__actions">
+          <div className="navbar__desktop-toggle">
+            <ToggleSwitch />
+          </div>
+
+          <button
+            className="navbar__burger"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Buka menu"
+            aria-expanded={menuOpen}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
 
-      {/* ── Mobile panel & Overlay (Pakai AnimatePresence agar exit animation jalan) ── */}
+      {/* ── Mobile panel & Overlay ── */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Overlay gelap */}
             <motion.div 
               className="navbar__overlay navbar__overlay--open"
               initial={{ opacity: 0 }}
@@ -108,7 +166,6 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)} 
             />
 
-            {/* Panel geser dari kanan */}
             <motion.div 
               className="navbar__panel navbar__panel--open"
               variants={mobileMenuVariants}
@@ -117,13 +174,17 @@ export default function Navbar() {
               exit="closed"
               aria-hidden={!menuOpen}
             >
-              <button
-                className="navbar__close"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Tutup menu"
-              >
-                ✕
-              </button>
+              {/* Header Mobile Panel */}
+              <div className="navbar__panel-header">
+                <ToggleSwitch />
+                <button
+                  className="navbar__close"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Tutup menu"
+                >
+                  ✕
+                </button>
+              </div>
               
               <ul className="navbar__panel-links">
                 {links.map(l => (
@@ -138,7 +199,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-      
     </motion.nav>
   )
 }

@@ -1,6 +1,6 @@
 /* ============================================================
    index.css — Portfolio Okta Ramji Saputra
-   Pearl Silver Aurora Edition
+   Pearl Silver Aurora Edition & Obsidian Dark Mode
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -12,6 +12,7 @@
 }
 
 :root {
+  /* GLOBAL VARIABLES (Tetap utuh untuk referensi manual jika butuh) */
   --blue:        #A0A0A0;
   --blue-dark:   #333333;
   --blue-light:  #CCCCCC;
@@ -22,16 +23,32 @@
   --sage-light:  #E8E8E8;
   --cream:       #FAFAFA;
   --cream-dark:  #E0E0E0;
-
   --dark:        #111111;
   --dark-2:      #222222;
   --dark-3:      #444444;
+  --white:       #FFFFFF;
 
+  /* CSS VARIABLES UNTUK TEMA (Dinamis) */
   --text-main:   #1A1A1A;
   --text-muted:  #666666;
   --text-light:  #999999;
-  --white:       #FFFFFF;
+  
+  --bg-color:    #E8E9EC;
+  --glass-bg:    rgba(255,255,255,0.42);
+  --glass-border:rgba(255,255,255,0.72);
+  --glass-shadow:rgba(0,0,0,0.05);
+  --glass-inset: rgba(255,255,255,0.85);
+  
+  --selection-bg:rgba(150,152,162,0.22);
+  --selection-text: var(--dark);
 
+  /* Variabel Global untuk Section Headers */
+  --section-tag-bg: rgba(255, 255, 255, 0.6);
+  --section-tag-border: rgba(150, 150, 150, 0.4);
+  --section-tag-text: #333333;
+  --section-title-color: #111111;
+
+  /* Fonts & Radius */
   --font-head:   'Poppins', sans-serif;
   --font-body:   'Poppins', sans-serif;
 
@@ -47,92 +64,129 @@
   --transition:  all .3s cubic-bezier(.4,0,.2,1);
 }
 
+/* ============================================================
+   TEMA GELAP (DARK MODE OVERRIDES)
+   Obsidian Dark Glass
+   ============================================================ */
+body.dark-mode {
+  --text-main:   #F3F4F6; /* Putih terang */
+  --text-muted:  #9CA3AF; /* Abu-abu terang */
+  --text-light:  #6B7280; /* Abu-abu agak gelap */
+  
+  --bg-color:    #0F1115; /* Hitam kebiruan sangat gelap */
+  --glass-bg:    rgba(15, 17, 21, 0.55);
+  --glass-border:rgba(255, 255, 255, 0.08);
+  --glass-shadow:rgba(0, 0, 0, 0.4);
+  --glass-inset: rgba(255, 255, 255, 0.03);
+  
+  --selection-bg:rgba(96, 165, 250, 0.3);
+  --selection-text:#FFFFFF;
+
+  /* Variabel Global untuk Section Headers (Dark Mode) */
+  --section-tag-bg: rgba(30, 41, 59, 0.8);
+  --section-tag-border: rgba(255, 255, 255, 0.2);
+  --section-tag-text: #FFFFFF;
+  --section-title-color: #FFFFFF;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 /* ============================================================
-   BODY — Pearl Silver Aurora
+   BODY — Pearl Silver Aurora / Obsidian Dark
    ============================================================ */
-
 body {
   font-family: var(--font-body);
   color: var(--text-main);
   line-height: 1.7;
   overflow-x: clip;
   min-height: 100vh;
+  
+  /* Gunakan variabel background dasar */
+  background-color: var(--bg-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
 
-  /* Base abu mutiara cool-tone */
-  background-color: #E8E9EC;
-
-  /* Gradient base berlapis */
+  /* Gradient base berlapis (LIGHT MODE) */
   background-image:
-    /* Glow kiri atas */
-    radial-gradient(ellipse 65% 50% at 10% 5%,
-      rgba(255,255,255,0.60) 0%,
-      rgba(255,255,255,0.15) 45%,
-      transparent 70%
-    ),
-    /* Glow kanan bawah */
-    radial-gradient(ellipse 60% 48% at 92% 98%,
-      rgba(255,255,255,0.45) 0%,
-      rgba(255,255,255,0.10) 45%,
-      transparent 68%
-    ),
-    /* Glow tengah halus */
-    radial-gradient(ellipse 80% 55% at 50% 50%,
-      rgba(242,243,246,0.50) 0%,
-      transparent 68%
-    ),
-    /* Base diagonal */
-    linear-gradient(150deg,
-      #EDEEF2 0%,
-      #E5E6EB 30%,
-      #DADBE1 55%,
-      #E1E2E8 80%,
-      #EAEBEF 100%
-    );
+    radial-gradient(ellipse 65% 50% at 10% 5%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.15) 45%, transparent 70%),
+    radial-gradient(ellipse 60% 48% at 92% 98%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.10) 45%, transparent 68%),
+    radial-gradient(ellipse 80% 55% at 50% 50%, rgba(242,243,246,0.50) 0%, transparent 68%),
+    linear-gradient(150deg, #EDEEF2 0%, #E5E6EB 30%, #DADBE1 55%, #E1E2E8 80%, #EAEBEF 100%);
 }
 
-/* Vignette tepi elegan */
+/* Vignette tepi elegan (LIGHT MODE) */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse 100% 100% at 50% 50%,
-    transparent 50%,
-    rgba(170,172,180,0.18) 78%,
-    rgba(150,152,162,0.28) 100%
-  );
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(170,172,180,0.18) 78%, rgba(150,152,162,0.28) 100%);
+  transition: background 0.4s ease;
+}
+
+/* ── PERUBAHAN BACKGROUND SAAT DARK MODE ── */
+body.dark-mode {
+  /* Gradient gelap berlapis (Hitam / Obsidian) */
+  background-image:
+    /* Glow kiri atas agak kebiruan/ungu redup */
+    radial-gradient(ellipse 65% 50% at 10% 5%, rgba(45, 55, 72, 0.40) 0%, rgba(26, 32, 44, 0.15) 45%, transparent 70%),
+    /* Glow kanan bawah agak abu-abu gelap */
+    radial-gradient(ellipse 60% 48% at 92% 98%, rgba(30, 41, 59, 0.45) 0%, rgba(15, 23, 42, 0.10) 45%, transparent 68%),
+    /* Glow tengah hitam halus */
+    radial-gradient(ellipse 80% 55% at 50% 50%, rgba(17, 24, 39, 0.50) 0%, transparent 68%),
+    /* Base diagonal gelap */
+    linear-gradient(150deg, #0F1115 0%, #111827 30%, #0B0F19 55%, #131A28 80%, #0F1115 100%);
+}
+
+/* Vignette tepi elegan saat dark mode */
+body.dark-mode::after {
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.5) 78%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* ============================================================
+   GLOBAL SECTION HEADERS (About, Projects, dll)
+   ============================================================ */
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--section-tag-text);
+  background: var(--section-tag-bg);
+  border: 1px solid var(--section-tag-border);
+  backdrop-filter: blur(4px);
+  padding: .3rem .9rem;
+  border-radius: 999px;
+  margin-bottom: .75rem;
+  letter-spacing: .04em;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--section-title-color);
+  letter-spacing: -.03em;
+  transition: color 0.3s ease;
 }
 
 /* ============================================================
    ROOT & SECTION Z-INDEX
    ============================================================ */
-
 #root {
   position: relative;
   z-index: 1;
 }
 
-section,
-.hero,
-.about,
-.projects,
-.experience,
-.contact,
-.certifications {
+section, .hero, .about, .projects, .experience, .contact, .certifications {
   background: transparent !important;
   position: relative;
   z-index: 2;
 }
 
-.section-header,
-.section-tag,
-.section-title {
+.section-header, .section-tag, .section-title {
   position: relative;
   z-index: 100 !important;
 }
@@ -140,7 +194,6 @@ section,
 /* ============================================================
    ANIMASI
    ============================================================ */
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -191,32 +244,46 @@ section,
 .animate-float   { animation: float 4s ease-in-out infinite; }
 
 /* ============================================================
-   SCROLLBAR
+   SCROLLBAR (Berubah otomatis saat dark mode)
    ============================================================ */
-
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: rgba(195,196,202,0.35); }
+
+::-webkit-scrollbar-track { 
+  background: rgba(195,196,202,0.35); 
+  transition: background 0.3s ease;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+}
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ABABAB 0%, #777777 100%);
   border-radius: 10px;
 }
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #888888 0%, #444444 100%);
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #64748b 0%, #334155 100%);
 }
 
 /* ============================================================
    SELECTION & ELEMEN DASAR
    ============================================================ */
-
 ::selection {
-  background: rgba(150,152,162,0.22);
-  color: var(--dark);
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-head);
   line-height: 1.2;
   letter-spacing: -0.02em;
+  color: var(--text-main); /* Pastikan heading ikut berubah warnanya */
 }
 
 a { color: inherit; text-decoration: none; transition: var(--transition); }
@@ -225,7 +292,6 @@ img { max-width: 100%; display: block; }
 /* ============================================================
    CONTAINER
    ============================================================ */
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -236,24 +302,22 @@ img { max-width: 100%; display: block; }
 
 /* ============================================================
    GLASS CARD UTILITY
-   Tambahkan class .glass-card ke card/section manapun
    ============================================================ */
-
 .glass-card {
-  background: rgba(255,255,255,0.42);
+  background: var(--glass-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.72);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow:
-    0 4px 24px rgba(0,0,0,0.05),
-    inset 0 1px 0 rgba(255,255,255,0.85);
+    0 4px 24px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-inset);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ============================================================
    SECTION SPACING
    ============================================================ */
-
 section {
   padding: 5rem 0;
 }

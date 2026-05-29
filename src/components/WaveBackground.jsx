@@ -5,15 +5,17 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 const styleTag = `
+  /* .wave-bg sekarang transparan agar background body (gelap/terang) terlihat */
   .wave-bg {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
-    background: #f8f9fa;
+    background: transparent; 
   }
 
+  /* Shimmer layer diubah agar lebih redup saat dark mode */
   .shimmer-layer {
     position: absolute;
     inset: 0;
@@ -21,14 +23,30 @@ const styleTag = `
       115deg,
       transparent 0%,
       transparent 30%,
-      rgba(255,255,255,0.6) 42%,
-      rgba(255,255,255,0.8) 45%,
-      rgba(255,255,255,0.6) 48%,
+      rgba(255,255,255,0.4) 42%,
+      rgba(255,255,255,0.6) 45%,
+      rgba(255,255,255,0.4) 48%,
       transparent 60%,
       transparent 100%
     );
     background-size: 300% 100%;
     animation: shimmerMove 12s ease-in-out infinite;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Saat dark mode, opacity shimmer diturunkan agar tidak silau */
+  body.dark-mode .shimmer-layer {
+    opacity: 0.15;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(148, 163, 184, 0.4) 42%,
+      rgba(148, 163, 184, 0.6) 45%,
+      rgba(148, 163, 184, 0.4) 48%,
+      transparent 60%,
+      transparent 100%
+    );
   }
 
   .wave-svg-top {
@@ -43,39 +61,60 @@ const styleTag = `
     transform: rotate(180deg);
   }
 
-  /* Layer paling belakang — abu gelap, kesan kedalaman/bayangan */
-  .wt-l5 { fill: rgba(180, 185, 195, 0.40); }
-
-  /* Layer 4 */
-  .wt-l4 { fill: rgba(200, 205, 212, 0.50); }
-
-  /* Layer 3 — mid */
-  .wt-l3 { fill: rgba(220, 223, 228, 0.65); }
-
-  /* Layer 2 — terang */
-  .wt-l2 { fill: rgba(238, 240, 243, 0.82); }
-
-  /* Layer 1 — PUTIH, paling depan, ada drop shadow abu tipis */
+  /* =======================================
+     WARNA SVG LAYER (LIGHT MODE)
+     ======================================= */
+  .wt-l5 { fill: rgba(180, 185, 195, 0.40); transition: fill 0.4s ease; }
+  .wt-l4 { fill: rgba(200, 205, 212, 0.50); transition: fill 0.4s ease; }
+  .wt-l3 { fill: rgba(220, 223, 228, 0.65); transition: fill 0.4s ease; }
+  .wt-l2 { fill: rgba(238, 240, 243, 0.82); transition: fill 0.4s ease; }
+  
   .wt-l1 {
     fill: rgba(255, 255, 255, 1);
     filter: drop-shadow(0 6px 18px rgba(140, 148, 165, 0.28))
             drop-shadow(0 2px 4px rgba(140, 148, 165, 0.15));
+    transition: fill 0.4s ease, filter 0.4s ease;
   }
 
-  /* Spekuler — garis putih terang di puncak */
   .wt-edge {
     fill: none;
     stroke: rgba(255, 255, 255, 1);
     stroke-width: 2.5;
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 1));
+    transition: stroke 0.4s ease, filter 0.4s ease;
   }
 
-  /* Shadow tipis di balik puncak — kesan lekukan 3D */
   .wt-shadow {
     fill: none;
     stroke: rgba(120, 130, 150, 0.12);
     stroke-width: 8;
     filter: blur(4px);
+    transition: stroke 0.4s ease;
+  }
+
+  /* =======================================
+     WARNA SVG LAYER (DARK MODE)
+     Obsidian / Hitam Kebiruan Gelap
+     ======================================= */
+  body.dark-mode .wt-l5 { fill: rgba(30, 41, 59, 0.40); }
+  body.dark-mode .wt-l4 { fill: rgba(15, 23, 42, 0.50); }
+  body.dark-mode .wt-l3 { fill: rgba(15, 23, 42, 0.70); }
+  body.dark-mode .wt-l2 { fill: rgba(15, 17, 21, 0.85); }
+  
+  body.dark-mode .wt-l1 {
+    fill: rgba(11, 15, 25, 1); /* Warna layer paling depan sangat gelap */
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6))
+            drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Garis puncak (edge) diubah dari putih terang jadi biru menyala tipis/abu terang */
+  body.dark-mode .wt-edge {
+    stroke: rgba(96, 165, 250, 0.4);
+    filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.2));
+  }
+
+  body.dark-mode .wt-shadow {
+    stroke: rgba(0, 0, 0, 0.4);
   }
 
   @keyframes shimmerMove {

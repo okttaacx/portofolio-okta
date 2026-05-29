@@ -36,16 +36,42 @@ export default function CustomCursor() {
 
   return (
     <>
+      <style>{`
+        /* Warna kursor bawaan (Light Mode) */
+        .custom-cursor-dot {
+          background-color: #111111; 
+          transition: background-color 0.3s ease;
+        }
+        .custom-cursor-ring {
+          border: 2px solid rgba(17, 17, 17, 0.5); 
+          /* Transisi transform untuk gerakan, dan warna untuk dark mode */
+          transition: border-color 0.3s ease, transform 0.15s ease-out;
+        }
+
+        /* ── OVERRIDE SAAT DARK MODE AKTIF ── */
+        body.dark-mode .custom-cursor-dot {
+          background-color: #F8FAFC; /* Putih terang */
+        }
+        body.dark-mode .custom-cursor-ring {
+          border: 2px solid rgba(248, 250, 252, 0.4); /* Putih transparan */
+        }
+
+        /* Pastikan elemen yang bisa di-klik juga menyembunyikan kursor asli */
+        a, button, input, textarea {
+          cursor: none !important;
+        }
+      `}</style>
+
       {/* Titik inti */}
       <div
         ref={dotRef}
+        className="custom-cursor-dot"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '8px',
           height: '8px',
-          backgroundColor: '#333', // Ubah warna sesuai tema webmu
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 99999,
@@ -54,17 +80,16 @@ export default function CustomCursor() {
       {/* Cincin luar (dengan animasi CSS ringan) */}
       <div
         ref={ringRef}
+        className="custom-cursor-ring"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '32px',
           height: '32px',
-          border: '2px solid rgba(51, 51, 51, 0.5)', // Ubah warna sesuai tema webmu
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 99998,
-          transition: 'transform 0.15s ease-out', // Ini yang bikin efek smooth tanpa JS berat
         }}
       />
     </>
