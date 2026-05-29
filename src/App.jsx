@@ -1,11 +1,13 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 
 // Komponen Global & Kursor
 import CustomCursor from './components/CustomCursor'
 import ScrollToTop from './components/ScrollToTop'
-import WaveBackground from './components/WaveBackground'   // ← tambah ini
+import WaveBackground from './components/WaveBackground'   
+import AIAssistant from './components/AIAssistant' // 1. Import komponen AI
 
 // Import Halaman
 import Navbar from './components/Navbar'
@@ -30,7 +32,7 @@ export default function App() {
       <Routes>
         {/* HALAMAN UTAMA */}
         <Route path="/" element={
-          <>
+          <main>
             <Navbar />
             <Hero />
             <About />
@@ -38,12 +40,20 @@ export default function App() {
             <Experience />
             <Certifications />
             <Contact />
-          </>
+          </main>
         } />
 
         {/* HALAMAN DETAIL PROJECT */}
-        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/project/:id" element={
+          <main>
+            <ProjectDetail />
+          </main>
+        } />
       </Routes>
+
+      {/* Komponen Global */}
+      <Analytics />
+      <AIAssistant /> {/* 2. Panggil Komponen AI di sini */}
     </Router>
   )
 }
