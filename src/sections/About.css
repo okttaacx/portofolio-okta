@@ -4,69 +4,73 @@
 ======================================================== */
 
 :root {
-  --about-title-color: #111111;
-  --about-bio-color: #666666;
-  --about-meta-title: #111111;
-  --about-meta-desc: #666666;
+  /* TEMA TERANG: Bernuansa Biru dan Bersih */
+  --about-title-color: #1e40af; /* Deep Navy Blue */
+  --about-bio-color: #475569;   /* Slate Gray */
+  --about-meta-title: #1e40af;
+  --about-meta-desc: #475569;
 
-  --about-tag-bg: rgba(255, 255, 255, 0.6);
-  --about-tag-border: rgba(150, 150, 150, 0.4);
-  --about-tag-text: #333333;
+  --about-tag-bg: rgba(59, 130, 246, 0.1);
+  --about-tag-border: rgba(59, 130, 246, 0.2);
+  --about-tag-text: #2563eb;
 
-  --about-card-bg: rgba(240, 240, 240, 0.5);
-  --about-card-border-top: rgba(255, 255, 255, 0.8);
-  --about-card-border-bot: rgba(150, 150, 150, 0.3);
-  --about-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --about-card-bg: rgba(255, 255, 255, 0.5);
+  --about-card-border-top: rgba(255, 255, 255, 0.9);
+  --about-card-border-bot: rgba(59, 130, 246, 0.15);
+  --about-card-shadow: 0 10px 30px rgba(14, 165, 233, 0.08);
   --about-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
-  --about-card-glow: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  --about-card-glow: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255,255,255,0) 70%);
 
-  --about-skill-border-blue: #111111;
-  --about-skill-border-coral: #666666;
-  --about-skill-border-sage: #333333;
-  --about-skill-border-amber: #999999;
+  /* Dot Colors for Light Mode (Blue/Cyan/Cool palette) */
+  --about-skill-border-blue: #3b82f6;
+  --about-skill-border-coral: #0ea5e9;
+  --about-skill-border-sage: #06b6d4;
+  --about-skill-border-amber: #6366f1;
 
-  --about-chip-bg: rgba(255, 255, 255, 0.65);
-  --about-chip-border: rgba(150, 150, 150, 0.35);
-  --about-chip-text: #333333;
-  --about-chip-hover-bg: #222222;
+  --about-chip-bg: rgba(255, 255, 255, 0.7);
+  --about-chip-border: rgba(59, 130, 246, 0.15);
+  --about-chip-text: #334155;
+  --about-chip-hover-bg: #3b82f6; /* Bright Blue */
   --about-chip-hover-text: #ffffff;
 
-  --about-mq-label-color: #888888;
-  --about-mq-line-color: rgba(150, 150, 150, 0.3);
-  --about-accent-color: #111111;
+  --about-mq-label-color: #64748b;
+  --about-mq-line-color: rgba(59, 130, 246, 0.15);
+  --about-accent-color: #0ea5e9; /* Cyan Accent */
 }
 
 body.dark-mode {
+  /* TEMA GELAP: Bernuansa Ungu Elegan */
   --about-title-color: #F8FAFC;
   --about-bio-color: #94A3B8;
   --about-meta-title: #F8FAFC;
   --about-meta-desc: #94A3B8;
 
-  --about-tag-bg: rgba(15, 23, 42, 0.6);
-  --about-tag-border: rgba(255, 255, 255, 0.15);
-  --about-tag-text: #E2E8F0;
+  --about-tag-bg: rgba(124, 58, 237, 0.15);
+  --about-tag-border: rgba(124, 58, 237, 0.3);
+  --about-tag-text: #c084fc;
 
   --about-card-bg: rgba(15, 23, 42, 0.45);
-  --about-card-border-top: rgba(255, 255, 255, 0.15);
+  --about-card-border-top: rgba(124, 58, 237, 0.2);
   --about-card-border-bot: rgba(0, 0, 0, 0.4);
   --about-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --about-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
-  --about-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  --about-card-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
+  --about-card-glow: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
 
-  --about-skill-border-blue: #60A5FA;
-  --about-skill-border-coral: #F472B6;
-  --about-skill-border-sage: #34D399;
-  --about-skill-border-amber: #FBBF24;
+  /* Dot Colors for Dark Mode (Purple/Pink palette) */
+  --about-skill-border-blue: #8b5cf6;
+  --about-skill-border-coral: #c084fc;
+  --about-skill-border-sage: #a855f7;
+  --about-skill-border-amber: #d8b4fe;
 
   --about-chip-bg: rgba(30, 41, 59, 0.6);
-  --about-chip-border: rgba(255, 255, 255, 0.12);
+  --about-chip-border: rgba(124, 58, 237, 0.2);
   --about-chip-text: #CBD5E1;
-  --about-chip-hover-bg: #F8FAFC;
-  --about-chip-hover-text: #0F172A;
+  --about-chip-hover-bg: #7c3aed; /* Deep Purple */
+  --about-chip-hover-text: #ffffff;
 
-  --about-mq-label-color: #475569;
-  --about-mq-line-color: rgba(255, 255, 255, 0.08);
-  --about-accent-color: #60A5FA;
+  --about-mq-label-color: #64748b;
+  --about-mq-line-color: rgba(124, 58, 237, 0.15);
+  --about-accent-color: #a855f7; /* Purple Accent */
 }
 
 /* ── STRUKTUR ── */

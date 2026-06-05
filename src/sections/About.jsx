@@ -35,6 +35,26 @@ function Pill({ name, cls }) {
   )
 }
 
+// ── KOMPONEN STAR BORDER INTERNAL ─────────────────────────────────────────────
+function StarBorder({ children, className = '', speed = '6s' }) {
+  return (
+    <div className={`star-border-container ${className}`}>
+      <div 
+        className="border-gradient-bottom" 
+        style={{ animationDuration: speed }}
+      ></div>
+      <div 
+        className="border-gradient-top" 
+        style={{ animationDuration: speed }}
+      ></div>
+      {/* Menggabungkan style StarBorder dengan Glass Card bawaan */}
+      <div className="star-inner-content card">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function About() {
   return (
     <section id="about" className="about section">
@@ -47,7 +67,8 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="ab-bio-card card">
+        {/* Membungkus deskripsi dengan efek StarBorder */}
+        <StarBorder className="ab-bio-card" speed="5s">
           <p className="about__bio">
             Berfokus pada Web Development, Frontend Development, dan UI/UX Design.
             Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js,
@@ -57,7 +78,7 @@ export default function About() {
             Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri
             maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.
           </p>
-        </div>
+        </StarBorder>
 
         <div className="mq-section">
           <div className="mq-label">

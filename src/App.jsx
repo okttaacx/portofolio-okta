@@ -6,7 +6,7 @@ import './index.css'
 // Komponen Global & Kursor
 import CustomCursor from './components/CustomCursor'
 import ScrollToTop from './components/ScrollToTop'
-import WaveBackground from './components/WaveBackground'   
+import WaveBackground from './components/OrbBackground'   
 import AIAssistant from './components/AIAssistant' // 1. Import komponen AI
 
 // Import Halaman

@@ -1,50 +1,51 @@
 /* ========================================================
    PROJECT DETAIL COMPONENT CSS
-   Monochrome Glass & Automatic Obsidian Dark Mode
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
 ======================================================== */
 
 /* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
   /* Layout & Background */
-  --detail-bg: #FAFAFA;
+  --detail-bg: transparent; /* Diubah ke transparent agar Orb terlihat */
   
   /* Text & Link Colors */
-  --detail-back-link: #333333;
-  --detail-back-link-hover: #111111;
-  --detail-title-main: #111111;
-  --detail-subtitle: #666666;
-  --detail-heading: #111111;
-  --detail-desc-text: #666666;
+  --detail-back-link: #3b82f6; /* Bright Blue */
+  --detail-back-link-hover: #2563eb; /* Darker Blue */
+  --detail-title-main: #1e40af; /* Deep Navy Blue */
+  --detail-subtitle: #0ea5e9; /* Cyan */
+  --detail-heading: #1e40af;
+  --detail-desc-text: #475569; /* Slate Gray */
 
   /* Feature Sections */
-  --feature-title: #111111;
-  --feature-item-title: #111111;
-  --feature-item-desc: #666666;
+  --feature-title: #1e40af;
+  --feature-item-title: #1e40af;
+  --feature-item-desc: #475569;
 
   /* Frames (Laptop / Mobile) */
-  --frame-laptop-bg: #1a1a1a;
-  --frame-laptop-border: #333333;
-  --frame-laptop-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  --frame-laptop-bg: #1e293b; /* Slate Dark untuk bezel laptop */
+  --frame-laptop-border: rgba(59, 130, 246, 0.4); /* Blue Tint */
+  --frame-laptop-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); /* Cyan Shadow */
+  --frame-laptop-notch: #0f172a;
   
-  --frame-mobile-bg: rgba(255, 255, 255, 0.4);
-  --frame-mobile-border: rgba(255, 255, 255, 0.5);
-  --frame-mobile-shadow-1: 30px 30px 60px rgba(0, 0, 0, 0.15);
-  --frame-mobile-shadow-2: -10px -10px 30px rgba(255, 255, 255, 0.1);
-  --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.2);
-  --frame-mobile-notch: rgba(255, 255, 255, 0.6);
-  --frame-mobile-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  --frame-mobile-bg: rgba(255, 255, 255, 0.5);
+  --frame-mobile-border: rgba(255, 255, 255, 0.9);
+  --frame-mobile-shadow-1: 30px 30px 60px rgba(14, 165, 233, 0.1);
+  --frame-mobile-shadow-2: -10px -10px 30px rgba(255, 255, 255, 0.5);
+  --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.6);
+  --frame-mobile-notch: rgba(255, 255, 255, 0.9);
+  --frame-mobile-hover-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
 }
 
 /* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
   /* Layout & Background */
-  --detail-bg: transparent; /* Agar background body Obsidian terlihat */
+  --detail-bg: transparent; 
   
   /* Text & Link Colors */
-  --detail-back-link: #94A3B8;
-  --detail-back-link-hover: #F8FAFC;
+  --detail-back-link: #c084fc; /* Light Purple */
+  --detail-back-link-hover: #ffffff;
   --detail-title-main: #F8FAFC;
-  --detail-subtitle: #94A3B8;
+  --detail-subtitle: #a855f7; /* Purple */
   --detail-heading: #F8FAFC;
   --detail-desc-text: #94A3B8;
 
@@ -54,17 +55,18 @@ body.dark-mode {
   --feature-item-desc: #94A3B8;
 
   /* Frames (Laptop / Mobile) - Dark Mode Adjustments */
-  --frame-laptop-bg: #0B0F19; /* Lebih gelap untuk dark mode */
-  --frame-laptop-border: rgba(255, 255, 255, 0.1);
+  --frame-laptop-bg: #0B0F19; 
+  --frame-laptop-border: rgba(124, 58, 237, 0.3); /* Purple Tint */
   --frame-laptop-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  --frame-laptop-notch: #000000;
   
   /* Efek Glass untuk Mobile di Dark Mode */
   --frame-mobile-bg: rgba(15, 23, 42, 0.6);
-  --frame-mobile-border: rgba(255, 255, 255, 0.15);
+  --frame-mobile-border: rgba(124, 58, 237, 0.25);
   --frame-mobile-shadow-1: 30px 30px 60px rgba(0, 0, 0, 0.6);
   --frame-mobile-shadow-2: -5px -5px 20px rgba(255, 255, 255, 0.03);
-  --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.05);
-  --frame-mobile-notch: rgba(255, 255, 255, 0.2);
+  --frame-mobile-inset: inset 0 0 15px rgba(124, 58, 237, 0.1);
+  --frame-mobile-notch: rgba(124, 58, 237, 0.4);
   --frame-mobile-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
@@ -182,8 +184,9 @@ body.dark-mode {
   top: 0; left: 50%;
   transform: translateX(-50%);
   width: 60px; height: 5px;
-  background: #000000;
+  background: var(--frame-laptop-notch);
   border-radius: 0 0 5px 5px;
+  transition: background 0.4s ease;
 }
 
 /* 2. FRAME SMARTPHONE (MOBILE 3D SLIM GLASSMorphism - FlowBoost) */

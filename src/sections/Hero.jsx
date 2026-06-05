@@ -75,39 +75,8 @@ function LoopingChips({ badges }) {
   )
 }
 
-function OrbitParticles() {
-  // Warna partikel bisa dibiarkan atau diubah kalau mau (sudah aku sesuaikan di CSS)
-  const particles = [
-    { size: 3, radius: 110, angle: 30,  speed: 12, color: 'var(--particle-c1, #7F77DD)' },
-    { size: 2, radius: 95,  angle: 160, speed: 18, color: 'var(--particle-c2, #1D9E75)' },
-    { size: 4, radius: 120, angle: 250, speed: 9,  color: 'var(--particle-c3, #AFA9EC)' },
-    { size: 2, radius: 88,  angle: 70,  speed: 22, color: 'var(--particle-c4, #5DCAA5)' },
-    { size: 3, radius: 130, angle: 320, speed: 14, color: 'var(--particle-c1, #7F77DD)' },
-  ]
-
-  return (
-    <>
-      {particles.map((p, i) => (
-        <div
-          key={i}
-          className="hero__particle"
-          style={{
-            '--p-size': `${p.size}px`,
-            '--p-radius': `${p.radius}px`,
-            '--p-angle': `${p.angle}deg`,
-            '--p-speed': `${p.speed}s`,
-            '--p-color': p.color,
-            animationDelay: `${i * -2.1}s`,
-          }}
-        />
-      ))}
-    </>
-  )
-}
-
 export default function Hero() {
   const mounted = useMounted()
-  const photoRef = useRef(null)
   const dropdownRef = useRef(null)
   const [showCVMenu, setShowCVMenu] = useState(false)
   
@@ -147,27 +116,6 @@ export default function Hero() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
       document.removeEventListener('touchstart', handleClickOutside)
-    }
-  }, [])
-
-  // 3D tilt foto
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!photoRef.current) return
-      const { innerWidth, innerHeight } = window
-      const x = (e.clientX / innerWidth - 0.5) * 12
-      const y = (e.clientY / innerHeight - 0.5) * 8
-      photoRef.current.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateZ(8px)`
-    }
-    const handleMouseLeave = () => {
-      if (!photoRef.current) return
-      photoRef.current.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateZ(0)'
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseleave', handleMouseLeave)
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseleave', handleMouseLeave)
     }
   }, [])
 
@@ -277,23 +225,11 @@ export default function Hero() {
 
         {/* ═══ KOLOM KANAN: FOTO ═══ */}
         <div className={`hero__photo-wrap ${mounted ? 'anim-in' : ''}`} style={{ '--d': '200ms' }}>
-
-          <OrbitParticles />
-
-          <div className="hero__orbit hero__orbit--outer" aria-hidden="true">
-            <div className="hero__orbit-dot" />
-          </div>
-
-          <div className="hero__orbit hero__orbit--mid" aria-hidden="true">
-            <div className="hero__orbit-dot hero__orbit-dot--mid" />
-          </div>
-
-          <div className="hero__orbit hero__orbit--inner" aria-hidden="true">
-            <div className="hero__orbit-dot hero__orbit-dot--sm" />
-          </div>
-
-          <div className="hero__photo-card" ref={photoRef}>
-            <div className="hero__photo-shimmer" />
+          
+          {/* Orbit dan partikel sudah dihapus */}
+          
+          <div className="hero__photo-card">
+            {/* Shimmer sudah dihapus */}
             <div className="hero__photo-frame">
               {/* ── 2. LOGIKA PERTUKARAN FOTO BERDASARKAN TEMA ── */}
               <img

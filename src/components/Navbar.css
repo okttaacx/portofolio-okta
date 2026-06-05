@@ -5,21 +5,21 @@
 /* ── CSS VARIABLES UNTUK LIGHT & DARK MODE ── */
 :root {
   --nav-bg: transparent;
-  --nav-bg-scrolled: rgba(206, 212, 218, 0.85);
-  --nav-border: rgba(238, 240, 243, 0.5);
-  --nav-shadow: rgba(140, 148, 165, 0.15);
-  --nav-text: #555555;
-  --nav-text-hover: #111111;
-  --nav-text-hover-bg: rgba(140, 148, 165, 0.4);
-  --nav-logo: #111111;
-  --nav-logo-dot: #555555;
-  --nav-burger-bg: rgba(220, 223, 228, 0.65);
-  --nav-burger-line: #111111;
-  --nav-panel-bg: #f8f9fa;
-  --nav-overlay: rgba(140, 148, 165, 0.4);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.85);
+  --nav-border: rgba(59, 130, 246, 0.15); /* Menggunakan aksen #3b82f6 transparan */
+  --nav-shadow: rgba(14, 165, 233, 0.1); /* Menggunakan aksen #0ea5e9 transparan */
+  --nav-text: #475569; /* Abu-abu kebiruan agar menyatu dengan tema */
+  --nav-text-hover: #3b82f6; /* Biru cantik dari palet */
+  --nav-text-hover-bg: rgba(59, 130, 246, 0.1); /* Background biru halus saat hover */
+  --nav-logo: #0f172a;
+  --nav-logo-dot: #0ea5e9; /* Cyan / Sky blue dari palet */
+  --nav-burger-bg: rgba(59, 130, 246, 0.1);
+  --nav-burger-line: #0f172a;
+  --nav-panel-bg: #f8fafc;
+  --nav-overlay: rgba(15, 23, 42, 0.4);
   
   /* Toggle Variables */
-  --switch-track: #d1d5db;
+  --switch-track: #e2e8f0;
   --switch-handle: #ffffff;
   --switch-icon: #f59e0b; /* Warna matahari */
 }
@@ -27,14 +27,14 @@
 /* Override variabel saat dark mode aktif pada body */
 body.dark-mode {
   --nav-bg-scrolled: rgba(15, 23, 42, 0.75);
-  --nav-border: rgba(30, 41, 59, 0.5);
-  --nav-shadow: rgba(0, 0, 0, 0.3);
+  --nav-border: rgba(124, 58, 237, 0.25); /* Menggunakan aksen #7c3aed transparan */
+  --nav-shadow: rgba(124, 58, 237, 0.15); /* Shadow keunguan */
   --nav-text: #94a3b8;
-  --nav-text-hover: #f8fafc;
-  --nav-text-hover-bg: rgba(30, 41, 59, 0.6);
+  --nav-text-hover: #c084fc; /* Ungu terang dari palet */
+  --nav-text-hover-bg: rgba(124, 58, 237, 0.15); /* Background ungu halus saat hover */
   --nav-logo: #f8fafc;
-  --nav-logo-dot: #60a5fa;
-  --nav-burger-bg: rgba(30, 41, 59, 0.65);
+  --nav-logo-dot: #a855f7; /* Ungu cantik dari palet */
+  --nav-burger-bg: rgba(124, 58, 237, 0.15);
   --nav-burger-line: #f8fafc;
   --nav-panel-bg: #0f172a;
   --nav-overlay: rgba(0, 0, 0, 0.6);
@@ -42,7 +42,7 @@ body.dark-mode {
   /* Toggle Variables */
   --switch-track: #334155;
   --switch-handle: #1e293b;
-  --switch-icon: #f8fafc; /* Warna bulan */
+  --switch-icon: #c084fc; /* Warna bulan disamakan dengan palet ungu */
 }
 
 /* ── BASE ── */
@@ -101,8 +101,8 @@ body.dark-mode {
   border-radius: 50%;
   background: var(--nav-logo-dot); 
   display: inline-block;
-  box-shadow: 0 0 10px rgba(85, 85, 85, 0.3);
-  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px var(--nav-logo-dot); /* Efek glow tipis menyesuaikan warna dot */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ── DESKTOP LINKS (Didorong ke kanan mendekati toggle) ── */
@@ -172,6 +172,7 @@ body.dark-mode {
   justify-content: center;
   color: var(--switch-icon);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 /* ── BURGER ── */

@@ -20,22 +20,22 @@ const IconArrowUpRight = () => (
   </svg>
 );
 
-// ── PALET WARNA LIGHT MODE (Sesuai Aslimu: Monokrom Abu-abu) ──
+// ── PALET WARNA LIGHT MODE (Tema Biru Cerah & Cyan) ──
 const colorMapLight = {
-  blue:   { bg: 'rgba(240, 240, 240, 0.4)', border: 'rgba(150, 150, 150, 0.4)', accent: '#333333' },
-  coral:  { bg: 'rgba(245, 245, 245, 0.4)', border: 'rgba(160, 160, 160, 0.4)', accent: '#444444' },
-  yellow: { bg: 'rgba(250, 250, 250, 0.4)', border: 'rgba(180, 180, 180, 0.4)', accent: '#555555' },
-  sage:   { bg: 'rgba(235, 235, 235, 0.4)', border: 'rgba(140, 140, 140, 0.4)', accent: '#222222' },
-  purple: { bg: 'rgba(230, 230, 230, 0.4)', border: 'rgba(120, 120, 120, 0.4)', accent: '#111111' },
+  blue:   { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(59, 130, 246, 0.25)', accent: '#3b82f6' }, // Bright Blue
+  coral:  { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(14, 165, 233, 0.25)', accent: '#0ea5e9' }, // Cyan
+  yellow: { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(37, 99, 235, 0.25)', accent: '#2563eb' }, // Darker Blue
+  sage:   { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(6, 182, 212, 0.25)', accent: '#06b6d4' }, // Teal
+  purple: { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(99, 102, 241, 0.25)', accent: '#6366f1' }, // Indigo
 };
 
-// ── PALET WARNA DARK MODE (Neon Pastel agar terlihat keren di latar gelap) ──
+// ── PALET WARNA DARK MODE (Tema Ungu Elegan) ──
 const colorMapDark = {
-  blue:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(56, 189, 248, 0.3)', accent: '#38BDF8' }, // Sky Blue
-  coral:  { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(244, 114, 182, 0.3)', accent: '#F472B6' }, // Pink/Coral
-  yellow: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(251, 191, 36, 0.3)', accent: '#FBBF24' },  // Amber/Yellow
-  sage:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(52, 211, 153, 0.3)', accent: '#34D399' },  // Emerald/Sage
-  purple: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(167, 139, 250, 0.3)', accent: '#A78BFA' }, // Purple
+  blue:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(139, 92, 246, 0.3)', accent: '#8b5cf6' }, // Violet
+  coral:  { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(192, 132, 252, 0.3)', accent: '#c084fc' }, // Light Purple
+  yellow: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(168, 85, 247, 0.3)', accent: '#a855f7' }, // Purple
+  sage:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(216, 180, 254, 0.3)', accent: '#d8b4fe' }, // Pale Purple
+  purple: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(124, 58, 237, 0.3)', accent: '#7c3aed' }, // Deep Purple
 };
 
 export default function Certifications() {

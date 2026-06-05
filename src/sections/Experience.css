@@ -1,80 +1,80 @@
 /* ============================================================
    EXPERIENCE SECTION — Monochrome Glass
-   With Automatic Obsidian Dark Mode Support
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
    ============================================================ */
 
 /* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
   /* Layout & Header */
-  --exp-header-tag-bg: rgba(150, 150, 150, 0.12);
-  --exp-header-tag-border: rgba(150, 150, 150, 0.3);
-  --exp-header-tag-text: #333333;
-  --exp-header-title: #111111;
+  --exp-header-tag-bg: rgba(59, 130, 246, 0.1); /* Soft Blue Tint */
+  --exp-header-tag-border: rgba(59, 130, 246, 0.2);
+  --exp-header-tag-text: #2563eb; /* Blue */
+  --exp-header-title: #1e40af; /* Deep Navy Blue */
 
   /* Card Glassmorphism */
-  --exp-card-bg: rgba(240, 240, 240, 0.5);
-  --exp-card-border: rgba(255, 255, 255, 0.8);
-  --exp-card-border-bot: rgba(150, 150, 150, 0.3);
-  --exp-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --exp-card-bg: rgba(255, 255, 255, 0.5);
+  --exp-card-border: rgba(255, 255, 255, 0.9);
+  --exp-card-border-bot: rgba(59, 130, 246, 0.15); /* Soft Blue Tint */
+  --exp-card-shadow: 0 10px 30px rgba(14, 165, 233, 0.08); /* Cyan Shadow */
   --exp-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
-  --exp-card-glow: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
-  --exp-card-top-line: linear-gradient(90deg, #333333, transparent);
+  --exp-card-glow: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255,255,255,0) 70%);
+  --exp-card-top-line: linear-gradient(90deg, #3b82f6, transparent); /* Bright Blue Line */
   
   /* Card Hover */
-  --exp-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --exp-card-shadow-hover: 0 15px 35px rgba(14, 165, 233, 0.15);
   --exp-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.9);
 
   /* Card Text Colors */
-  --exp-badge-text: #333333;
-  --exp-role-text: #111111;
-  --exp-company-text: #666666;
+  --exp-badge-text: #0ea5e9; /* Cyan */
+  --exp-role-text: #1e40af; /* Deep Navy Blue */
+  --exp-company-text: #475569; /* Slate Gray */
   
   /* Period Pill */
   --exp-period-bg: rgba(255, 255, 255, 0.7);
-  --exp-period-border: rgba(150, 150, 150, 0.4);
-  --exp-period-text: #333333;
+  --exp-period-border: rgba(59, 130, 246, 0.2);
+  --exp-period-text: #3b82f6; /* Bright Blue */
 
   /* Bullet Points */
-  --exp-points-border: rgba(150, 150, 150, 0.18);
-  --exp-points-text: #111111;
-  --exp-points-bullet: #333333;
+  --exp-points-border: rgba(59, 130, 246, 0.15);
+  --exp-points-text: #475569; /* Slate Gray */
+  --exp-points-bullet: #0ea5e9; /* Cyan Dot */
 }
 
 /* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
   /* Layout & Header */
-  --exp-header-tag-bg: rgba(30, 41, 59, 0.6);
-  --exp-header-tag-border: rgba(255, 255, 255, 0.15);
-  --exp-header-tag-text: #F8FAFC;
+  --exp-header-tag-bg: rgba(124, 58, 237, 0.15); /* Purple Tint */
+  --exp-header-tag-border: rgba(124, 58, 237, 0.3);
+  --exp-header-tag-text: #c084fc; /* Light Purple */
   --exp-header-title: #F8FAFC;
 
   /* Card Glassmorphism */
   --exp-card-bg: rgba(15, 23, 42, 0.45);
-  --exp-card-border: rgba(255, 255, 255, 0.15);
+  --exp-card-border: rgba(124, 58, 237, 0.2);
   --exp-card-border-bot: rgba(0, 0, 0, 0.4);
   --exp-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --exp-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
-  --exp-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-  --exp-card-top-line: linear-gradient(90deg, #60A5FA, transparent);
+  --exp-card-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
+  --exp-card-glow: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+  --exp-card-top-line: linear-gradient(90deg, #c084fc, transparent); /* Purple Line */
   
   /* Card Hover */
   --exp-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
-  --exp-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.1);
+  --exp-card-inset-hover: inset 0 0 30px rgba(124, 58, 237, 0.1);
 
   /* Card Text Colors */
-  --exp-badge-text: #94A3B8;
+  --exp-badge-text: #a855f7; /* Purple */
   --exp-role-text: #F8FAFC;
   --exp-company-text: #94A3B8;
   
   /* Period Pill */
   --exp-period-bg: rgba(30, 41, 59, 0.6);
-  --exp-period-border: rgba(255, 255, 255, 0.15);
-  --exp-period-text: #CBD5E1;
+  --exp-period-border: rgba(124, 58, 237, 0.25);
+  --exp-period-text: #d8b4fe; /* Pale Purple */
 
   /* Bullet Points */
-  --exp-points-border: rgba(255, 255, 255, 0.1);
+  --exp-points-border: rgba(124, 58, 237, 0.15);
   --exp-points-text: #E2E8F0;
-  --exp-points-bullet: #38BDF8;
+  --exp-points-bullet: #a855f7; /* Purple Dot */
 }
 
 

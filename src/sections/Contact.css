@@ -1,126 +1,126 @@
 /* =============================================
    CONTACT SECTION (Monochrome Glass)
-   With Automatic Obsidian Dark Mode Support
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
 ============================================= */
 
 /* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
   /* Inner Wrapper */
-  --contact-inner-bg: rgba(240, 240, 240, 0.5);
-  --contact-inner-border-top: rgba(255, 255, 255, 0.8);
-  --contact-inner-border-bot: rgba(150, 150, 150, 0.3);
-  --contact-inner-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --contact-inner-bg: rgba(255, 255, 255, 0.5);
+  --contact-inner-border-top: rgba(255, 255, 255, 0.9);
+  --contact-inner-border-bot: rgba(59, 130, 246, 0.15); /* Soft Blue Tint */
+  --contact-inner-shadow: 0 10px 30px rgba(14, 165, 233, 0.08); /* Cyan Shadow */
   --contact-inner-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
   
   /* Decorative Clouds */
-  --contact-cloud-1: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
-  --contact-cloud-2: radial-gradient(circle, rgba(150,150,150,0.18) 0%, rgba(255,255,255,0) 70%);
+  --contact-cloud-1: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(255,255,255,0) 70%);
+  --contact-cloud-2: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(255,255,255,0) 70%);
 
   /* Text Colors */
-  --contact-desc-color: #666666;
-  --contact-label-color: #999999;
-  --contact-val-color: #111111;
+  --contact-desc-color: #475569; /* Slate Gray */
+  --contact-label-color: #3b82f6; /* Bright Blue */
+  --contact-val-color: #1e40af; /* Deep Navy Blue */
 
   /* Links */
-  --contact-link-bg: rgba(255, 255, 255, 0.65);
-  --contact-link-bg-hover: rgba(255, 255, 255, 0.9);
+  --contact-link-bg: rgba(255, 255, 255, 0.7);
+  --contact-link-bg-hover: rgba(255, 255, 255, 0.95);
   --contact-link-border-top: rgba(255, 255, 255, 0.9);
-  --contact-link-border-bot: rgba(150, 150, 150, 0.2);
-  --contact-link-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --contact-link-inset: inset 0 0 12px rgba(255, 255, 255, 0.5);
-  --contact-link-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
-  --contact-link-inset-hover: inset 0 0 16px rgba(255, 255, 255, 0.8);
+  --contact-link-border-bot: rgba(59, 130, 246, 0.15);
+  --contact-link-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+  --contact-link-inset: inset 0 0 12px rgba(255, 255, 255, 0.6);
+  --contact-link-shadow-hover: 0 8px 24px rgba(59, 130, 246, 0.15);
+  --contact-link-inset-hover: inset 0 0 16px rgba(255, 255, 255, 0.9);
 
   /* Link Icons */
-  --contact-icon-bg: rgba(255, 255, 255, 0.7);
-  --contact-icon-border: rgba(150, 150, 150, 0.35);
-  --contact-icon-color: #111111;
-  --contact-icon-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --contact-icon-hover-bg: #111111;
+  --contact-icon-bg: rgba(255, 255, 255, 0.8);
+  --contact-icon-border: rgba(59, 130, 246, 0.2);
+  --contact-icon-color: #3b82f6; /* Bright Blue */
+  --contact-icon-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  --contact-icon-hover-bg: #3b82f6;
   --contact-icon-hover-color: #ffffff;
-  --contact-icon-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  --contact-icon-hover-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
 
   /* Profile Card (Right) */
   --contact-card-bg: rgba(255, 255, 255, 0.75);
   --contact-card-border-top: rgba(255, 255, 255, 0.95);
-  --contact-card-border-bot: rgba(150, 150, 150, 0.25);
-  --contact-card-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --contact-card-border-bot: rgba(59, 130, 246, 0.15);
+  --contact-card-shadow: 0 8px 28px rgba(14, 165, 233, 0.1);
   --contact-card-inset: inset 0 0 20px rgba(255, 255, 255, 0.7);
   
-  --contact-avatar-bg: linear-gradient(135deg, #A0A0A0, #333333);
-  --contact-avatar-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  --contact-card-title: #111111;
+  --contact-avatar-bg: linear-gradient(135deg, #0ea5e9, #3b82f6); /* Cyan to Blue */
+  --contact-avatar-shadow: 0 6px 18px rgba(59, 130, 246, 0.25);
+  --contact-card-title: #1e40af;
 
   /* WA Button */
-  --contact-wa-bg: linear-gradient(135deg, #666666, #111111);
-  --contact-wa-border: rgba(255, 255, 255, 0.2);
-  --contact-wa-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  --contact-wa-bg-hover: linear-gradient(135deg, #444444, #000000);
-  --contact-wa-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.35);
+  --contact-wa-bg: linear-gradient(135deg, #3b82f6, #2563eb);
+  --contact-wa-border: rgba(255, 255, 255, 0.4);
+  --contact-wa-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+  --contact-wa-bg-hover: linear-gradient(135deg, #2563eb, #1e40af);
+  --contact-wa-shadow-hover: 0 8px 22px rgba(59, 130, 246, 0.4);
 
   /* Footer */
-  --contact-footer-text: #999999;
-  --contact-footer-border: rgba(0, 0, 0, 0.1);
+  --contact-footer-text: #64748b;
+  --contact-footer-border: rgba(59, 130, 246, 0.15);
 }
 
 /* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
   /* Inner Wrapper */
   --contact-inner-bg: rgba(15, 23, 42, 0.45);
-  --contact-inner-border-top: rgba(255, 255, 255, 0.15);
+  --contact-inner-border-top: rgba(124, 58, 237, 0.2);
   --contact-inner-border-bot: rgba(0, 0, 0, 0.4);
   --contact-inner-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --contact-inner-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
+  --contact-inner-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
   
   /* Decorative Clouds */
-  --contact-cloud-1: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-  --contact-cloud-2: radial-gradient(circle, rgba(96,165,250,0.08) 0%, rgba(255,255,255,0) 70%);
+  --contact-cloud-1: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15,23,42,0) 70%);
+  --contact-cloud-2: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(15,23,42,0) 70%);
 
   /* Text Colors */
   --contact-desc-color: #94A3B8;
-  --contact-label-color: #64748B;
+  --contact-label-color: #c084fc; /* Light Purple */
   --contact-val-color: #F8FAFC;
 
   /* Links */
   --contact-link-bg: rgba(30, 41, 59, 0.5);
   --contact-link-bg-hover: rgba(15, 23, 42, 0.8);
-  --contact-link-border-top: rgba(255, 255, 255, 0.15);
+  --contact-link-border-top: rgba(124, 58, 237, 0.25);
   --contact-link-border-bot: rgba(0, 0, 0, 0.3);
   --contact-link-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --contact-link-inset: inset 0 0 12px rgba(255, 255, 255, 0.05);
+  --contact-link-inset: inset 0 0 12px rgba(124, 58, 237, 0.05);
   --contact-link-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --contact-link-inset-hover: inset 0 0 16px rgba(255, 255, 255, 0.1);
+  --contact-link-inset-hover: inset 0 0 16px rgba(124, 58, 237, 0.1);
 
   /* Link Icons */
   --contact-icon-bg: rgba(15, 23, 42, 0.6);
-  --contact-icon-border: rgba(255, 255, 255, 0.15);
-  --contact-icon-color: #CBD5E1;
+  --contact-icon-border: rgba(124, 58, 237, 0.3);
+  --contact-icon-color: #c084fc;
   --contact-icon-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --contact-icon-hover-bg: #F8FAFC;
-  --contact-icon-hover-color: #0F172A;
-  --contact-icon-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --contact-icon-hover-bg: #7c3aed; /* Deep Purple */
+  --contact-icon-hover-color: #ffffff;
+  --contact-icon-hover-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
 
   /* Profile Card (Right) */
   --contact-card-bg: rgba(15, 23, 42, 0.6);
-  --contact-card-border-top: rgba(255, 255, 255, 0.15);
+  --contact-card-border-top: rgba(124, 58, 237, 0.2);
   --contact-card-border-bot: rgba(0, 0, 0, 0.4);
   --contact-card-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
-  --contact-card-inset: inset 0 0 20px rgba(255, 255, 255, 0.05);
+  --contact-card-inset: inset 0 0 20px rgba(124, 58, 237, 0.05);
   
-  --contact-avatar-bg: linear-gradient(135deg, #475569, #0F172A);
-  --contact-avatar-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --contact-avatar-bg: linear-gradient(135deg, #a855f7, #6d28d9); /* Purple Gradient */
+  --contact-avatar-shadow: 0 6px 18px rgba(124, 58, 237, 0.3);
   --contact-card-title: #F8FAFC;
 
   /* WA Button */
-  --contact-wa-bg: linear-gradient(135deg, #334155, #0F172A);
-  --contact-wa-border: rgba(255, 255, 255, 0.1);
+  --contact-wa-bg: linear-gradient(135deg, #7c3aed, #4c1d95);
+  --contact-wa-border: rgba(192, 132, 252, 0.3);
   --contact-wa-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  --contact-wa-bg-hover: linear-gradient(135deg, #1E293B, #000000);
-  --contact-wa-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.6);
+  --contact-wa-bg-hover: linear-gradient(135deg, #6d28d9, #3b0764);
+  --contact-wa-shadow-hover: 0 8px 22px rgba(124, 58, 237, 0.4);
 
   /* Footer */
   --contact-footer-text: #64748B;
-  --contact-footer-border: rgba(255, 255, 255, 0.1);
+  --contact-footer-border: rgba(124, 58, 237, 0.2);
 }
 
 /* ── 3. STRUKTUR UTAMA CSS ── */

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Groq from 'groq-sdk';
 import { profile, skills, projects, experiences, certifications } from '../data/content';
 
@@ -96,7 +96,7 @@ const IconSparkle = () => (
   </svg>
 );
 
-// ── Komponen Utama ────────────────────────────────────────────────────────────
+// ── KOMPONEN UTAMA AI ASSISTANT ───────────────────────────────────────────────
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -223,17 +223,20 @@ export default function AIAssistant() {
       transition: 'all 0.3s ease',
       flexShrink: 0,
     },
+    chatBoxWrapper: {
+      transformOrigin: 'bottom right',
+    },
     chatBox: {
       width: '340px',
       height: '460px',
-      background: isDark ? 'rgba(15, 23, 42, 0.7)' : 'rgba(240, 240, 240, 0.6)',
+      background: isDark ? 'rgba(15, 23, 42, 0.85)' : 'rgba(255, 255, 255, 0.85)',
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
-      border: isDark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(255,255,255,0.85)',
-      borderBottom: isDark ? '1px solid rgba(0,0,0,0.4)' : '1px solid rgba(150,150,150,0.3)',
-      borderRight: isDark ? '1px solid rgba(0,0,0,0.4)' : '1px solid rgba(150,150,150,0.3)',
+      border: isDark ? '1px solid rgba(124,58,237,0.3)' : '1px solid rgba(59,130,246,0.2)',
+      borderBottom: isDark ? '1px solid rgba(0,0,0,0.4)' : '1px solid rgba(59,130,246,0.1)',
+      borderRight: isDark ? '1px solid rgba(0,0,0,0.4)' : '1px solid rgba(59,130,246,0.1)',
       borderRadius: '16px',
-      boxShadow: isDark ? '0 15px 40px rgba(0,0,0,0.6), inset 0 0 25px rgba(255,255,255,0.05)' : '0 10px 30px rgba(0,0,0,0.12), inset 0 0 25px rgba(255,255,255,0.6)',
+      boxShadow: isDark ? '0 15px 40px rgba(0,0,0,0.6), inset 0 0 25px rgba(255,255,255,0.05)' : '0 10px 30px rgba(14, 165, 233, 0.12), inset 0 0 25px rgba(255,255,255,0.6)',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
@@ -244,14 +247,14 @@ export default function AIAssistant() {
       position: 'absolute',
       top: 0, left: 0, right: 0,
       height: '3px',
-      background: isDark ? 'linear-gradient(90deg, #60A5FA, transparent)' : 'linear-gradient(90deg, #333333, transparent)',
+      background: isDark ? 'linear-gradient(90deg, #c084fc, transparent)' : 'linear-gradient(90deg, #0ea5e9, transparent)',
       opacity: 0.8,
       zIndex: 1,
       transition: 'background 0.3s ease',
     },
     header: {
       padding: '14px 18px',
-      borderBottom: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(150,150,150,0.2)',
+      borderBottom: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(59,130,246,0.15)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -268,9 +271,9 @@ export default function AIAssistant() {
       width: '32px',
       height: '32px',
       borderRadius: '50%',
-      background: isDark ? 'rgba(30, 41, 59, 0.8)' : '#111111',
+      background: isDark ? '#7c3aed' : '#3b82f6',
       border: isDark ? '1px solid rgba(255,255,255,0.2)' : 'none',
-      color: isDark ? '#F8FAFC' : '#ffffff',
+      color: '#ffffff',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -280,13 +283,13 @@ export default function AIAssistant() {
     headerTitle: {
       fontSize: '0.82rem',
       fontWeight: 700,
-      color: isDark ? '#F8FAFC' : '#111111',
+      color: isDark ? '#F8FAFC' : '#1e40af',
       margin: 0,
       transition: 'color 0.3s ease',
     },
     headerSub: {
       fontSize: '0.70rem',
-      color: isDark ? '#94A3B8' : '#666666',
+      color: isDark ? '#94A3B8' : '#475569',
       margin: 0,
       transition: 'color 0.3s ease',
     },
@@ -294,7 +297,7 @@ export default function AIAssistant() {
       background: 'transparent',
       border: 'none',
       cursor: 'pointer',
-      color: isDark ? '#94A3B8' : '#666666',
+      color: isDark ? '#94A3B8' : '#475569',
       padding: '4px',
       display: 'flex',
       alignItems: 'center',
@@ -314,8 +317,8 @@ export default function AIAssistant() {
     },
     msgUser: {
       alignSelf: 'flex-end',
-      background: isDark ? '#F8FAFC' : '#111111',
-      color: isDark ? '#0F172A' : '#ffffff',
+      background: isDark ? '#7c3aed' : '#3b82f6',
+      color: '#ffffff',
       padding: '9px 13px',
       borderRadius: '12px 12px 2px 12px',
       maxWidth: '82%',
@@ -325,20 +328,20 @@ export default function AIAssistant() {
     },
     msgAssistant: {
       alignSelf: 'flex-start',
-      background: isDark ? 'rgba(30, 41, 59, 0.8)' : 'rgba(255,255,255,0.75)',
-      color: isDark ? '#F8FAFC' : '#111111',
+      background: isDark ? 'rgba(30, 41, 59, 0.8)' : 'rgba(255,255,255,0.8)',
+      color: isDark ? '#F8FAFC' : '#1e40af',
       padding: '9px 13px',
       borderRadius: '12px 12px 12px 2px',
       maxWidth: '82%',
       fontSize: '0.80rem',
       lineHeight: 1.6,
-      border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(150,150,150,0.25)',
+      border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(59,130,246,0.2)',
       transition: 'all 0.3s ease',
     },
     typing: {
       alignSelf: 'flex-start',
       background: isDark ? 'rgba(30, 41, 59, 0.6)' : 'rgba(255,255,255,0.6)',
-      border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(150,150,150,0.2)',
+      border: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(59,130,246,0.15)',
       borderRadius: '12px 12px 12px 2px',
       padding: '10px 14px',
       display: 'flex',
@@ -348,7 +351,7 @@ export default function AIAssistant() {
     },
     inputArea: {
       padding: '10px 14px',
-      borderTop: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(150,150,150,0.2)',
+      borderTop: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(59,130,246,0.15)',
       display: 'flex',
       gap: '8px',
       alignItems: 'center',
@@ -360,10 +363,10 @@ export default function AIAssistant() {
       flex: 1,
       padding: '8px 12px',
       borderRadius: '8px',
-      border: isDark ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(150,150,150,0.35)',
+      border: isDark ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(59,130,246,0.3)',
       background: isDark ? 'rgba(15, 23, 42, 0.6)' : 'rgba(255,255,255,0.7)',
       fontSize: '0.78rem',
-      color: isDark ? '#F8FAFC' : '#111111',
+      color: isDark ? '#F8FAFC' : '#1e40af',
       outline: 'none',
       fontFamily: 'inherit',
       transition: 'all 0.3s ease',
@@ -372,9 +375,9 @@ export default function AIAssistant() {
       width: '34px',
       height: '34px',
       borderRadius: '8px',
-      background: isDark ? '#F8FAFC' : '#111111',
-      border: isDark ? '1px solid #F8FAFC' : '1px solid #111111',
-      color: isDark ? '#0F172A' : '#ffffff',
+      background: isDark ? '#a855f7' : '#0ea5e9',
+      border: 'none',
+      color: '#ffffff',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
@@ -395,83 +398,85 @@ export default function AIAssistant() {
           from { opacity: 0; transform: translateY(16px) scale(0.97); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .ai-chatbox { animation: aiSlideUp 0.22s ease; transform-origin: bottom right; }
+        .ai-chatbox-wrapper { animation: aiSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
         .ai-toggle-btn:hover { transform: scale(1.08) !important; box-shadow: 0 14px 35px rgba(0,0,0,0.3) !important; }
         .ai-send-btn:hover:not(:disabled) { opacity: 0.8 !important; }
-        .ai-input::placeholder { color: ${isDark ? '#64748B' : '#999999'}; }
-        .ai-input:focus { border-color: ${isDark ? 'rgba(96,165,250,0.5)' : 'rgba(100,100,100,0.5)'} !important; box-shadow: 0 0 0 2px ${isDark ? 'rgba(96,165,250,0.1)' : 'rgba(0,0,0,0.06)'} !important; }
-        .ai-close-btn:hover { background: ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'} !important; color: ${isDark ? '#F8FAFC' : '#111111'} !important;}
+        .ai-input::placeholder { color: ${isDark ? '#64748B' : '#94a3b8'}; }
+        .ai-input:focus { border-color: ${isDark ? 'rgba(168,85,247,0.5)' : 'rgba(14,165,233,0.5)'} !important; box-shadow: 0 0 0 2px ${isDark ? 'rgba(168,85,247,0.1)' : 'rgba(14,165,233,0.1)'} !important; }
+        .ai-close-btn:hover { background: ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.1)'} !important; color: ${isDark ? '#F8FAFC' : '#1e40af'} !important;}
         .ai-messages::-webkit-scrollbar { width: 4px; }
         .ai-messages::-webkit-scrollbar-track { background: transparent; }
-        .ai-messages::-webkit-scrollbar-thumb { background: ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)'}; border-radius: 4px; }
+        .ai-messages::-webkit-scrollbar-thumb { background: ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(59,130,246,0.2)'}; border-radius: 4px; }
       `}</style>
 
       <div style={styles.wrapper}>
         {isOpen && (
-          <div style={styles.chatBox} className="ai-chatbox">
-            <div style={styles.topAccent} />
+          <div style={styles.chatBoxWrapper} className="ai-chatbox-wrapper">
+            <div style={styles.chatBox}>
+              <div style={styles.topAccent} />
 
-            {/* Header */}
-            <div style={styles.header}>
-              <div style={styles.headerLeft}>
-                <div style={styles.avatar}><IconBot /></div>
-                <div>
-                  <p style={styles.headerTitle}>Okta's AI Assistant</p>
-                  <p style={styles.headerSub}>Tanya apapun soal Okta ✦</p>
+              {/* Header */}
+              <div style={styles.header}>
+                <div style={styles.headerLeft}>
+                  <div style={styles.avatar}><IconBot /></div>
+                  <div>
+                    <p style={styles.headerTitle}>Okta's AI Assistant</p>
+                    <p style={styles.headerSub}>Tanya apapun soal Okta ✦</p>
+                  </div>
                 </div>
+                <button
+                  style={styles.closeBtn}
+                  className="ai-close-btn"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Tutup"
+                >
+                  <IconClose />
+                </button>
               </div>
-              <button
-                style={styles.closeBtn}
-                className="ai-close-btn"
-                onClick={() => setIsOpen(false)}
-                aria-label="Tutup"
-              >
-                <IconClose />
-              </button>
-            </div>
 
-            {/* Pesan */}
-            <div style={styles.messagesArea} className="ai-messages">
-              {messages.map((msg, i) => (
-                <div key={i} style={msg.role === 'user' ? styles.msgUser : styles.msgAssistant}>
-                  {msg.content}
-                </div>
-              ))}
-              {isLoading && (
-                <div style={styles.typing}>
-                  <div style={typingDot('0s')} />
-                  <div style={typingDot('0.2s')} />
-                  <div style={typingDot('0.4s')} />
-                </div>
-              )}
-              <div ref={bottomRef} />
-            </div>
+              {/* Pesan */}
+              <div style={styles.messagesArea} className="ai-messages">
+                {messages.map((msg, i) => (
+                  <div key={i} style={msg.role === 'user' ? styles.msgUser : styles.msgAssistant}>
+                    {msg.content}
+                  </div>
+                ))}
+                {isLoading && (
+                  <div style={styles.typing}>
+                    <div style={typingDot('0s')} />
+                    <div style={typingDot('0.2s')} />
+                    <div style={typingDot('0.4s')} />
+                  </div>
+                )}
+                <div ref={bottomRef} />
+              </div>
 
-            {/* Input */}
-            <div style={styles.inputArea}>
-              <input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Tanya keahlian atau proyek Okta..."
-                style={styles.input}
-                className="ai-input"
-                disabled={isLoading}
-              />
-              <button
-                onClick={handleSend}
-                disabled={isLoading || !input.trim()}
-                style={{
-                  ...styles.sendBtn,
-                  opacity: isLoading || !input.trim() ? 0.4 : 1,
-                  cursor: isLoading || !input.trim() ? 'not-allowed' : 'pointer',
-                }}
-                className="ai-send-btn"
-                aria-label="Kirim"
-              >
-                <IconSend />
-              </button>
+              {/* Input */}
+              <div style={styles.inputArea}>
+                <input
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Tanya keahlian atau proyek Okta..."
+                  style={styles.input}
+                  className="ai-input"
+                  disabled={isLoading}
+                />
+                <button
+                  onClick={handleSend}
+                  disabled={isLoading || !input.trim()}
+                  style={{
+                    ...styles.sendBtn,
+                    opacity: isLoading || !input.trim() ? 0.4 : 1,
+                    cursor: isLoading || !input.trim() ? 'not-allowed' : 'pointer',
+                  }}
+                  className="ai-send-btn"
+                  aria-label="Kirim"
+                >
+                  <IconSend />
+                </button>
+              </div>
             </div>
           </div>
         )}

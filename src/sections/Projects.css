@@ -1,93 +1,93 @@
 /* ========================================================
    PROJECTS COMPONENT CSS — Monochrome Glass
-   With Automatic Obsidian Dark Mode Support
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
 ======================================================== */
 
 /* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
   /* Project Card */
-  --project-card-bg: rgba(240, 240, 240, 0.5);
-  --project-card-border: rgba(255, 255, 255, 0.8);
-  --project-card-border-bot: rgba(150, 150, 150, 0.3);
-  --project-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --project-card-bg: rgba(255, 255, 255, 0.5);
+  --project-card-border: rgba(255, 255, 255, 0.9);
+  --project-card-border-bot: rgba(59, 130, 246, 0.15); /* Soft Blue Border */
+  --project-card-shadow: 0 10px 30px rgba(14, 165, 233, 0.08); /* Cyan Shadow */
   --project-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
-  --project-card-glow: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
-  --project-card-top-line: linear-gradient(90deg, #333333, transparent);
+  --project-card-glow: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255,255,255,0) 70%);
+  --project-card-top-line: linear-gradient(90deg, #3b82f6, transparent); /* Bright Blue Line */
   
   /* Project Card Hover */
-  --project-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --project-card-shadow-hover: 0 15px 35px rgba(14, 165, 233, 0.15);
   --project-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.9);
 
   /* Icon Container */
-  --project-icon-bg: rgba(255, 255, 255, 0.6);
-  --project-icon-border: rgba(255, 255, 255, 0.9);
+  --project-icon-bg: rgba(255, 255, 255, 0.8);
+  --project-icon-border: rgba(59, 130, 246, 0.2);
   
   /* Text Colors */
-  --project-title-color: #111111;
-  --project-subtitle-color: #666666;
-  --project-desc-color: #666666;
-  --project-highlight-color: #111111;
-  --project-bullet-color: #333333;
+  --project-title-color: #1e40af; /* Deep Navy Blue */
+  --project-subtitle-color: #0ea5e9; /* Cyan */
+  --project-desc-color: #475569; /* Slate Gray */
+  --project-highlight-color: #1e40af;
+  --project-bullet-color: #0ea5e9; /* Cyan Dot */
 
   /* Tech Tags */
   --project-tag-bg: rgba(255, 255, 255, 0.7);
-  --project-tag-border: rgba(150, 150, 150, 0.4);
-  --project-tag-text: #333333;
+  --project-tag-border: rgba(59, 130, 246, 0.2);
+  --project-tag-text: #3b82f6; /* Bright Blue */
 
   /* Buttons */
-  --project-btn-bg: #111111;
+  --project-btn-bg: #3b82f6; /* Bright Blue */
   --project-btn-text: #ffffff;
-  --project-btn-border: #111111;
-  --project-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --project-btn-border: #3b82f6;
+  --project-btn-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
   
   /* Buttons Hover */
-  --project-btn-hover-bg: rgba(255, 255, 255, 0.85);
-  --project-btn-hover-text: #111111;
-  --project-btn-hover-border: #111111;
-  --project-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  --project-btn-hover-bg: #2563eb; /* Darker Blue */
+  --project-btn-hover-text: #ffffff;
+  --project-btn-hover-border: #2563eb;
+  --project-btn-hover-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
 }
 
 /* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
   /* Project Card */
   --project-card-bg: rgba(15, 23, 42, 0.45);
-  --project-card-border: rgba(255, 255, 255, 0.15);
+  --project-card-border: rgba(124, 58, 237, 0.2);
   --project-card-border-bot: rgba(0, 0, 0, 0.4);
   --project-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --project-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
-  --project-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-  --project-card-top-line: linear-gradient(90deg, #60A5FA, transparent);
+  --project-card-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
+  --project-card-glow: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+  --project-card-top-line: linear-gradient(90deg, #c084fc, transparent); /* Purple Line */
   
   /* Project Card Hover */
   --project-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
-  --project-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.1);
+  --project-card-inset-hover: inset 0 0 30px rgba(124, 58, 237, 0.1);
 
   /* Icon Container */
   --project-icon-bg: rgba(30, 41, 59, 0.6);
-  --project-icon-border: rgba(255, 255, 255, 0.2);
+  --project-icon-border: rgba(124, 58, 237, 0.25);
   
   /* Text Colors */
   --project-title-color: #F8FAFC;
-  --project-subtitle-color: #94A3B8;
+  --project-subtitle-color: #c084fc; /* Light Purple */
   --project-desc-color: #94A3B8;
   --project-highlight-color: #E2E8F0;
-  --project-bullet-color: #38BDF8;
+  --project-bullet-color: #a855f7; /* Purple Dot */
 
   /* Tech Tags */
   --project-tag-bg: rgba(30, 41, 59, 0.6);
-  --project-tag-border: rgba(255, 255, 255, 0.15);
-  --project-tag-text: #CBD5E1;
+  --project-tag-border: rgba(124, 58, 237, 0.25);
+  --project-tag-text: #d8b4fe; /* Soft Purple */
 
   /* Buttons */
-  --project-btn-bg: #F8FAFC;
-  --project-btn-text: #0F172A;
-  --project-btn-border: #F8FAFC;
+  --project-btn-bg: #7c3aed; /* Deep Purple */
+  --project-btn-text: #ffffff;
+  --project-btn-border: #7c3aed;
   --project-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   
   /* Buttons Hover */
-  --project-btn-hover-bg: rgba(15, 23, 42, 0.6);
-  --project-btn-hover-text: #F8FAFC;
-  --project-btn-hover-border: #F8FAFC;
+  --project-btn-hover-bg: #6d28d9; /* Darker Purple */
+  --project-btn-hover-text: #ffffff;
+  --project-btn-hover-border: #6d28d9;
   --project-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 

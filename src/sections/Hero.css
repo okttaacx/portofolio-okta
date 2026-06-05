@@ -1,138 +1,138 @@
 /* ========================================================
    HERO COMPONENT CSS — Cinematic Entrance Edition
-   Monochrome · Smooth · Professional (With Dark Mode)
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
 ======================================================== */
 
 /* ── 1. CSS VARIABLES UNTUK LIGHT MODE & DARK MODE ── */
 :root {
   /* Text & Basic Colors */
-  --hero-name-color: #0a0a0a;
-  --hero-accent-color: #888888;
-  --hero-divider-color: #0a0a0a;
-  --hero-tagline-color: #0a0a0a;
-  --hero-sub-color: #777777;
+  --hero-name-color: #1e40af; /* Deep Navy Blue */
+  --hero-accent-color: #3b82f6; /* Bright Blue */
+  --hero-divider-color: #3b82f6;
+  --hero-tagline-color: #1e40af;
+  --hero-sub-color: #475569; /* Slate Gray */
   
   /* Badge Colors */
-  --hero-badge-bg: rgba(255, 255, 255, 0.72);
-  --hero-badge-border: rgba(180, 185, 195, 0.45);
-  --hero-badge-text: #222222;
-  --hero-badge-dot: #222222;
+  --hero-badge-bg: rgba(59, 130, 246, 0.1);
+  --hero-badge-border: rgba(59, 130, 246, 0.2);
+  --hero-badge-text: #2563eb;
+  --hero-badge-dot: #0ea5e9; /* Cyan */
 
   /* Tech Chip Colors */
-  --hero-chip-bg: rgba(255, 255, 255, 0.78);
-  --hero-chip-border: rgba(180, 185, 195, 0.50);
-  --hero-chip-text: #444444;
-  --hero-chip-hover-bg: #0a0a0a;
-  --hero-chip-hover-text: #f8f9fa;
+  --hero-chip-bg: rgba(255, 255, 255, 0.8);
+  --hero-chip-border: rgba(59, 130, 246, 0.2);
+  --hero-chip-text: #3b82f6;
+  --hero-chip-hover-bg: #3b82f6;
+  --hero-chip-hover-text: #ffffff;
 
   /* Buttons */
-  --btn-primary-bg: #0a0a0a;
-  --btn-primary-text: #f8f9fa;
-  --btn-primary-hover: #1a1a1a;
-  --btn-outline-bg: rgba(255, 255, 255, 0.60);
-  --btn-outline-text: #0a0a0a;
-  --btn-outline-border: rgba(0,0,0,0.70);
-  --btn-outline-hover-bg: #0a0a0a;
-  --btn-outline-hover-text: #f8f9fa;
+  --btn-primary-bg: #3b82f6;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #2563eb;
+  --btn-outline-bg: rgba(255, 255, 255, 0.7);
+  --btn-outline-text: #3b82f6;
+  --btn-outline-border: #3b82f6;
+  --btn-outline-hover-bg: #3b82f6;
+  --btn-outline-hover-text: #ffffff;
 
   /* CV Dropdown */
-  --cv-dropdown-bg: rgba(255, 255, 255, 0.97);
-  --cv-dropdown-border: rgba(0, 0, 0, 0.70);
-  --cv-dropdown-text: #0a0a0a;
-  --cv-dropdown-hover-bg: #0a0a0a;
-  --cv-dropdown-hover-text: #f8f9fa;
+  --cv-dropdown-bg: rgba(255, 255, 255, 0.95);
+  --cv-dropdown-border: rgba(59, 130, 246, 0.2);
+  --cv-dropdown-text: #1e40af;
+  --cv-dropdown-hover-bg: rgba(59, 130, 246, 0.1);
+  --cv-dropdown-hover-text: #2563eb;
 
   /* Orbit & Particles */
-  --hero-orbit-border: rgba(68, 68, 68, 0.6);
-  --hero-orbit-dot: #444444;
+  --hero-orbit-border: rgba(59, 130, 246, 0.3);
+  --hero-orbit-dot: #0ea5e9;
   
   /* Photo Card Glass */
   --hero-card-bg: rgba(255, 255, 255, 0.65);
   --hero-card-border: rgba(255, 255, 255, 0.90);
-  --hero-card-shadow: rgba(140, 148, 165, 0.20);
-  --hero-card-fallback-bg1: #444444;
-  --hero-card-fallback-bg2: #aaaaaa;
+  --hero-card-shadow: rgba(14, 165, 233, 0.15);
+  --hero-card-fallback-bg1: #3b82f6;
+  --hero-card-fallback-bg2: #0ea5e9;
 
   /* Floating Labels */
-  --hero-float-bg: rgba(255,255,255,0.88);
-  --hero-float-border: rgba(255,255,255,0.95);
-  --hero-float-text: #333333;
-  --hero-float-shadow: rgba(140,148,165,0.14);
+  --hero-float-bg: rgba(255,255,255,0.9);
+  --hero-float-border: rgba(59, 130, 246, 0.15);
+  --hero-float-text: #1e40af;
+  --hero-float-shadow: rgba(14, 165, 233, 0.12);
 
   /* Scroll Cue */
-  --hero-scroll-color: #888888;
-  --hero-scroll-border: rgba(0,0,0,0.22);
+  --hero-scroll-color: #3b82f6;
+  --hero-scroll-border: rgba(59, 130, 246, 0.4);
   
   /* Stats */
-  --hero-stat-num: #0a0a0a;
-  --hero-stat-label: #aaaaaa;
-  --hero-stat-sep: rgba(180, 185, 195, 0.45);
+  --hero-stat-num: #1e40af;
+  --hero-stat-label: #64748b;
+  --hero-stat-sep: rgba(59, 130, 246, 0.2);
 }
 
 /* ── OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
   /* Text Colors */
   --hero-name-color: #F8FAFC;
-  --hero-accent-color: #64748B;
-  --hero-divider-color: #F8FAFC;
+  --hero-accent-color: #a855f7; /* Purple */
+  --hero-divider-color: #a855f7;
   --hero-tagline-color: #E2E8F0;
   --hero-sub-color: #94A3B8;
   
   /* Badge Colors */
-  --hero-badge-bg: rgba(30, 41, 59, 0.60);
-  --hero-badge-border: rgba(255, 255, 255, 0.15);
-  --hero-badge-text: #F1F5F9;
-  --hero-badge-dot: #38BDF8;
+  --hero-badge-bg: rgba(124, 58, 237, 0.15);
+  --hero-badge-border: rgba(124, 58, 237, 0.3);
+  --hero-badge-text: #c084fc;
+  --hero-badge-dot: #a855f7;
 
   /* Tech Chip Colors */
   --hero-chip-bg: rgba(15, 23, 42, 0.60);
-  --hero-chip-border: rgba(255, 255, 255, 0.10);
-  --hero-chip-text: #CBD5E1;
-  --hero-chip-hover-bg: #F8FAFC;
-  --hero-chip-hover-text: #0F172A;
+  --hero-chip-border: rgba(124, 58, 237, 0.25);
+  --hero-chip-text: #c084fc;
+  --hero-chip-hover-bg: #7c3aed;
+  --hero-chip-hover-text: #ffffff;
 
   /* Buttons */
-  --btn-primary-bg: #F8FAFC;
-  --btn-primary-text: #0F172A;
-  --btn-primary-hover: #E2E8F0;
-  --btn-outline-bg: rgba(15, 23, 42, 0.40);
-  --btn-outline-text: #F8FAFC;
-  --btn-outline-border: rgba(255, 255, 255, 0.60);
-  --btn-outline-hover-bg: #F8FAFC;
-  --btn-outline-hover-text: #0F172A;
+  --btn-primary-bg: #7c3aed; /* Deep Purple */
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #6d28d9;
+  --btn-outline-bg: rgba(15, 23, 42, 0.60);
+  --btn-outline-text: #c084fc;
+  --btn-outline-border: #a855f7;
+  --btn-outline-hover-bg: #7c3aed;
+  --btn-outline-hover-text: #ffffff;
 
   /* CV Dropdown */
   --cv-dropdown-bg: rgba(15, 23, 42, 0.95);
-  --cv-dropdown-border: rgba(255, 255, 255, 0.20);
+  --cv-dropdown-border: rgba(124, 58, 237, 0.3);
   --cv-dropdown-text: #F1F5F9;
-  --cv-dropdown-hover-bg: #334155;
-  --cv-dropdown-hover-text: #FFFFFF;
+  --cv-dropdown-hover-bg: rgba(124, 58, 237, 0.2);
+  --cv-dropdown-hover-text: #c084fc;
 
   /* Orbit & Particles */
-  --hero-orbit-border: rgba(255, 255, 255, 0.15);
-  --hero-orbit-dot: #94A3B8;
+  --hero-orbit-border: rgba(124, 58, 237, 0.3);
+  --hero-orbit-dot: #c084fc;
   
   /* Photo Card Glass (Dark Glass) */
   --hero-card-bg: rgba(15, 23, 42, 0.45);
-  --hero-card-border: rgba(255, 255, 255, 0.15);
+  --hero-card-border: rgba(124, 58, 237, 0.2);
   --hero-card-shadow: rgba(0, 0, 0, 0.50);
-  --hero-card-fallback-bg1: #1e293b;
-  --hero-card-fallback-bg2: #475569;
+  --hero-card-fallback-bg1: #7c3aed;
+  --hero-card-fallback-bg2: #a855f7;
 
   /* Floating Labels (Dark Mode) */
   --hero-float-bg: rgba(15, 23, 42, 0.85);
-  --hero-float-border: rgba(255, 255, 255, 0.10);
-  --hero-float-text: #F8FAFC;
+  --hero-float-border: rgba(124, 58, 237, 0.25);
+  --hero-float-text: #c084fc;
   --hero-float-shadow: rgba(0, 0, 0, 0.4);
 
   /* Scroll Cue */
-  --hero-scroll-color: #64748B;
-  --hero-scroll-border: rgba(255,255,255,0.20);
+  --hero-scroll-color: #a855f7;
+  --hero-scroll-border: rgba(124, 58, 237, 0.4);
   
   /* Stats */
   --hero-stat-num: #F8FAFC;
-  --hero-stat-label: #64748B;
-  --hero-stat-sep: rgba(255, 255, 255, 0.15);
+  --hero-stat-label: #94a3b8;
+  --hero-stat-sep: rgba(124, 58, 237, 0.25);
 }
 
 /* ── Keyframes ─────────────────────────────────────── */
@@ -301,9 +301,9 @@ body.dark-mode {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0,0,0,0.035) 30%,
-    rgba(0,0,0,0.055) 50%,
-    rgba(0,0,0,0.035) 70%,
+    rgba(59,130,246,0.1) 30%,
+    rgba(59,130,246,0.2) 50%,
+    rgba(59,130,246,0.1) 70%,
     transparent 100%
   );
   transform-origin: left;
@@ -311,7 +311,7 @@ body.dark-mode {
   transition: background 0.4s ease;
 }
 body.dark-mode .hero__lines span { 
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.035) 30%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.035) 70%, transparent 100%); 
+  background: linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.1) 30%, rgba(124,58,237,0.2) 50%, rgba(124,58,237,0.1) 70%, transparent 100%); 
 }
 .hero__lines span:nth-child(1) { top: 30%;  animation-delay: 0.2s; }
 .hero__lines span:nth-child(2) { top: 55%;  animation-delay: 0.4s; }
@@ -494,13 +494,13 @@ body.dark-mode .hero__lines span {
 .btn--primary {
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 18px rgba(59,130,246,0.25);
   border: 1.5px solid var(--btn-primary-bg);
 }
 .btn--primary:hover {
   background: var(--btn-primary-hover);
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.24);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.35);
   border-color: var(--btn-primary-hover);
 }
 .btn--primary:active { transform: translateY(-1px); }
@@ -517,7 +517,7 @@ body.dark-mode .hero__lines span {
   background: var(--btn-outline-hover-bg);
   color: var(--btn-outline-hover-text);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.18);
   border-color: var(--btn-outline-hover-bg);
 }
 .btn--outline:active { transform: translateY(-1px); }
@@ -571,7 +571,7 @@ body.dark-mode .hero__lines span {
   color: var(--cv-dropdown-text);
   font-size: 0.82rem;
   font-weight: 600;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
   transition: background 0.18s ease, color 0.18s ease;
   white-space: nowrap;
 }
@@ -643,11 +643,11 @@ body.dark-mode .hero__lines span {
 .hero__orbit--inner {
   inset: -18px;
   border-style: solid;
-  border-color: rgba(68, 68, 68, 0.4);
+  border-color: rgba(59, 130, 246, 0.2);
   animation: orbitSpinReverse 14s linear infinite;
 }
 body.dark-mode .hero__orbit--inner {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(124, 58, 237, 0.2);
 }
 
 .hero__orbit-dot {
@@ -658,16 +658,17 @@ body.dark-mode .hero__orbit--inner {
   width: 10px; height: 10px;
   background: var(--hero-orbit-dot);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(100,100,100,0.5);
+  box-shadow: 0 0 10px rgba(14,165,233,0.5);
   transition: background 0.3s ease;
 }
 .hero__orbit-dot--sm {
   width: 6px; height: 6px;
-  background: #777777;
-  box-shadow: 0 0 6px rgba(100,100,100,0.4);
+  background: #3b82f6;
+  box-shadow: 0 0 6px rgba(59,130,246,0.4);
 }
 body.dark-mode .hero__orbit-dot--sm {
-  background: #64748B;
+  background: #a855f7;
+  box-shadow: 0 0 6px rgba(168,85,247,0.4);
 }
 
 .hero__photo-card {
@@ -680,7 +681,7 @@ body.dark-mode .hero__orbit-dot--sm {
   border: 1.5px solid var(--hero-card-border);
   box-shadow:
     0 20px 50px var(--hero-card-shadow),
-    0 4px 16px rgba(140, 148, 165, 0.10),
+    0 4px 16px rgba(59, 130, 246, 0.10),
     inset 0 1px 0 rgba(255,255,255,0.2);
   overflow: hidden;
   position: relative;
@@ -702,7 +703,7 @@ body.dark-mode .hero__orbit-dot--sm {
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(255,255,255,0.30) 50%,
+    rgba(255,255,255,0.40) 50%,
     transparent 65%
   );
   transform: translateX(-100%) skewX(-15deg);
@@ -730,13 +731,13 @@ body.dark-mode .hero__orbit-dot--sm {
   font-family: var(--font-head);
   font-size: 4rem;
   font-weight: 800;
-  color: #f8f9fa;
+  color: #ffffff;
   background: linear-gradient(135deg, var(--hero-card-fallback-bg1) 0%, var(--hero-card-fallback-bg2) 100%);
   transition: background 0.3s ease;
 }
 .hero__photo-img:not([src=""]):not([src="/photo.jpg"]) ~ .hero__photo-fallback { display: none; }
 
-/* ── MENGEMBALIKAN BAGIAN FLOATING LABELS YANG SEMPAT TERHAPUS ── */
+/* ── FLOATING LABELS ── */
 .hero__photo-label {
   position: absolute;
   bottom: 1rem;

@@ -1,68 +1,73 @@
 /* ========================================================
    CERTIFICATIONS COMPONENT CSS
+   Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
    (Identical Style with Projects Component)
 ======================================================== */
 
-/* ── 1. CSS VARIABLES (Tema Terang & Gelap) ── */
+/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
   /* Card Effects */
-  --cert-card-border-top: rgba(255, 255, 255, 0.8);
-  --cert-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --cert-card-border-top: rgba(255, 255, 255, 0.9);
+  --cert-card-shadow: 0 10px 30px rgba(14, 165, 233, 0.08); /* Cyan Shadow */
   --cert-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
-  --cert-card-glow: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  --cert-card-glow: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255,255,255,0) 70%);
   
   /* Card Hover */
-  --cert-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+  --cert-card-shadow-hover: 0 15px 35px rgba(14, 165, 233, 0.15);
   --cert-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.9);
 
   /* Icon Container */
-  --cert-icon-bg: rgba(255, 255, 255, 0.6);
-  --cert-icon-border: rgba(255, 255, 255, 0.9);
+  --cert-icon-bg: rgba(255, 255, 255, 0.8);
+  --cert-icon-border: rgba(59, 130, 246, 0.2);
   
   /* Text Colors */
-  --cert-title-color: #111111;
+  --cert-title-color: #1e40af; /* Deep Navy Blue */
+  --cert-subtitle-color: #0ea5e9; /* Cyan */
+  --cert-desc-color: #475569; /* Slate Gray */
 
   /* Buttons */
-  --cert-btn-bg: #111111;
+  --cert-btn-bg: #3b82f6; /* Bright Blue */
   --cert-btn-text: #ffffff;
-  --cert-btn-border: #111111;
-  --cert-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --cert-btn-border: #3b82f6;
+  --cert-btn-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
   
   /* Buttons Hover */
-  --cert-btn-hover-bg: rgba(255, 255, 255, 0.85);
-  --cert-btn-hover-text: #111111;
-  --cert-btn-hover-border: #111111;
-  --cert-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  --cert-btn-hover-bg: #2563eb; /* Darker Blue */
+  --cert-btn-hover-text: #ffffff;
+  --cert-btn-hover-border: #2563eb;
+  --cert-btn-hover-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
 }
 
 body.dark-mode {
   /* Card Effects */
-  --cert-card-border-top: rgba(255, 255, 255, 0.15);
+  --cert-card-border-top: rgba(124, 58, 237, 0.2); /* Purple Tint */
   --cert-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --cert-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
-  --cert-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  --cert-card-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
+  --cert-card-glow: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
   
   /* Card Hover */
   --cert-card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.7);
-  --cert-card-inset-hover: inset 0 0 30px rgba(255, 255, 255, 0.1);
+  --cert-card-inset-hover: inset 0 0 30px rgba(124, 58, 237, 0.1);
 
   /* Icon Container */
   --cert-icon-bg: rgba(30, 41, 59, 0.6);
-  --cert-icon-border: rgba(255, 255, 255, 0.2);
+  --cert-icon-border: rgba(124, 58, 237, 0.25);
   
   /* Text Colors */
   --cert-title-color: #F8FAFC;
+  --cert-subtitle-color: #c084fc; /* Light Purple */
+  --cert-desc-color: #94A3B8;
 
   /* Buttons */
-  --cert-btn-bg: #F8FAFC;
-  --cert-btn-text: #0F172A;
-  --cert-btn-border: #F8FAFC;
+  --cert-btn-bg: #7c3aed; /* Deep Purple */
+  --cert-btn-text: #ffffff;
+  --cert-btn-border: #7c3aed;
   --cert-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   
   /* Buttons Hover */
-  --cert-btn-hover-bg: rgba(15, 23, 42, 0.6);
-  --cert-btn-hover-text: #F8FAFC;
-  --cert-btn-hover-border: #F8FAFC;
+  --cert-btn-hover-bg: #6d28d9; /* Darker Purple */
+  --cert-btn-hover-text: #ffffff;
+  --cert-btn-hover-border: #6d28d9;
   --cert-btn-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 
@@ -178,14 +183,14 @@ body.dark-mode {
 
 .cert-card__subtitle {
   font-size: .78rem;
-  color: var(--text-muted); /* Variabel global dari index.css */
+  color: var(--cert-subtitle-color);
   margin-top: .15rem;
   transition: color 0.3s ease;
 }
 
 .cert-card__desc {
   font-size: .85rem;
-  color: var(--text-muted); /* Variabel global dari index.css */
+  color: var(--cert-desc-color);
   line-height: 1.7;
   transition: color 0.3s ease;
 }
