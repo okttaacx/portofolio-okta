@@ -3,20 +3,16 @@
    With Automatic Obsidian Dark Mode Support
 ======================================================== */
 
-/* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
-  /* Teks & Latar Belakang Dasar */
   --about-title-color: #111111;
   --about-bio-color: #666666;
   --about-meta-title: #111111;
   --about-meta-desc: #666666;
-  
-  /* Tag (Badge "About Me") */
+
   --about-tag-bg: rgba(255, 255, 255, 0.6);
   --about-tag-border: rgba(150, 150, 150, 0.4);
   --about-tag-text: #333333;
 
-  /* Card (Glassmorphism) */
   --about-card-bg: rgba(240, 240, 240, 0.5);
   --about-card-border-top: rgba(255, 255, 255, 0.8);
   --about-card-border-bot: rgba(150, 150, 150, 0.3);
@@ -24,48 +20,32 @@
   --about-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
   --about-card-glow: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
 
-  /* Meta Icons (Lokasi, Email) */
-  --about-icon-bg: rgba(255, 255, 255, 0.7);
-  --about-icon-border: rgba(255, 255, 255, 0.9);
-  --about-icon-color: #333333;
-  --about-icon-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  --about-icon-hover-bg: #333333;
-  --about-icon-hover-text: #ffffff;
-  --about-icon-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-
-  /* Skills Grid */
   --about-skill-border-blue: #111111;
   --about-skill-border-coral: #666666;
   --about-skill-border-sage: #333333;
   --about-skill-border-amber: #999999;
-  
-  --about-skill-label: #111111;
-  --about-skill-icon-bg: rgba(255, 255, 255, 0.7);
-  --about-skill-icon-border: rgba(150, 150, 150, 0.3);
-  --about-skill-icon-color: #333333;
 
-  /* Skill Chips */
-  --about-chip-bg: rgba(255, 255, 255, 0.7);
-  --about-chip-border: rgba(150, 150, 150, 0.4);
+  --about-chip-bg: rgba(255, 255, 255, 0.65);
+  --about-chip-border: rgba(150, 150, 150, 0.35);
   --about-chip-text: #333333;
-  --about-chip-hover-bg: #333333;
+  --about-chip-hover-bg: #222222;
   --about-chip-hover-text: #ffffff;
+
+  --about-mq-label-color: #888888;
+  --about-mq-line-color: rgba(150, 150, 150, 0.3);
+  --about-accent-color: #111111;
 }
 
-/* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
-  /* Teks */
   --about-title-color: #F8FAFC;
   --about-bio-color: #94A3B8;
   --about-meta-title: #F8FAFC;
   --about-meta-desc: #94A3B8;
 
-  /* Tag */
   --about-tag-bg: rgba(15, 23, 42, 0.6);
   --about-tag-border: rgba(255, 255, 255, 0.15);
   --about-tag-text: #E2E8F0;
 
-  /* Card */
   --about-card-bg: rgba(15, 23, 42, 0.45);
   --about-card-border-top: rgba(255, 255, 255, 0.15);
   --about-card-border-bot: rgba(0, 0, 0, 0.4);
@@ -73,39 +53,30 @@ body.dark-mode {
   --about-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.05);
   --about-card-glow: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
 
-  /* Meta Icons */
-  --about-icon-bg: rgba(30, 41, 59, 0.6);
-  --about-icon-border: rgba(255, 255, 255, 0.15);
-  --about-icon-color: #CBD5E1;
-  --about-icon-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  --about-icon-hover-bg: #F8FAFC;
-  --about-icon-hover-text: #0F172A;
-  --about-icon-hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
-
-  /* Skills Grid */
   --about-skill-border-blue: #60A5FA;
   --about-skill-border-coral: #F472B6;
   --about-skill-border-sage: #34D399;
   --about-skill-border-amber: #FBBF24;
-  
-  --about-skill-label: #F8FAFC;
-  --about-skill-icon-bg: rgba(30, 41, 59, 0.6);
-  --about-skill-icon-border: rgba(255, 255, 255, 0.15);
-  --about-skill-icon-color: #CBD5E1;
 
-  /* Skill Chips */
   --about-chip-bg: rgba(30, 41, 59, 0.6);
-  --about-chip-border: rgba(255, 255, 255, 0.15);
+  --about-chip-border: rgba(255, 255, 255, 0.12);
   --about-chip-text: #CBD5E1;
   --about-chip-hover-bg: #F8FAFC;
   --about-chip-hover-text: #0F172A;
+
+  --about-mq-label-color: #475569;
+  --about-mq-line-color: rgba(255, 255, 255, 0.08);
+  --about-accent-color: #60A5FA;
 }
 
-
-/* ── 3. STRUKTUR UTAMA CSS ── */
+/* ── STRUKTUR ── */
 .section { padding: 6rem 0; }
 
-.section-header { margin-bottom: 3rem; position: relative; z-index: 2; }
+.section-header {
+  margin-bottom: 2.25rem;
+  position: relative;
+  z-index: 2;
+}
 
 .section-tag {
   display: inline-block;
@@ -131,7 +102,25 @@ body.dark-mode {
   transition: color 0.3s ease;
 }
 
-/* Glassmorphism Card */
+.title-accent {
+  position: relative;
+  display: inline-block;
+  color: var(--about-accent-color);
+}
+
+.title-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--about-accent-color);
+  border-radius: 2px;
+  opacity: 0.25;
+}
+
+/* ── CARD ── */
 .card {
   background: var(--about-card-bg);
   backdrop-filter: blur(16px);
@@ -159,183 +148,148 @@ body.dark-mode {
   transition: background 0.4s ease;
 }
 
-.card > * {
-  position: relative;
-  z-index: 2;
-}
+.card > * { position: relative; z-index: 2; }
 
-/* ===== MAIN GRID ===== */
-.about__grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-/* Card kiri — bio + meta */
-.about__text {
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+/* ── BIO CARD ── */
+.ab-bio-card {
+  margin-bottom: 2.5rem;
 }
 
 .about__bio {
   font-size: .95rem;
   color: var(--about-bio-color);
-  line-height: 1.8;
-  margin-bottom: 1.75rem;
-  flex: 1;
+  line-height: 1.85;
+  margin: 0;
   transition: color 0.3s ease;
 }
 
-.about__meta { display: flex; flex-direction: column; gap: .9rem; }
-
-.about__meta-item {
-  display: flex;
-  align-items: flex-start;
-  gap: .75rem;
+.mq-section {
+  padding: 0.5rem 0 0;
+  position: relative;
 }
 
-/* Icon container */
-.about__meta-icon {
+/* ── MARQUEE LABEL ── */
+.mq-label {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  background: var(--about-icon-bg);
-  border: 1px solid var(--about-icon-border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--about-icon-shadow);
-  color: var(--about-icon-color);
-  transition: all 0.3s ease;
+  gap: 12px;
+  padding: 0 1.75rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 
-.about__meta-item:hover .about__meta-icon {
-  background: var(--about-icon-hover-bg);
-  color: var(--about-icon-hover-text);
-  border-color: var(--about-icon-hover-bg);
-  box-shadow: var(--about-icon-hover-shadow);
-}
-
-.about__meta-item > div {
-  display: flex;
-  flex-direction: column;
-  gap: .1rem;
-  margin-top: 4px;
-}
-
-.about__meta-item strong {
-  font-family: var(--font-head);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--about-meta-title);
-  transition: color 0.3s ease;
-}
-
-.about__meta-item > div > span {
-  font-size: .82rem;
-  color: var(--about-meta-desc);
-  transition: color 0.3s ease;
-}
-
-/* ===== SKILLS GRID (kolom kanan) ===== */
-.about__skills {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.skill-group {
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.skill-group:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2), var(--about-card-inset);
-}
-
-/* Border atas tiap grup skill */
-.skill-group--blue  { border-top: 3px solid var(--about-skill-border-blue); }
-.skill-group--coral { border-top: 3px solid var(--about-skill-border-coral); }
-.skill-group--sage  { border-top: 3px solid var(--about-skill-border-sage); }
-.skill-group--amber { border-top: 3px solid var(--about-skill-border-amber); }
-
-.skill-group__label {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  font-size: .8rem;
-  font-weight: 700;
-  color: var(--about-skill-label);
-  margin-bottom: .75rem;
-  letter-spacing: .03em;
-  flex-shrink: 0;
-  transition: color 0.3s ease;
-}
-
-.skill-group__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  background: var(--about-skill-icon-bg);
-  border: 1px solid var(--about-skill-icon-border);
-  border-radius: 6px;
-  color: var(--about-skill-icon-color);
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.skill-group__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
-  align-content: flex-start;
-}
-
-/* Chip skill */
-.skill-chip {
+.mq-label span {
   font-family: var(--font-code);
-  font-size: .75rem;
-  color: var(--about-chip-text);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--about-mq-label-color);
+  white-space: nowrap;
+}
+
+.mq-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--about-mq-line-color);
+}
+
+/* ── MARQUEE TRACK ── */
+.mq-gap { margin-bottom: 10px; }
+
+.mq-track {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  position: relative;
+  z-index: 2;
+}
+
+.mq-row {
+  display: flex;
+  width: max-content;
+  padding: 4px 0;
+}
+
+.mq-row-1 { animation: mq-ltr 32s linear infinite; }
+.mq-row-2 { animation: mq-rtl 38s linear infinite; }
+
+.mq-row-1:hover,
+.mq-row-2:hover { animation-play-state: paused; }
+
+@keyframes mq-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+@keyframes mq-rtl {
+  from { transform: translateX(-33.333%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── PILLS ── */
+.sp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  margin: 0 5px;
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: .78rem;
+  white-space: nowrap;
+  cursor: default;
   background: var(--about-chip-bg);
   border: 1px solid var(--about-chip-border);
-  padding: .25rem .65rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.3s ease;
+  color: var(--about-chip-text);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.skill-chip:hover {
+.sp:hover {
+  transform: scale(1.07) translateY(-1px);
   background: var(--about-chip-hover-bg);
   color: var(--about-chip-hover-text);
   border-color: var(--about-chip-hover-bg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .about__grid {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-  }
-  .about__text { height: auto; }
-  .about__skills {
-    grid-template-columns: 1fr 1fr;
-    height: auto;
-    grid-template-rows: auto auto;
-  }
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.sp-blue  .dot { background: var(--about-skill-border-blue); }
+.sp-coral .dot { background: var(--about-skill-border-coral); }
+.sp-sage  .dot { background: var(--about-skill-border-sage); }
+.sp-amber .dot { background: var(--about-skill-border-amber); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .section { padding: 4rem 0; }
+  .card { padding: 1.5rem; }
+  .mq-wrapper { padding: 1.5rem 0; }
+  .mq-label { padding: 0 1.25rem; }
 }
 
 @media (max-width: 520px) {
-  .about__skills { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.8rem; }
 }

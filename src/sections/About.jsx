@@ -1,110 +1,88 @@
-import { profile, skills } from '../data/content'
 import './About.css'
 
-const skillColors = {
-  programming: 'blue',
-  database: 'coral',
-  tools: 'sage',
-  soft: 'amber'
-}
+const row1Skills = [
+  { name: 'HTML',          cls: 'sp-blue'  },
+  { name: 'CSS',           cls: 'sp-coral' },
+  { name: 'JavaScript',    cls: 'sp-blue'  },
+  { name: 'PHP (Laravel)', cls: 'sp-sage'  },
+  { name: 'React.js',      cls: 'sp-blue'  },
+  { name: 'Node.js',       cls: 'sp-sage'  },
+  { name: 'Figma',         cls: 'sp-amber' },
+  { name: 'Canva',         cls: 'sp-amber' },
+  { name: 'GitHub',        cls: 'sp-blue'  },
+  { name: 'VS Code',       cls: 'sp-sage'  },
+]
 
-const skillLabels = {
-  programming: 'Programming',
-  database: 'Database',
-  tools: 'Tools & Design',
-  soft: 'Soft Skills'
-}
+const row2Skills = [
+  { name: 'MySQL',         cls: 'sp-coral' },
+  { name: 'phpMyAdmin',    cls: 'sp-coral' },
+  { name: 'MongoDB',       cls: 'sp-sage'  },
+  { name: 'Git',           cls: 'sp-amber' },
+  { name: 'HTML',          cls: 'sp-blue'  },
+  { name: 'CSS',           cls: 'sp-coral' },
+  { name: 'JavaScript',    cls: 'sp-blue'  },
+  { name: 'React.js',      cls: 'sp-blue'  },
+  { name: 'Node.js',       cls: 'sp-sage'  },
+  { name: 'Laravel',       cls: 'sp-amber' },
+]
 
-const skillIcons = {
-  programming: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-    </svg>
-  ),
-  database: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-    </svg>
-  ),
-  tools: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-    </svg>
-  ),
-  soft: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-    </svg>
+function Pill({ name, cls }) {
+  return (
+    <span className={`sp ${cls}`}>
+      <span className="dot" />
+      {name}
+    </span>
   )
 }
-
-const IconLocation = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-  </svg>
-)
-
-const IconMail = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-  </svg>
-)
 
 export default function About() {
   return (
     <section id="about" className="about section">
       <div className="container">
-        
-        {/* HEADER: Tanpa animasi */}
+
         <div className="section-header">
           <span className="section-tag">About Me</span>
-          <h2 className="section-title">Halo, saya Okta</h2>
+          <h2 className="section-title">
+            Halo, saya <span className="title-accent">Okta</span>
+          </h2>
         </div>
 
-        <div className="about__grid">
-          
-          {/* PROFILE TEXT: Tanpa animasi */}
-          <div className="about__text card">
-            <p className="about__bio">{profile.about}</p>
-            <div className="about__meta">
-              <div className="about__meta-item">
-                <span className="about__meta-icon"><IconLocation /></span>
-                <div>
-                  <strong>Lokasi</strong>
-                  <span>{profile.location}</span>
-                </div>
-              </div>
-              <div className="about__meta-item">
-                <span className="about__meta-icon"><IconMail /></span>
-                <div>
-                  <strong>Email</strong>
-                  <span>{profile.email}</span>
-                </div>
+        <div className="ab-bio-card card">
+          <p className="about__bio">
+            Berfokus pada Web Development, Frontend Development, dan UI/UX Design.
+            Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js,
+            dan Node.js, serta merancang UI/UX modern dan user-friendly menggunakan
+            Figma. Memiliki pengalaman internship di Dinas Tenaga Kerja Kota Batu
+            dalam pengembangan sistem berbasis Laravel dan pengelolaan data pelatihan.
+            Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri
+            maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.
+          </p>
+        </div>
+
+        <div className="mq-section">
+          <div className="mq-label">
+            <span>Tech Stack</span>
+          </div>
+
+          <div className="mq-gap">
+            <div className="mq-track">
+              <div className="mq-row mq-row-1">
+                {[...row1Skills, ...row1Skills, ...row1Skills].map((s, i) => (
+                  <Pill key={i} name={s.name} cls={s.cls} />
+                ))}
               </div>
             </div>
           </div>
 
-          {/* SKILLS GRID: Tanpa animasi */}
-          <div className="about__skills">
-            {Object.entries(skills).map(([cat, items]) => (
-              <div 
-                key={cat} 
-                className={`skill-group card skill-group--${skillColors[cat]}`}
-              >
-                <h4 className="skill-group__label">
-                  <span className="skill-group__icon">{skillIcons[cat]}</span>
-                  {skillLabels[cat]}
-                </h4>
-                <div className="skill-group__chips">
-                  {items.map(s => (
-                    <span key={s} className="skill-chip">{s}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="mq-track">
+            <div className="mq-row mq-row-2">
+              {[...row2Skills, ...row2Skills, ...row2Skills].map((s, i) => (
+                <Pill key={i} name={s.name} cls={s.cls} />
+              ))}
+            </div>
           </div>
-
         </div>
+
       </div>
     </section>
   )
