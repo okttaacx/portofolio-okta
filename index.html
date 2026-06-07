@@ -2,7 +2,8 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon sudah diubah ke format PNG -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Okta Ramji Saputra — Web Developer & UI/UX Designer</title>
@@ -13,6 +14,7 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://portofolio-okta.vercel.app/" />
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://portofolio-okta.vercel.app/" />
     <meta property="og:title" content="Okta Ramji Saputra — Web Developer & UI/UX Designer" />
@@ -23,6 +25,7 @@
     <meta property="og:site_name" content="Okta Ramji Saputra Portfolio" />
     <meta property="og:locale" content="id_ID" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://portofolio-okta.vercel.app/" />
     <meta name="twitter:title" content="Okta Ramji Saputra — Web Developer & UI/UX Designer" />
@@ -30,10 +33,12 @@
     <meta name="twitter:image" content="https://portofolio-okta.vercel.app/og-preview.jpg" />
     <meta name="twitter:creator" content="@oktaramji" />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
 
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLMCMZGPJ8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -42,6 +47,7 @@
       gtag('config', 'G-HLMCMZGPJ8');
     </script>
 
+    <!-- Schema.org untuk Person -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -59,8 +65,8 @@
       },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Semarang",
-        "addressRegion": "Jawa Tengah",
+        "addressLocality": "Malang",
+        "addressRegion": "Jawa Timur",
         "addressCountry": "ID"
       },
       "sameAs": [
@@ -70,6 +76,7 @@
     }
     </script>
 
+    <!-- Schema.org untuk WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,13 +86,14 @@
     }
     </script>
 
+    <!-- Script Theme (Dark Mode) -->
     <script>
       (function() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
-          document.body.classList.add('dark-mode');
+          document.documentElement.classList.add('dark-mode');
         } else {
-          document.body.classList.remove('dark-mode');
+          document.documentElement.classList.remove('dark-mode');
         }
       })();
     </script>

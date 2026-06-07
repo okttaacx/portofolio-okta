@@ -4,9 +4,8 @@
 ======================================================== */
 
 :root {
-  /* TEMA TERANG: Bernuansa Biru dan Bersih */
-  --about-title-color: #1e40af; /* Deep Navy Blue */
-  --about-bio-color: #475569;   /* Slate Gray */
+  --about-title-color: #1e40af;
+  --about-bio-color: #475569;
   --about-meta-title: #1e40af;
   --about-meta-desc: #475569;
 
@@ -21,7 +20,6 @@
   --about-card-inset: inset 0 0 25px rgba(255, 255, 255, 0.6);
   --about-card-glow: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255,255,255,0) 70%);
 
-  /* Dot Colors for Light Mode (Blue/Cyan/Cool palette) */
   --about-skill-border-blue: #3b82f6;
   --about-skill-border-coral: #0ea5e9;
   --about-skill-border-sage: #06b6d4;
@@ -30,16 +28,15 @@
   --about-chip-bg: rgba(255, 255, 255, 0.7);
   --about-chip-border: rgba(59, 130, 246, 0.15);
   --about-chip-text: #334155;
-  --about-chip-hover-bg: #3b82f6; /* Bright Blue */
+  --about-chip-hover-bg: #3b82f6;
   --about-chip-hover-text: #ffffff;
 
   --about-mq-label-color: #64748b;
   --about-mq-line-color: rgba(59, 130, 246, 0.15);
-  --about-accent-color: #0ea5e9; /* Cyan Accent */
+  --about-accent-color: #0ea5e9;
 }
 
 body.dark-mode {
-  /* TEMA GELAP: Bernuansa Ungu Elegan */
   --about-title-color: #F8FAFC;
   --about-bio-color: #94A3B8;
   --about-meta-title: #F8FAFC;
@@ -56,7 +53,6 @@ body.dark-mode {
   --about-card-inset: inset 0 0 25px rgba(124, 58, 237, 0.05);
   --about-card-glow: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
 
-  /* Dot Colors for Dark Mode (Purple/Pink palette) */
   --about-skill-border-blue: #8b5cf6;
   --about-skill-border-coral: #c084fc;
   --about-skill-border-sage: #a855f7;
@@ -65,12 +61,12 @@ body.dark-mode {
   --about-chip-bg: rgba(30, 41, 59, 0.6);
   --about-chip-border: rgba(124, 58, 237, 0.2);
   --about-chip-text: #CBD5E1;
-  --about-chip-hover-bg: #7c3aed; /* Deep Purple */
+  --about-chip-hover-bg: #7c3aed;
   --about-chip-hover-text: #ffffff;
 
   --about-mq-label-color: #64748b;
   --about-mq-line-color: rgba(124, 58, 237, 0.15);
-  --about-accent-color: #a855f7; /* Purple Accent */
+  --about-accent-color: #a855f7;
 }
 
 /* ── STRUKTUR ── */
@@ -273,18 +269,36 @@ body.dark-mode {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
+/* ── PILL ICON ── */
+.pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.sp-blue  .pill-icon { color: var(--about-skill-border-blue); }
+.sp-coral .pill-icon { color: var(--about-skill-border-coral); }
+.sp-sage  .pill-icon { color: var(--about-skill-border-sage); }
+.sp-amber .pill-icon { color: var(--about-skill-border-amber); }
+
+.sp:hover .pill-icon {
+  opacity: 1;
+  color: var(--about-chip-hover-text);
+}
+
+/* fallback dot jika ikon tidak ditemukan */
 .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
   opacity: 0.85;
+  background: currentColor;
 }
-
-.sp-blue  .dot { background: var(--about-skill-border-blue); }
-.sp-coral .dot { background: var(--about-skill-border-coral); }
-.sp-sage  .dot { background: var(--about-skill-border-sage); }
-.sp-amber .dot { background: var(--about-skill-border-amber); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {

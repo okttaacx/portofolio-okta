@@ -1,4 +1,31 @@
 import './About.css'
+import {
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
+  FaFigma, FaGithub, FaGitAlt, FaPhp,
+} from 'react-icons/fa'
+import {
+  SiLaravel, SiMongodb, SiMysql,
+  SiCanva, SiPhpmyadmin,
+} from 'react-icons/si'
+import { VscCode } from 'react-icons/vsc'
+
+const iconMap = {
+  'HTML':          <FaHtml5 />,
+  'CSS':           <FaCss3Alt />,
+  'JavaScript':    <FaJs />,
+  'PHP (Laravel)': <FaPhp />,
+  'React.js':      <FaReact />,
+  'Node.js':       <FaNodeJs />,
+  'Figma':         <FaFigma />,
+  'Canva':         <SiCanva />,
+  'GitHub':        <FaGithub />,
+  'VS Code':       <VscCode />,
+  'MySQL':         <SiMysql />,
+  'phpMyAdmin':    <SiPhpmyadmin />,
+  'MongoDB':       <SiMongodb />,
+  'Git':           <FaGitAlt />,
+  'Laravel':       <SiLaravel />,
+}
 
 const row1Skills = [
   { name: 'HTML',          cls: 'sp-blue'  },
@@ -29,30 +56,30 @@ const row2Skills = [
 function Pill({ name, cls }) {
   return (
     <span className={`sp ${cls}`}>
-      <span className="dot" />
+      <span className="pill-icon">
+        {iconMap[name] ?? <span className="dot" />}
+      </span>
       {name}
     </span>
   )
 }
 
-// ── KOMPONEN STAR BORDER INTERNAL ─────────────────────────────────────────────
 function StarBorder({ children, className = '', speed = '6s' }) {
   return (
     <div className={`star-border-container ${className}`}>
-      <div 
-        className="border-gradient-bottom" 
+      <div
+        className="border-gradient-bottom"
         style={{ animationDuration: speed }}
-      ></div>
-      <div 
-        className="border-gradient-top" 
+      />
+      <div
+        className="border-gradient-top"
         style={{ animationDuration: speed }}
-      ></div>
-      {/* Menggabungkan style StarBorder dengan Glass Card bawaan */}
+      />
       <div className="star-inner-content card">
         {children}
       </div>
     </div>
-  );
+  )
 }
 
 export default function About() {
@@ -67,7 +94,6 @@ export default function About() {
           </h2>
         </div>
 
-        {/* Membungkus deskripsi dengan efek StarBorder */}
         <StarBorder className="ab-bio-card" speed="5s">
           <p className="about__bio">
             Berfokus pada Web Development, Frontend Development, dan UI/UX Design.
