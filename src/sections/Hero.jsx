@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/content'
 import './Hero.css'
+import ShinyText from '../components/ShinyText'
+import { FaReact, FaFigma } from 'react-icons/fa'
+import { SiLaravel, SiMysql } from 'react-icons/si'
 
-const techBadges = ['React', 'Laravel', 'Figma', 'MySQL']
+const techBadges = [
+  { name: 'React',   icon: <FaReact /> },
+  { name: 'Laravel', icon: <SiLaravel /> },
+  { name: 'Figma',   icon: <FaFigma /> },
+  { name: 'MySQL',   icon: <SiMysql /> },
+]
 
 function useMounted() {
   const [mounted, setMounted] = useState(false)
@@ -60,15 +68,21 @@ function LoopingChips({ badges }) {
     <>
       {badges.map((tech, i) => (
         <span
-          key={tech}
+          key={tech.name}
           className={`hero__tech-chip ${visibleIndex >= i ? 'visible' : ''}`}
           style={{
             opacity: visibleIndex >= i ? 1 : 0,
             transform: visibleIndex >= i ? 'translateX(0)' : 'translateX(-20px)',
-            transition: 'all 0.4s ease-out'
+            transition: 'all 0.4s ease-out',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
           }}
         >
-          {tech}
+          <span style={{ display: 'flex', alignItems: 'center', fontSize: '1em' }}>
+            {tech.icon}
+          </span>
+          {tech.name}
         </span>
       ))}
     </>
@@ -79,7 +93,6 @@ export default function Hero() {
   const mounted = useMounted()
   const dropdownRef = useRef(null)
   const [showCVMenu, setShowCVMenu] = useState(false)
-
   const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
@@ -131,8 +144,25 @@ export default function Hero() {
           </div>
 
           <h1 className={`hero__name ${mounted ? 'anim-in' : ''}`} style={{ '--d': '120ms' }}>
-            <span className="hero__name-line">Okta Ramji</span>
-            <span className="hero__name-line hero__name-accent">Saputra</span>
+            <span className="hero__name-line">
+              <ShinyText
+                text="Okta Ramji"
+                speed={3}
+                color={isDark ? '#ffffff' : '#1e3a8a'}
+                shineColor={isDark ? '#c084fc' : '#3b82f6'}
+                spread={120}
+              />
+            </span>
+            <span className="hero__name-line hero__name-accent">
+              <ShinyText
+                text="Saputra"
+                speed={3}
+                delay={0.5}
+                color={isDark ? '#a855f7' : '#1d4ed8'}
+                shineColor={isDark ? '#ffffff' : '#93c5fd'}
+                spread={120}
+              />
+            </span>
           </h1>
 
           <div className={`hero__divider ${mounted ? 'anim-in' : ''}`} style={{ '--d': '300ms' }} />
