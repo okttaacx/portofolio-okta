@@ -75,64 +75,6 @@ function LoopingChips({ badges }) {
   )
 }
 
-function GlarePhoto({ src, alt }) {
-  const cardRef = useRef(null)
-  const glareRef = useRef(null)
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current
-    const glare = glareRef.current
-    if (!card || !glare) return
-
-    const rect = card.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
-
-    glare.style.background = `radial-gradient(
-      circle at ${x}% ${y}%,
-      rgba(255,255,255,0.55) 0%,
-      rgba(255,255,255,0.2) 30%,
-      rgba(255,255,255,0.05) 55%,
-      transparent 70%
-    )`
-    glare.style.opacity = '1'
-  }
-
-  const handleMouseLeave = () => {
-    if (glareRef.current) glareRef.current.style.opacity = '0'
-  }
-
-  return (
-    <div
-      ref={cardRef}
-      className="hero__photo-card"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
-      <div className="hero__photo-frame">
-        <img src={src} alt={alt} className="hero__photo-img" draggable={false} />
-        <div className="hero__photo-fallback">OR</div>
-      </div>
-
-      {/* Layer glare ngikutin mouse */}
-      <div
-        ref={glareRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: 'inherit',
-          pointerEvents: 'none',
-          opacity: 0,
-          transition: 'opacity 0.3s ease',
-          zIndex: 10,
-          mixBlendMode: 'overlay',
-        }}
-      />
-    </div>
-  )
-}
-
 export default function Hero() {
   const mounted = useMounted()
   const dropdownRef = useRef(null)
@@ -275,10 +217,17 @@ export default function Hero() {
 
         {/* ═══ KOLOM KANAN: FOTO ═══ */}
         <div className={`hero__photo-wrap ${mounted ? 'anim-in' : ''}`} style={{ '--d': '200ms' }}>
-          <GlarePhoto
-            src={isDark ? "/foto-profil-dark.jpeg" : "/foto-profil.jpeg"}
-            alt="Okta Ramji Saputra - Frontend & Fullstack Developer"
-          />
+          <div className="hero__photo-card">
+            <div className="hero__photo-frame">
+              <img
+                src={isDark ? "/foto-profil-dark.jpeg" : "/foto-profil.jpeg"}
+                alt="Okta Ramji Saputra - Frontend & Fullstack Developer"
+                className="hero__photo-img"
+                draggable={false}
+              />
+              <div className="hero__photo-fallback">OR</div>
+            </div>
+          </div>
         </div>
 
       </div>

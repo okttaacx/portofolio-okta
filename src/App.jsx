@@ -7,7 +7,8 @@ import './index.css'
 import CustomCursor from './components/CustomCursor'
 import ScrollToTop from './components/ScrollToTop'
 import WaveBackground from './components/OrbBackground'   
-import AIAssistant from './components/AIAssistant' // 1. Import komponen AI
+import AIAssistant from './components/AIAssistant'
+import MusicPlayer from './components/MusicPlayer'
 
 // Import Halaman
 import Navbar from './components/Navbar'
@@ -53,7 +54,8 @@ export default function App() {
 
       {/* Komponen Global */}
       <Analytics />
-      <AIAssistant /> {/* 2. Panggil Komponen AI di sini */}
+      <AIAssistant />
+      <MusicPlayer />
     </Router>
   )
 }
