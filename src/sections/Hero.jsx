@@ -250,7 +250,7 @@ export default function Hero() {
           <div className="hero__photo-card">
             <div className="hero__photo-frame">
               <img
-                src={isDark ? "/foto-profil-dark.jpeg" : "/foto-profil.jpeg"}
+                src={isDark ? "/foto-profil-dark.webp" : "/foto-profil.webp"}
                 alt="Okta Ramji Saputra - Frontend & Fullstack Developer"
                 className="hero__photo-img"
                 draggable={false}
