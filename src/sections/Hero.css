@@ -424,12 +424,12 @@ body.dark-mode .hero__lines span {
 }
 
 /* ══════════════════════════════════════════
-   CTA BUTTONS
+   CTA BUTTONS (Diperkecil)
 ══════════════════════════════════════════ */
 .hero__ctas {
   display: flex;
   flex-direction: row;
-  gap: 0.85rem;
+  gap: 0.75rem;
   margin-bottom: 2.25rem;
   align-items: center;
   justify-content: flex-start;
@@ -438,8 +438,8 @@ body.dark-mode .hero__lines span {
 .btn {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 0.88rem;
-  padding: 0.8rem 1.5rem;
+  font-size: 0.82rem; /* Diperkecil dari 0.88rem */
+  padding: 0.7rem 1.25rem; /* Diperkecil paddingnya */
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
@@ -496,7 +496,7 @@ body.dark-mode .hero__lines span {
 .btn--outline:active { transform: translateY(-1px); }
 
 /* ══════════════════════════════════════════
-   CV DROPDOWN
+   CV DROPDOWN (Diperkecil & Lebih Rapi)
 ══════════════════════════════════════════ */
 .hero__cv-wrapper {
   position: relative;
@@ -510,7 +510,7 @@ body.dark-mode .hero__lines span {
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
-  min-width: 170px;
+  min-width: 150px; /* Lebar minimum dikurangi */
   background: var(--cv-dropdown-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -538,11 +538,11 @@ body.dark-mode .hero__lines span {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.6rem;
-  padding: 10px 16px;
+  gap: 0.5rem; /* Gap ikon dan teks diperkecil */
+  padding: 8px 12px; /* Padding lebih tipis */
   text-decoration: none;
   color: var(--cv-dropdown-text);
-  font-size: 0.82rem;
+  font-size: 0.75rem; /* Font diperkecil dari 0.82rem */
   font-weight: 600;
   border-bottom: 1px solid rgba(59, 130, 246, 0.15);
   transition: background 0.18s ease, color 0.18s ease;
@@ -552,6 +552,11 @@ body.dark-mode .hero__lines span {
 .hero__cv-option:hover {
   background: var(--cv-dropdown-hover-bg);
   color: var(--cv-dropdown-hover-text);
+}
+
+/* Pastikan kelas pembungkus bendera punya sifat dasar inline-block di desktop */
+.cv-flag {
+  display: inline-block;
 }
 
 /* ── Stats ─────────────────────────────────────────── */
@@ -860,7 +865,7 @@ body.dark-mode .hero__orbit-dot--sm {
   .btn {
     width: 100%;
     padding: 0.62rem 1rem;
-    font-size: 0.82rem;
+    font-size: 0.78rem; /* Lebih kecil lagi khusus di HP */
   }
 
   .hero__cv-dropdown--fixed {
@@ -870,6 +875,11 @@ body.dark-mode .hero__orbit-dot--sm {
     animation: scaleInFixed 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     transform-origin: top center;
     z-index: 9999 !important;
+  }
+
+  /* Menghilangkan bendera saat di mode mobile */
+  .hero__cv-option .cv-flag {
+    display: none !important;
   }
 }
 

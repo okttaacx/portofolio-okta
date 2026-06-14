@@ -388,15 +388,38 @@ export const experiences = [
 export const certifications = [
   {
     id: 1,
+    title: "Full Stack Open",
+    subtitle: "Sertifikasi Internasional",
+    issuer: "University of Helsinki",
+    year: "2026",
+    description:
+      "Berhasil menyelesaikan 5 ECTS kursus online Full Stack Open dengan nilai tertinggi (Grade 5). Membahas pengembangan web modern secara mendalam menggunakan React, Node.js, Express, MongoDB, REST API, autentikasi, dan pengujian aplikasi.",
+    link: "https://bit.ly/sertifikat-fullstackopen", // Tautan verifikasi asli agar recruiter bisa cek langsung
+    color: "green",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M8 12l2.5 2.5L16 9"/></svg>`,
+    highlights: [
+      "Lulus dengan Grade 5", // Tambahan highlight nilai
+      "React & Node.js",
+      "MongoDB & REST API",
+      "Autentikasi & Pengujian"
+    ]
+  },
+  {
+    id: 2,
     title: "Hak Cipta (HKI): Document Scanner & Archive Digital",
     subtitle: "Program Komputer",
     issuer: "Kementerian Hukum RI",
     credentialId: "001077149",
-    year: "2025",
-    description: "Program komputer pemindai dan arsip dokumen digital yang terdaftar resmi sebagai Hak Cipta. Dikembangkan bersama tim peneliti di bawah naungan Universitas Muhammadiyah Malang.",
+    year: "2026",
+    description:
+      "Program komputer pemindai dan arsip dokumen digital yang terdaftar resmi sebagai Hak Cipta. Dikembangkan bersama tim peneliti di bawah naungan Universitas Muhammadiyah Malang.",
     link: "https://bit.ly/hki-okta",
     color: "blue",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><text x="12" y="16" font-size="10" text-anchor="middle" fill="currentColor" stroke="none" font-family="Arial" font-weight="bold">C</text></svg>`,
-    highlights: ["Terdaftar Resmi di Kemenkumham", "Sistem Arsip Digital Otomatis", "Kolaborasi Tim Peneliti"]
+    highlights: [
+      "Terdaftar Resmi di Kemenkumham",
+      "Sistem Arsip Digital Otomatis",
+      "Kolaborasi Tim Peneliti"
+    ]
   }
 ];

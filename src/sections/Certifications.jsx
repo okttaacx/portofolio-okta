@@ -20,22 +20,18 @@ const IconArrowUpRight = () => (
   </svg>
 );
 
-// ── PALET WARNA LIGHT MODE (Tema Biru Cerah & Cyan) ──
-const colorMapLight = {
-  blue:   { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(59, 130, 246, 0.25)', accent: '#3b82f6' }, // Bright Blue
-  coral:  { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(14, 165, 233, 0.25)', accent: '#0ea5e9' }, // Cyan
-  yellow: { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(37, 99, 235, 0.25)', accent: '#2563eb' }, // Darker Blue
-  sage:   { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(6, 182, 212, 0.25)', accent: '#06b6d4' }, // Teal
-  purple: { bg: 'rgba(255, 255, 255, 0.7)', border: 'rgba(99, 102, 241, 0.25)', accent: '#6366f1' }, // Indigo
+// ── PALET WARNA LIGHT MODE (Satu Warna: Biru) ──
+const themeLightBlue = { 
+  bg: 'rgba(255, 255, 255, 0.7)', 
+  border: 'rgba(59, 130, 246, 0.25)', 
+  accent: '#3b82f6' 
 };
 
-// ── PALET WARNA DARK MODE (Tema Ungu Elegan) ──
-const colorMapDark = {
-  blue:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(139, 92, 246, 0.3)', accent: '#8b5cf6' }, // Violet
-  coral:  { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(192, 132, 252, 0.3)', accent: '#c084fc' }, // Light Purple
-  yellow: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(168, 85, 247, 0.3)', accent: '#a855f7' }, // Purple
-  sage:   { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(216, 180, 254, 0.3)', accent: '#d8b4fe' }, // Pale Purple
-  purple: { bg: 'rgba(15, 23, 42, 0.5)', border: 'rgba(124, 58, 237, 0.3)', accent: '#7c3aed' }, // Deep Purple
+// ── PALET WARNA DARK MODE (Satu Warna: Ungu) ──
+const themeDarkPurple = { 
+  bg: 'rgba(15, 23, 42, 0.5)', 
+  border: 'rgba(168, 85, 247, 0.3)', 
+  accent: '#a855f7' 
 };
 
 export default function Certifications() {
@@ -60,8 +56,8 @@ export default function Certifications() {
     return () => observer.disconnect();
   }, []);
 
-  // Tentukan mana palet warna yang lagi aktif
-  const activeColorMap = isDark ? colorMapDark : colorMapLight;
+  // Tentukan warna yang aktif berdasarkan mode
+  const activeColor = isDark ? themeDarkPurple : themeLightBlue;
 
   return (
     <section id="certifications" className="section certifications">
@@ -76,15 +72,14 @@ export default function Certifications() {
         {/* Grid tanpa animasi */}
         <div className="certs__grid">
           {certifications.map((c) => {
-            const color = activeColorMap[c.color] ?? activeColorMap.purple;
             return (
               <div
                 key={c.id}
                 className="cert-card"
                 style={{
-                  '--c-bg': color.bg,
-                  '--c-border': color.border,
-                  '--c-accent': color.accent,
+                  '--c-bg': activeColor.bg,
+                  '--c-border': activeColor.border,
+                  '--c-accent': activeColor.accent,
                 }}
               >
                 {/* BAGIAN ATAS: Header, Deskripsi, Highlights */}

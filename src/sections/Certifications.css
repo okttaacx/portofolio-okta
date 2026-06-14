@@ -25,7 +25,7 @@
   --cert-subtitle-color: #0ea5e9; /* Cyan */
   --cert-desc-color: #475569; /* Slate Gray */
 
-  /* Buttons */
+  /* Buttons (Biru di Mode Terang) */
   --cert-btn-bg: #3b82f6; /* Bright Blue */
   --cert-btn-text: #ffffff;
   --cert-btn-border: #3b82f6;
@@ -58,7 +58,7 @@ body.dark-mode {
   --cert-subtitle-color: #c084fc; /* Light Purple */
   --cert-desc-color: #94A3B8;
 
-  /* Buttons */
+  /* Buttons (Ungu di Mode Gelap) */
   --cert-btn-bg: #7c3aed; /* Deep Purple */
   --cert-btn-text: #ffffff;
   --cert-btn-border: #7c3aed;
@@ -256,7 +256,7 @@ body.dark-mode {
   box-sizing: border-box;
   
   border-radius: var(--radius-sm);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease; /* Transisi dipercepat sedikit agar responsif */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,11 +270,20 @@ body.dark-mode {
   text-decoration: none;
 }
 
+/* Efek saat KENA KURSOR (Hover) */
 .cert-card__btn:hover {
   background: var(--cert-btn-hover-bg);
   color: var(--cert-btn-hover-text);
   border-color: var(--cert-btn-hover-border);
   box-shadow: var(--cert-btn-hover-shadow);
+  transform: translateY(-2px); /* Tombol seolah terangkat naik */
+}
+
+/* Efek saat DIPENCET (Active) */
+.cert-card__btn:active {
+  transform: translateY(1px) scale(0.95); /* Tombol melesak ke dalam */
+  filter: brightness(0.85); /* Warna menjadi lebih gelap sesaat */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* Bayangan mengecil */
 }
 
 @media (max-width: 1000px) { .certs__grid { grid-template-columns: 1fr 1fr; } }
