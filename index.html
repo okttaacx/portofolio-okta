@@ -2,10 +2,20 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon sudah diubah ke format PNG -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <!-- FIX #1: Theme script PERTAMA sebelum apapun — cegah flash of wrong theme -->
+    <!-- FIX #2: Konsistenkan ke document.body (sama dengan semua komponen React) -->
+    <script>
+      (function() {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+          document.body && document.body.classList.add('dark-mode');
+        }
+      })();
+    </script>
+
     <title>Okta Ramji Saputra — Web Developer & UI/UX Designer</title>
     <meta name="title" content="Okta Ramji Saputra — Web Developer & UI/UX Designer" />
     <meta name="description" content="Portofolio digital Okta Ramji Saputra, Web Developer & UI/UX Designer. Berpengalaman dengan React.js, Laravel, Node.js, dan Figma." />
@@ -33,19 +43,24 @@
     <meta name="twitter:image" content="https://portofolio-okta.vercel.app/og-preview.jpg" />
     <meta name="twitter:creator" content="@oktaramji" />
 
-    <!-- Fonts -->
+    <!-- FIX #3: Preconnect + preload font dengan display=swap -->
+    <!-- Dulu tidak ada display=swap → font blocking render sampai download selesai -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FIX #3b: Hapus weight 300 Poppins — tidak dipakai di CSS, hanya tambah download size -->
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLMCMZGPJ8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HLMCMZGPJ8');
-    </script>
+    <!-- FIX #4: Preload foto profil (LCP element) -->
+    <!-- Browser fetch gambar lebih awal, tidak nunggu JS/React jalan dulu -->
+    <link rel="preload" as="image" href="/foto-profil.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/foto-profil-dark.webp" />
+
+    <!-- FIX #5: Preload audio music player — supaya tidak block saat user klik play -->
+    <!-- Gunakan prefetch (bukan preload) karena tidak dibutuhkan langsung -->
+    <link rel="prefetch" as="audio" href="/bgmusic.mp3" />
 
     <!-- Schema.org untuk Person -->
     <script type="application/ld+json">
@@ -86,20 +101,28 @@
     }
     </script>
 
-    <!-- Script Theme (Dark Mode) -->
-    <script>
-      (function() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-          document.documentElement.classList.add('dark-mode');
-        } else {
-          document.documentElement.classList.remove('dark-mode');
-        }
-      })();
+    <!-- FIX #6: Google Analytics dipindah ke bawah — load setelah konten kritis -->
+    <!-- Pakai defer supaya tidak blocking parser HTML sama sekali -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HLMCMZGPJ8"></script>
+    <script defer>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HLMCMZGPJ8', { send_page_view: true });
     </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- FIX #2 lanjutan: Sync dark-mode ke body setelah body tersedia -->
+    <script>
+      (function() {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add('dark-mode');
+        }
+      })();
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

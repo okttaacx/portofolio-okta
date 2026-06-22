@@ -2,7 +2,6 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 
 const playlist = [
   { title: 'Short Meditation', artist: 'Relaxation Music', src: '/bgmusic.mp3' },
-  { title: 'Shape of My Heart', artist: 'Backstreet Boys', src: '/bgmusic2.mp3' },
 ]
 
 // ── Icons ─────────────────────────────────────────────────
@@ -39,7 +38,39 @@ const IcoClose = () => (
   </svg>
 )
 
-// ── Bola bouncing canvas ──────────────────────────────────
+// ── Inject style sekali saja di luar komponen ─────────────
+// FIX #1: Dulu inline <style> di dalam render → dibuat ulang tiap render
+const STYLE_ID = 'music-player-styles'
+if (typeof document !== 'undefined' && !document.getElementById(STYLE_ID)) {
+  const s = document.createElement('style')
+  s.id = STYLE_ID
+  s.textContent = `
+    @keyframes mp-pop {
+      from { opacity:0; transform:scale(0.84) translateY(12px); }
+      to   { opacity:1; transform:scale(1)    translateY(0); }
+    }
+    @keyframes mp-pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%     { opacity:.35; transform:scale(.65); }
+    }
+    @keyframes mp-ripple {
+      0%   { transform:scale(1);   opacity:.38; }
+      100% { transform:scale(1.85); opacity:0; }
+    }
+    .mp-panel  { animation: mp-pop .22s cubic-bezier(0.34,1.52,0.64,1) both; }
+    .mp-track  { transition: background .15s; }
+    .mp-track:hover { opacity:.82; }
+    .mp-fab    { transition: transform .18s, box-shadow .25s; }
+    .mp-fab:hover  { transform: scale(1.07) !important; }
+    .mp-fab:active { transform: scale(0.94) !important; }
+    @media (max-width: 480px) {
+      .mp-panel { width: calc(100vw - 52px) !important; max-width: 265px !important; }
+    }
+  `
+  document.head.appendChild(s)
+}
+
+// ── Bouncing Balls ────────────────────────────────────────
 function makeBalls(isDark, size) {
   const light = ['#3b82f6','#60a5fa','#93c5fd','#1d4ed8','#2563eb','#bfdbfe']
   const dark  = ['#c084fc','#a855f7','#e879f9','#818cf8','#9333ea','#d8b4fe']
@@ -59,11 +90,11 @@ function BouncingBalls({ playing, size = 52, isDark }) {
   const rafRef    = useRef(null)
   const ballsRef  = useRef(null)
   const lastRef   = useRef(null)
+  // FIX #2: Pakai ref bukan prop langsung supaya RAF tidak perlu restart
   const stateRef  = useRef({ playing, isDark })
 
   useEffect(() => { stateRef.current = { playing, isDark } }, [playing, isDark])
 
-  // Reset bola saat tema berubah
   useEffect(() => {
     ballsRef.current = makeBalls(isDark, size)
   }, [isDark, size])
@@ -78,6 +109,13 @@ function BouncingBalls({ playing, size = 52, isDark }) {
     if (!ballsRef.current) ballsRef.current = makeBalls(isDark, size)
 
     const tick = (t) => {
+      // FIX #3: Hentikan RAF saat tab tidak aktif → hemat CPU/GPU drastis
+      if (document.hidden) {
+        lastRef.current = null
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
       const { playing: p } = stateRef.current
       const dt = lastRef.current ? Math.min((t - lastRef.current) / 16, 2.5) : 1
       lastRef.current = t
@@ -105,7 +143,6 @@ function BouncingBalls({ playing, size = 52, isDark }) {
           x -= nx * ov
           y -= ny * ov
         }
-        // Soft glow gradient
         const g = ctx.createRadialGradient(x - r * 0.35, y - r * 0.35, r * 0.05, x, y, r)
         g.addColorStop(0, color + 'ff')
         g.addColorStop(0.6, color + 'bb')
@@ -122,10 +159,24 @@ function BouncingBalls({ playing, size = 52, isDark }) {
     }
 
     rafRef.current = requestAnimationFrame(tick)
+
+    // FIX #4: Pause animasi saat tab hidden, resume saat visible
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      } else {
+        lastRef.current = null
+        rafRef.current = requestAnimationFrame(tick)
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
     return () => {
       cancelAnimationFrame(rafRef.current)
       rafRef.current = null
       lastRef.current = null
+      document.removeEventListener('visibilitychange', handleVisibility)
     }
   }, [size])
 
@@ -138,16 +189,25 @@ function BouncingBalls({ playing, size = 52, isDark }) {
 // ── Main ──────────────────────────────────────────────────
 export default function MusicPlayer() {
   const audioRef   = useRef(null)
-  const ringRafRef = useRef(null)
-  const ringLast   = useRef(null)
+
+  // FIX #5: Ring berputar pakai CSS transform via ref, BUKAN setState
+  // Dulu: setRingDeg di RAF → re-render React 60x/detik!
+  // Sekarang: langsung manipulasi DOM style → 0 re-render
+  const ringElemRef = useRef(null)
+  const ringRafRef  = useRef(null)
+  const ringDegRef  = useRef(0)
+  const ringLastRef = useRef(null)
+  const playingRef  = useRef(false)
 
   const [playing,      setPlaying]      = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [expanded,     setExpanded]     = useState(false)
-  const [ringDeg,      setRingDeg]      = useState(0)
   const [isDark,       setIsDark]       = useState(false)
 
-  // Deteksi dark mode dari class website (bukan OS)
+  // Sync playingRef dengan state
+  useEffect(() => { playingRef.current = playing }, [playing])
+
+  // Deteksi dark mode
   useEffect(() => {
     const check = () =>
       setIsDark(
@@ -162,40 +222,64 @@ export default function MusicPlayer() {
     return () => obs.disconnect()
   }, [])
 
-  // Ring berputar lambat — pakai ref untuk speed supaya tidak restart RAF
-  const playingRef = useRef(playing)
-  useEffect(() => { playingRef.current = playing }, [playing])
-
+  // FIX #5 lanjutan: Ring RAF — update DOM langsung, no setState
   useEffect(() => {
     const tick = (t) => {
-      if (ringLast.current !== null) {
-        const speed = playingRef.current ? 0.038 : 0.010
-        setRingDeg(prev => (prev + (t - ringLast.current) * speed) % 360)
+      // FIX #6: Hentikan juga saat tab hidden
+      if (!document.hidden && ringElemRef.current) {
+        if (ringLastRef.current !== null) {
+          const speed = playingRef.current ? 0.038 : 0.010
+          ringDegRef.current = (ringDegRef.current + (t - ringLastRef.current) * speed) % 360
+          ringElemRef.current.style.transform = `rotate(${ringDegRef.current}deg)`
+        }
+        ringLastRef.current = t
+      } else {
+        ringLastRef.current = null
       }
-      ringLast.current = t
       ringRafRef.current = requestAnimationFrame(tick)
     }
+
     ringRafRef.current = requestAnimationFrame(tick)
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(ringRafRef.current)
+        ringRafRef.current = null
+      } else {
+        ringLastRef.current = null
+        ringRafRef.current = requestAnimationFrame(tick)
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
     return () => {
       cancelAnimationFrame(ringRafRef.current)
-      ringLast.current = null
+      ringLastRef.current = null
+      document.removeEventListener('visibilitychange', handleVisibility)
     }
   }, [])
 
+  // FIX #7: Hilangkan duplikasi src — jangan set audio.src di useEffect
+  // kalau sudah ada di tag <audio src=...>
+  // Cukup load + play saat track berganti
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-    audio.src = playlist[currentIndex].src
     audio.load()
-    if (playing) audio.play().catch(() => {})
+    if (playingRef.current) audio.play().catch(() => {})
   }, [currentIndex])
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current
     if (!audio) return
-    if (playing) { audio.pause(); setPlaying(false) }
-    else          { audio.play().catch(() => {}); setPlaying(true) }
-  }, [playing])
+    if (playingRef.current) {
+      audio.pause()
+      setPlaying(false)
+    } else {
+      audio.play().catch(() => {})
+      setPlaying(true)
+    }
+  }, [])
 
   const selectTrack = (i) => {
     if (i === currentIndex) { togglePlay(); return }
@@ -203,7 +287,7 @@ export default function MusicPlayer() {
     setPlaying(true)
   }
 
-  // ── Token warna — selaras dengan tema biru/ungu website ──
+  // ── Token warna ───────────────────────────────────────
   const accent  = isDark ? '#a855f7'              : '#3b82f6'
   const accent2 = isDark ? 'rgba(168,85,247,0.28)': 'rgba(59,130,246,0.22)'
   const bg      = isDark ? 'rgba(15,23,42,0.88)'  : 'rgba(255,255,255,0.88)'
@@ -223,30 +307,6 @@ export default function MusicPlayer() {
 
   return (
     <>
-      <style>{`
-        @keyframes mp-pop {
-          from { opacity:0; transform:scale(0.84) translateY(12px); }
-          to   { opacity:1; transform:scale(1)    translateY(0); }
-        }
-        @keyframes mp-pulse {
-          0%,100% { opacity:1; transform:scale(1); }
-          50%     { opacity:.35; transform:scale(.65); }
-        }
-        @keyframes mp-ripple {
-          0%   { transform:scale(1);   opacity:.38; }
-          100% { transform:scale(1.85); opacity:0; }
-        }
-        .mp-panel  { animation: mp-pop .22s cubic-bezier(0.34,1.52,0.64,1) both; }
-        .mp-track  { transition: background .15s; }
-        .mp-track:hover { opacity:.82; }
-        .mp-fab    { transition: transform .18s, box-shadow .25s; }
-        .mp-fab:hover  { transform: scale(1.07) !important; }
-        .mp-fab:active { transform: scale(0.94) !important; }
-        @media (max-width: 480px) {
-          .mp-panel { width: calc(100vw - 52px) !important; max-width: 265px !important; }
-        }
-      `}</style>
-
       <div style={{
         position: 'fixed', bottom: 24, left: 24, zIndex: 9999,
         display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10,
@@ -264,17 +324,14 @@ export default function MusicPlayer() {
             overflow: 'hidden',
             boxShadow: shadow,
           }}>
-            {/* accent line */}
             <div style={{ height: 2.5, background: `linear-gradient(90deg,${accent},transparent)`, opacity: .85 }}/>
 
-            {/* now playing */}
             <div style={{
               padding: '13px 13px 11px',
               display: 'flex', alignItems: 'center', gap: 11,
               borderBottom: `1px solid ${border}`,
               position: 'relative',
             }}>
-              {/* Mini canvas bola */}
               <div style={{
                 width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
                 background: canvBg,
@@ -316,7 +373,6 @@ export default function MusicPlayer() {
               </button>
             </div>
 
-            {/* playlist */}
             <div style={{ padding: '5px 0 4px' }}>
               {playlist.map((track, i) => {
                 const active = i === currentIndex
@@ -353,18 +409,20 @@ export default function MusicPlayer() {
         {/* ── FAB ── */}
         <div style={{ position: 'relative', width: 52, height: 52 }}>
 
-          {/* Ring dashed berputar — tanpa background apa-apa */}
-          <div style={{
-            position: 'absolute',
-            inset: -6,
-            borderRadius: '50%',
-            border: `1.5px dashed ${accent}`,
-            opacity: isDark ? 0.5 : 0.45,
-            transform: `rotate(${ringDeg}deg)`,
-            pointerEvents: 'none',
-          }}/>
+          {/* FIX #5: ref langsung ke div ring, bukan state */}
+          <div
+            ref={ringElemRef}
+            style={{
+              position: 'absolute',
+              inset: -6,
+              borderRadius: '50%',
+              border: `1.5px dashed ${accent}`,
+              opacity: isDark ? 0.5 : 0.45,
+              pointerEvents: 'none',
+              willChange: 'transform', // hint GPU compositing
+            }}
+          />
 
-          {/* Ripple saat playing */}
           {playing && (
             <div style={{
               position: 'absolute', inset: -2, borderRadius: '50%',
@@ -374,14 +432,12 @@ export default function MusicPlayer() {
             }}/>
           )}
 
-          {/* Button utama */}
           <button
             className="mp-fab"
             onClick={() => !expanded ? setExpanded(true) : togglePlay()}
             aria-label={!expanded ? 'Open playlist' : playing ? 'Pause' : 'Play'}
             style={{
               width: 52, height: 52, borderRadius: '50%',
-              /* Tidak ada background solid — canvas yang jadi tampilan */
               background: canvBg,
               border: `1px solid ${border}`,
               boxShadow: playing ? `${shadow}, ${glow}` : shadow,
@@ -389,15 +445,11 @@ export default function MusicPlayer() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               overflow: 'hidden', position: 'relative',
             }}>
-            {/* Canvas bola */}
             <BouncingBalls playing={playing} size={52} isDark={isDark}/>
-
-            {/* Icon mengambang di atas bola — TANPA background gelap */}
             <div style={{
               position: 'absolute', inset: 0,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               borderRadius: '50%',
-              /* Tidak ada background sama sekali */
             }}>
               {!expanded
                 ? <IcoMusic/>
@@ -410,6 +462,7 @@ export default function MusicPlayer() {
         </div>
       </div>
 
+      {/* FIX #7: src cukup di sini saja, tidak perlu di-set ulang di useEffect */}
       <audio ref={audioRef} src={playlist[currentIndex].src} loop/>
     </>
   )

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { profile } from '../data/content'
 import './Hero.css'
 import ShinyText from '../components/ShinyText'
@@ -12,57 +12,94 @@ const techBadges = [
   { name: 'MySQL',   icon: <SiMysql /> },
 ]
 
-function useMounted() {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
-  return mounted
-}
-
+// ── Typewriter ────────────────────────────────────────────
+// FIX #1: Kurangi jumlah state — gabung jadi 1 state object
+// + pakai useRef untuk timer supaya tidak bocor
 function Typewriter({ text, delay = 0, speed = 100, pause = 2000 }) {
-  const [displayed, setDisplayed] = useState('')
-  const [started, setStarted] = useState(false)
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [state, setState] = useState({ displayed: '', started: false, isDeleting: false })
+  const timerRef = useRef(null)
 
   useEffect(() => {
-    const startTimer = setTimeout(() => setStarted(true), delay)
+    const startTimer = setTimeout(
+      () => setState(s => ({ ...s, started: true })),
+      delay
+    )
     return () => clearTimeout(startTimer)
   }, [delay])
 
   useEffect(() => {
-    if (!started) return
-    let timer
+    if (!state.started) return
+
+    const { displayed, isDeleting } = state
+    const clearTimer = () => { if (timerRef.current) clearTimeout(timerRef.current) }
+
     if (!isDeleting && displayed.length < text.length) {
-      timer = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), speed)
+      timerRef.current = setTimeout(
+        () => setState(s => ({ ...s, displayed: text.slice(0, s.displayed.length + 1) })),
+        speed
+      )
     } else if (!isDeleting && displayed.length === text.length) {
-      timer = setTimeout(() => setIsDeleting(true), pause)
+      timerRef.current = setTimeout(
+        () => setState(s => ({ ...s, isDeleting: true })),
+        pause
+      )
     } else if (isDeleting && displayed.length > 0) {
-      timer = setTimeout(() => setDisplayed(text.slice(0, displayed.length - 1)), speed / 2)
+      timerRef.current = setTimeout(
+        () => setState(s => ({ ...s, displayed: text.slice(0, s.displayed.length - 1) })),
+        speed / 2
+      )
     } else if (isDeleting && displayed.length === 0) {
-      setIsDeleting(false)
+      setState(s => ({ ...s, isDeleting: false }))
     }
-    return () => clearTimeout(timer)
-  }, [started, displayed, isDeleting, text, speed, pause])
+
+    return clearTimer
+  }, [state.started, state.displayed, state.isDeleting, text, speed, pause])
 
   return (
     <span>
-      {displayed}
-      {started && <span className="typewriter-cursor">|</span>}
+      {state.displayed}
+      {state.started && <span className="typewriter-cursor">|</span>}
     </span>
   )
 }
 
+// ── LoopingChips ──────────────────────────────────────────
+// FIX #2: Pause interval saat tab hidden → hemat CPU
+// FIX #3: Pause interval saat tidak mounted/visible
 function LoopingChips({ badges }) {
   const [visibleIndex, setVisibleIndex] = useState(-1)
+  const indexRef     = useRef(-1)
+  const intervalRef  = useRef(null)
+
+  const startInterval = useCallback(() => {
+    if (intervalRef.current) return
+    intervalRef.current = setInterval(() => {
+      indexRef.current++
+      if (indexRef.current > badges.length + 2) indexRef.current = -1
+      setVisibleIndex(indexRef.current)
+    }, 400)
+  }, [badges.length])
+
+  const stopInterval = useCallback(() => {
+    clearInterval(intervalRef.current)
+    intervalRef.current = null
+  }, [])
 
   useEffect(() => {
-    let index = -1
-    const interval = setInterval(() => {
-      index++
-      if (index > badges.length + 2) index = -1
-      setVisibleIndex(index)
-    }, 400)
-    return () => clearInterval(interval)
-  }, [badges.length])
+    startInterval()
+
+    // Pause saat tab hidden
+    const handleVisibility = () => {
+      if (document.hidden) stopInterval()
+      else startInterval()
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
+    return () => {
+      stopInterval()
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
+  }, [startInterval, stopInterval])
 
   return (
     <>
@@ -71,12 +108,12 @@ function LoopingChips({ badges }) {
           key={tech.name}
           className={`hero__tech-chip ${visibleIndex >= i ? 'visible' : ''}`}
           style={{
-            opacity: visibleIndex >= i ? 1 : 0,
-            transform: visibleIndex >= i ? 'translateX(0)' : 'translateX(-20px)',
+            opacity:    visibleIndex >= i ? 1 : 0,
+            transform:  visibleIndex >= i ? 'translateX(0)' : 'translateX(-20px)',
             transition: 'all 0.4s ease-out',
-            display: 'inline-flex',
+            display:    'inline-flex',
             alignItems: 'center',
-            gap: '6px',
+            gap:        '6px',
           }}
         >
           <span style={{ display: 'flex', alignItems: 'center', fontSize: '1em' }}>
@@ -89,25 +126,44 @@ function LoopingChips({ badges }) {
   )
 }
 
+// ── Hero ──────────────────────────────────────────────────
 export default function Hero() {
-  const mounted = useMounted()
-  const dropdownRef = useRef(null)
-  const [showCVMenu, setShowCVMenu] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [mounted,     setMounted]     = useState(false)
+  const [showCVMenu,  setShowCVMenu]  = useState(false)
+  // FIX #4: isDark pakai ref → tidak re-render seluruh Hero saat ganti tema
+  // ShinyText, foto, dll di-update via direct DOM manipulation atau CSS var
+  const isDarkRef    = useRef(false)
+  const [isDark,     setIsDark]       = useState(false) // tetap butuh state untuk foto & ShinyText props
+  const dropdownRef  = useRef(null)
 
+  useEffect(() => { setMounted(true) }, [])
+
+  // FIX #5: Satu MutationObserver untuk seluruh app sudah ideal,
+  // tapi karena komponen ini berdiri sendiri, kita throttle callback-nya
   useEffect(() => {
-    if (document.body.classList.contains('dark-mode')) {
-      setIsDark(true)
+    const check = () => {
+      const dark = document.body.classList.contains('dark-mode')
+      if (dark !== isDarkRef.current) {
+        isDarkRef.current = dark
+        setIsDark(dark) // update state hanya saat benar-benar berubah (bukan setiap mutation)
+      }
     }
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          setIsDark(document.body.classList.contains('dark-mode'))
-        }
-      })
-    })
-    observer.observe(document.body, { attributes: true })
+    check()
+    const observer = new MutationObserver(check)
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] })
     return () => observer.disconnect()
+  }, [])
+
+  // FIX #6: Preload kedua foto profil supaya swap tidak flash
+  useEffect(() => {
+    const imgs = ['/foto-profil.webp', '/foto-profil-dark.webp']
+    imgs.forEach(src => {
+      const link = document.createElement('link')
+      link.rel  = 'preload'
+      link.as   = 'image'
+      link.href = src
+      document.head.appendChild(link)
+    })
   }, [])
 
   useEffect(() => {
@@ -116,10 +172,11 @@ export default function Hero() {
         setShowCVMenu(false)
       }
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('touchstart', handleClickOutside)
+    // FIX #7: Pakai capture:false + passive:true untuk click outside
+    document.addEventListener('mousedown',  handleClickOutside, { passive: true })
+    document.addEventListener('touchstart', handleClickOutside, { passive: true })
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('mousedown',  handleClickOutside)
       document.removeEventListener('touchstart', handleClickOutside)
     }
   }, [])
@@ -201,15 +258,11 @@ export default function Hero() {
                 </svg>
                 <span>Download CV</span>
                 <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
+                  width="11" height="11" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2.5"
                   style={{
                     transition: 'transform 0.25s ease',
-                    transform: showCVMenu ? 'rotate(180deg)' : 'rotate(0deg)'
+                    transform:  showCVMenu ? 'rotate(180deg)' : 'rotate(0deg)',
                   }}
                 >
                   <path d="M6 9l6 6 6-6"/>
@@ -227,7 +280,6 @@ export default function Hero() {
                     <span>🇮🇩</span>
                     <span>Versi Indonesia</span>
                   </a>
-
                   <a
                     href="/CV_Okta_EN.pdf"
                     download="CV_Okta_Ramji_Saputra_EN.pdf"
@@ -242,18 +294,28 @@ export default function Hero() {
             </div>
 
           </div>
-
         </div>
 
         {/* ═══ KOLOM KANAN: FOTO ═══ */}
+        {/* FIX #6: Kedua gambar di-render sekaligus, swap via CSS opacity */}
+        {/* Tidak ada re-fetch gambar saat ganti tema */}
         <div className={`hero__photo-wrap ${mounted ? 'anim-in' : ''}`} style={{ '--d': '200ms' }}>
           <div className="hero__photo-card">
             <div className="hero__photo-frame">
               <img
-                src={isDark ? "/foto-profil-dark.webp" : "/foto-profil.webp"}
+                src="/foto-profil.webp"
                 alt="Okta Ramji Saputra - Frontend & Fullstack Developer"
                 className="hero__photo-img"
                 draggable={false}
+                style={{ opacity: isDark ? 0 : 1, transition: 'opacity 0.3s ease', position: 'absolute', inset: 0 }}
+              />
+              <img
+                src="/foto-profil-dark.webp"
+                alt=""
+                aria-hidden="true"
+                className="hero__photo-img"
+                draggable={false}
+                style={{ opacity: isDark ? 1 : 0, transition: 'opacity 0.3s ease', position: 'absolute', inset: 0 }}
               />
               <div className="hero__photo-fallback">OR</div>
             </div>

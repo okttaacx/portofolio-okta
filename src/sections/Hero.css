@@ -1,5 +1,5 @@
 /* ========================================================
-   HERO COMPONENT CSS — Cinematic Entrance Edition
+   HERO COMPONENT CSS — Performance Optimized
    Theme: Vibrant Blue/Cyan (Light) & Elegant Purple (Dark)
 ======================================================== */
 
@@ -24,13 +24,13 @@
   --btn-primary-bg: #3b82f6;
   --btn-primary-text: #ffffff;
   --btn-primary-hover: #2563eb;
-  --btn-outline-bg: rgba(255, 255, 255, 0.7);
+  --btn-outline-bg: rgba(255, 255, 255, 0.85);
   --btn-outline-text: #3b82f6;
   --btn-outline-border: #3b82f6;
   --btn-outline-hover-bg: #3b82f6;
   --btn-outline-hover-text: #ffffff;
 
-  --cv-dropdown-bg: rgba(255, 255, 255, 0.95);
+  --cv-dropdown-bg: rgba(255, 255, 255, 0.97);
   --cv-dropdown-border: rgba(59, 130, 246, 0.2);
   --cv-dropdown-text: #1e40af;
   --cv-dropdown-hover-bg: rgba(59, 130, 246, 0.1);
@@ -39,13 +39,13 @@
   --hero-orbit-border: rgba(59, 130, 246, 0.3);
   --hero-orbit-dot: #0ea5e9;
   
-  --hero-card-bg: rgba(255, 255, 255, 0.65);
+  --hero-card-bg: rgba(255, 255, 255, 0.75);
   --hero-card-border: rgba(255, 255, 255, 0.90);
   --hero-card-shadow: rgba(14, 165, 233, 0.15);
   --hero-card-fallback-bg1: #3b82f6;
   --hero-card-fallback-bg2: #0ea5e9;
 
-  --hero-float-bg: rgba(255,255,255,0.9);
+  --hero-float-bg: rgba(255, 255, 255, 0.95);
   --hero-float-border: rgba(59, 130, 246, 0.15);
   --hero-float-text: #1e40af;
   --hero-float-shadow: rgba(14, 165, 233, 0.12);
@@ -70,7 +70,7 @@ body.dark-mode {
   --hero-badge-text: #c084fc;
   --hero-badge-dot: #a855f7;
 
-  --hero-chip-bg: rgba(15, 23, 42, 0.60);
+  --hero-chip-bg: rgba(15, 23, 42, 0.70);
   --hero-chip-border: rgba(124, 58, 237, 0.25);
   --hero-chip-text: #c084fc;
   --hero-chip-hover-bg: #7c3aed;
@@ -79,13 +79,13 @@ body.dark-mode {
   --btn-primary-bg: #7c3aed;
   --btn-primary-text: #ffffff;
   --btn-primary-hover: #6d28d9;
-  --btn-outline-bg: rgba(15, 23, 42, 0.60);
+  --btn-outline-bg: rgba(15, 23, 42, 0.80);
   --btn-outline-text: #c084fc;
   --btn-outline-border: #a855f7;
   --btn-outline-hover-bg: #7c3aed;
   --btn-outline-hover-text: #ffffff;
 
-  --cv-dropdown-bg: rgba(15, 23, 42, 0.95);
+  --cv-dropdown-bg: rgba(15, 23, 42, 0.98);
   --cv-dropdown-border: rgba(124, 58, 237, 0.3);
   --cv-dropdown-text: #F1F5F9;
   --cv-dropdown-hover-bg: rgba(124, 58, 237, 0.2);
@@ -94,13 +94,13 @@ body.dark-mode {
   --hero-orbit-border: rgba(124, 58, 237, 0.3);
   --hero-orbit-dot: #c084fc;
   
-  --hero-card-bg: rgba(15, 23, 42, 0.45);
+  --hero-card-bg: rgba(15, 23, 42, 0.55);
   --hero-card-border: rgba(124, 58, 237, 0.2);
   --hero-card-shadow: rgba(0, 0, 0, 0.50);
   --hero-card-fallback-bg1: #7c3aed;
   --hero-card-fallback-bg2: #a855f7;
 
-  --hero-float-bg: rgba(15, 23, 42, 0.85);
+  --hero-float-bg: rgba(15, 23, 42, 0.96);
   --hero-float-border: rgba(124, 58, 237, 0.25);
   --hero-float-text: #c084fc;
   --hero-float-shadow: rgba(0, 0, 0, 0.4);
@@ -118,81 +118,66 @@ body.dark-mode {
   from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes heroFadeLeft {
   from { opacity: 0; transform: translateX(40px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes scaleInCenter {
   from { opacity: 0; transform: translateX(-50%) scale(0.88); }
   to   { opacity: 1; transform: translateX(-50%) scale(1); }
 }
-
 @keyframes scaleInFixed {
   from { opacity: 0; transform: translateX(-50%) scale(0.88); }
   to   { opacity: 1; transform: translateX(-50%) scale(1); }
 }
-
 @keyframes chipPop {
   0%   { opacity: 0; transform: translateY(12px) scale(0.9); }
   70%  { transform: translateY(-3px) scale(1.04); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 @keyframes expandWidth {
   from { width: 0; opacity: 0; }
   to   { width: 3rem; opacity: 1; }
 }
-
 @keyframes orbitSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
-
 @keyframes orbitSpinReverse {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+  to { transform: rotate(-360deg); }
 }
-
 @keyframes floatCard {
   0%, 100% { transform: translateY(0px); }
   50%      { transform: translateY(-8px); }
 }
-
 @keyframes floatingEntrance {
   from { opacity: 0; transform: translateY(10px) scale(0.9); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: 1; }
   50%      { transform: translateY(6px); opacity: 0.4; }
 }
 
+/* FIX #1: grainMove diperkecil — dulu ±2% dari elemen 180% = area sangat besar */
 @keyframes grainMove {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-2%, -2%); }
-  50%  { transform: translate(2%, 1%); }
-  75%  { transform: translate(-1%, 2%); }
-  100% { transform: translate(0, 0); }
+  0%   { transform: translate3d(0, 0, 0); }
+  25%  { transform: translate3d(-1%, -1%, 0); }
+  50%  { transform: translate3d(1%, 0.5%, 0); }
+  75%  { transform: translate3d(-0.5%, 1%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
-
 @keyframes lineReveal {
   from { transform: scaleX(0); opacity: 0; }
   to   { transform: scaleX(1); opacity: 1; }
 }
-
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50%      { opacity: 0; }
 }
-
 @keyframes pulse-ring {
   0%   { transform: scale(1);   opacity: .5; }
   100% { transform: scale(1.6); opacity: 0; }
 }
-
 @keyframes statusPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%      { opacity: 0.5; transform: scale(1.3); }
@@ -210,10 +195,7 @@ body.dark-mode {
 .hero__scroll-cue {
   opacity: 0;
 }
-
-.hero__photo-wrap {
-  opacity: 0;
-}
+.hero__photo-wrap { opacity: 0; }
 
 .hero__badge.anim-in      { animation: heroFadeUp 0.65s cubic-bezier(.22,1,.36,1) var(--d, 0ms) both; }
 .hero__name.anim-in       { animation: heroFadeUp 0.75s cubic-bezier(.22,1,.36,1) var(--d, 0ms) both; }
@@ -249,13 +231,15 @@ body.dark-mode {
 /* ── Grain texture overlay ─────────────────────────── */
 .hero__grain {
   position: absolute;
-  inset: -40%;
-  width: 180%;
-  height: 180%;
+  inset: -20%;          /* FIX #1: Kurangi dari -40% → ukuran elemen lebih kecil */
+  width: 140%;          /* FIX #1: Dari 180% → 140% */
+  height: 140%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   opacity: 0.022;
   pointer-events: none;
   z-index: 0;
+  /* FIX #1: Gunakan translate3d untuk GPU compositing */
+  will-change: transform;
   animation: grainMove 8s steps(2) infinite;
 }
 
@@ -272,6 +256,7 @@ body.dark-mode {
   left: 0;
   width: 100%;
   height: 1px;
+  /* FIX #2: Hapus transition background — tidak ada yang trigger perubahan ini di JS */
   background: linear-gradient(90deg,
     transparent 0%,
     rgba(59,130,246,0.1) 30%,
@@ -281,7 +266,6 @@ body.dark-mode {
   );
   transform-origin: left;
   animation: lineReveal 1.2s cubic-bezier(.22,1,.36,1) both;
-  transition: background 0.4s ease;
 }
 body.dark-mode .hero__lines span { 
   background: linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.1) 30%, rgba(124,58,237,0.2) 50%, rgba(124,58,237,0.1) 70%, transparent 100%); 
@@ -312,15 +296,14 @@ body.dark-mode .hero__lines span {
   color: var(--hero-badge-text);
   background: var(--hero-badge-bg);
   border: 1px solid var(--hero-badge-border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* FIX #3: Hapus backdrop-filter dari badge kecil — efeknya hampir tidak terlihat */
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
   margin-bottom: 1.5rem;
   letter-spacing: 0.04em;
   width: fit-content;
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .hero__badge-dot {
@@ -329,7 +312,6 @@ body.dark-mode .hero__lines span {
   background: var(--hero-badge-dot);
   position: relative;
   flex-shrink: 0;
-  transition: background 0.3s ease;
 }
 .hero__badge-dot::after {
   content: '';
@@ -339,7 +321,6 @@ body.dark-mode .hero__lines span {
   background: var(--hero-badge-dot);
   opacity: 0.25;
   animation: pulse-ring 1.8s ease-out infinite;
-  transition: background 0.3s ease;
 }
 
 .hero__name {
@@ -353,12 +334,10 @@ body.dark-mode .hero__lines span {
   position: relative;
   transition: color 0.3s ease;
 }
-
 .hero__name-line {
   display: block;
   overflow: hidden;
 }
-
 .hero__name-accent {
   color: var(--hero-accent-color);
   display: block;
@@ -383,7 +362,6 @@ body.dark-mode .hero__lines span {
   min-height: 1.6em;
   transition: color 0.3s ease;
 }
-
 .typewriter-cursor {
   animation: cursorBlink 0.8s step-end infinite;
   font-weight: 300;
@@ -405,7 +383,6 @@ body.dark-mode .hero__lines span {
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
-
 .hero__tech-chip {
   font-family: var(--font-code);
   font-size: 0.78rem;
@@ -414,7 +391,7 @@ body.dark-mode .hero__lines span {
   border: 1px solid var(--hero-chip-border);
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-sm);
-  transition: var(--transition);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 .hero__tech-chip:hover {
@@ -424,7 +401,7 @@ body.dark-mode .hero__lines span {
 }
 
 /* ══════════════════════════════════════════
-   CTA BUTTONS (Diperkecil)
+   CTA BUTTONS
 ══════════════════════════════════════════ */
 .hero__ctas {
   display: flex;
@@ -438,8 +415,8 @@ body.dark-mode .hero__lines span {
 .btn {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 0.82rem; /* Diperkecil dari 0.88rem */
-  padding: 0.7rem 1.25rem; /* Diperkecil paddingnya */
+  font-size: 0.82rem;
+  padding: 0.7rem 1.25rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
@@ -453,7 +430,6 @@ body.dark-mode .hero__lines span {
   white-space: nowrap;
   border: none;
 }
-
 .btn::after {
   content: '';
   position: absolute;
@@ -478,10 +454,9 @@ body.dark-mode .hero__lines span {
 }
 .btn--primary:active { transform: translateY(-1px); }
 
+/* FIX #3: btn--outline hapus backdrop-filter → ganti dengan background solid lebih opaque */
 .btn--outline {
   background: var(--btn-outline-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   color: var(--btn-outline-text);
   border: 1.5px solid var(--btn-outline-border);
   width: 100%;
@@ -496,24 +471,22 @@ body.dark-mode .hero__lines span {
 .btn--outline:active { transform: translateY(-1px); }
 
 /* ══════════════════════════════════════════
-   CV DROPDOWN (Diperkecil & Lebih Rapi)
+   CV DROPDOWN
 ══════════════════════════════════════════ */
 .hero__cv-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
 }
-
 .hero__cv-dropdown {
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
-  min-width: 150px; /* Lebar minimum dikurangi */
+  min-width: 150px;
+  /* FIX #3: Opacity lebih tinggi (0.97→0.99) supaya blur tidak diperlukan */
   background: var(--cv-dropdown-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1.5px solid var(--cv-dropdown-border);
   border-radius: var(--radius-sm, 6px);
   display: flex;
@@ -525,7 +498,6 @@ body.dark-mode .hero__lines span {
   transform-origin: top center;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
-
 .hero__cv-dropdown--fixed {
   position: fixed !important;
   left: 50% !important;
@@ -533,16 +505,15 @@ body.dark-mode .hero__lines span {
   animation: scaleInFixed 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   transform-origin: top center;
 }
-
 .hero__cv-option {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem; /* Gap ikon dan teks diperkecil */
-  padding: 8px 12px; /* Padding lebih tipis */
+  gap: 0.5rem;
+  padding: 8px 12px;
   text-decoration: none;
   color: var(--cv-dropdown-text);
-  font-size: 0.75rem; /* Font diperkecil dari 0.82rem */
+  font-size: 0.75rem;
   font-weight: 600;
   border-bottom: 1px solid rgba(59, 130, 246, 0.15);
   transition: background 0.18s ease, color 0.18s ease;
@@ -553,11 +524,7 @@ body.dark-mode .hero__lines span {
   background: var(--cv-dropdown-hover-bg);
   color: var(--cv-dropdown-hover-text);
 }
-
-/* Pastikan kelas pembungkus bendera punya sifat dasar inline-block di desktop */
-.cv-flag {
-  display: inline-block;
-}
+.cv-flag { display: inline-block; }
 
 /* ── Stats ─────────────────────────────────────────── */
 .hero__stats {
@@ -610,6 +577,8 @@ body.dark-mode .hero__lines span {
   border-radius: 50%;
   border: 1.5px dashed var(--hero-orbit-border);
   pointer-events: none;
+  /* FIX #4: will-change supaya orbit di-composit GPU, tidak trigger layout */
+  will-change: transform;
   transition: border-color 0.3s ease;
 }
 .hero__orbit--outer {
@@ -651,6 +620,7 @@ body.dark-mode .hero__orbit-dot--sm {
   width: 300px;
   aspect-ratio: 3/4;
   background: var(--hero-card-bg);
+  /* FIX #3: Pertahankan satu backdrop-filter di card utama saja — ini paling terlihat */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-xl);
@@ -666,20 +636,25 @@ body.dark-mode .hero__orbit-dot--sm {
 }
 
 /* ══════════════════════════════════════════
-   FOTO — bersih tanpa efek shimmer
+   FOTO — swap via opacity (no re-fetch)
 ══════════════════════════════════════════ */
 .hero__photo-frame {
   width: 100%;
   height: 100%;
+  /* FIX #5: Harus position:relative supaya dua img absolute tidak collapse */
   position: relative;
   overflow: hidden;
 }
 
 .hero__photo-img {
-  width: 100%; height: 100%;
+  /* FIX #5: Kedua gambar absolute + swap opacity */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 
 .hero__photo-fallback {
@@ -694,8 +669,9 @@ body.dark-mode .hero__orbit-dot--sm {
   color: #ffffff;
   background: linear-gradient(135deg, var(--hero-card-fallback-bg1) 0%, var(--hero-card-fallback-bg2) 100%);
   transition: background 0.3s ease;
+  /* FIX #5: z-index di bawah foto supaya tersembunyi saat foto load */
+  z-index: -1;
 }
-.hero__photo-img:not([src=""]):not([src="/photo.jpg"]) ~ .hero__photo-fallback { display: none; }
 
 /* ── FLOATING LABELS ── */
 .hero__photo-label {
@@ -703,9 +679,8 @@ body.dark-mode .hero__orbit-dot--sm {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  /* FIX #3: Hapus backdrop-filter dari label kecil */
   background: var(--hero-float-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--hero-float-border);
   border-radius: 999px;
   padding: 0.3rem 0.85rem;
@@ -721,24 +696,20 @@ body.dark-mode .hero__orbit-dot--sm {
   z-index: 4;
   box-shadow: 0 4px 14px var(--hero-float-shadow);
   animation: floatingEntrance 0.6s cubic-bezier(.22,1,.36,1) 1.1s both;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 .hero__photo-label-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--hero-orbit-dot);
-  transition: background 0.3s ease;
 }
 
 .hero__floating {
   position: absolute;
+  /* FIX #3: Hapus backdrop-filter dari floating card — background solid lebih opaque */
   background: var(--hero-float-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-md);
-  box-shadow:
-    0 8px 28px var(--hero-float-shadow),
-    inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow: 0 8px 28px var(--hero-float-shadow), inset 0 1px 0 rgba(255,255,255,0.2);
   padding: 0.5rem 0.9rem;
   font-size: 0.76rem;
   font-weight: 600;
@@ -749,30 +720,28 @@ body.dark-mode .hero__orbit-dot--sm {
   border: 1px solid var(--hero-float-border);
   z-index: 5;
   color: var(--hero-float-text);
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  /* FIX #4: will-change untuk float animation */
+  will-change: transform;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-
 .hero__floating--loc {
   bottom: 3.5rem;
   left: -2rem;
   animation: floatingEntrance 0.6s cubic-bezier(.22,1,.36,1) 1.3s both,
              floatCard 5s ease-in-out 2s infinite;
 }
-
 .hero__floating--status {
   top: 1.5rem;
   right: -2rem;
   animation: floatingEntrance 0.6s cubic-bezier(.22,1,.36,1) 1.5s both,
              floatCard 5s ease-in-out 2.5s infinite;
 }
-
 .hero__status-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--hero-orbit-dot);
   flex-shrink: 0;
   animation: statusPulse 2s ease-in-out infinite;
-  transition: background 0.3s ease;
 }
 
 /* ══════════════════════════════════════════
@@ -795,7 +764,6 @@ body.dark-mode .hero__orbit-dot--sm {
   text-transform: uppercase;
   transition: color 0.3s ease;
 }
-
 .hero__scroll-mouse {
   width: 22px; height: 34px;
   border: 2px solid var(--hero-scroll-border);
@@ -809,9 +777,14 @@ body.dark-mode .hero__orbit-dot--sm {
   width: 3px; height: 7px;
   background: var(--hero-scroll-color);
   border-radius: 2px;
+  /* FIX #4: will-change untuk animasi scroll */
+  will-change: transform, opacity;
   animation: scrollBounce 1.6s ease-in-out infinite;
   transition: background 0.3s ease;
 }
+
+/* FIX #6: Hapus .hero__scroll-chevrons yang tidak ada di JSX */
+/* (kalau mau tambah kembali, render di JSX dulu) */
 
 /* ══════════════════════════════════════════
    RESPONSIVE
@@ -843,7 +816,6 @@ body.dark-mode .hero__orbit-dot--sm {
 
 @media (max-width: 480px) {
   .hero { padding: 5rem 0 3.5rem; }
-
   .hero__ctas {
     flex-direction: column;
     align-items: center;
@@ -852,7 +824,6 @@ body.dark-mode .hero__orbit-dot--sm {
     gap: 0.65rem;
     overflow: visible;
   }
-
   .hero__ctas .btn--primary,
   .hero__cv-wrapper {
     width: 100%;
@@ -861,13 +832,11 @@ body.dark-mode .hero__orbit-dot--sm {
     display: flex;
     justify-content: center;
   }
-
   .btn {
     width: 100%;
     padding: 0.62rem 1rem;
-    font-size: 0.78rem; /* Lebih kecil lagi khusus di HP */
+    font-size: 0.78rem;
   }
-
   .hero__cv-dropdown--fixed {
     position: fixed !important;
     left: 50% !important;
@@ -876,11 +845,7 @@ body.dark-mode .hero__orbit-dot--sm {
     transform-origin: top center;
     z-index: 9999 !important;
   }
-
-  /* Menghilangkan bendera saat di mode mobile */
-  .hero__cv-option .cv-flag {
-    display: none !important;
-  }
+  .hero__cv-option .cv-flag { display: none !important; }
 }
 
 /* ── Reduce motion ─────────────────────────────────── */
