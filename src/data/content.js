@@ -405,7 +405,29 @@ export const certifications = [
     ]
   },
   {
-    id: 2,
+  id: 2,
+  title: "JavaScript Essentials 1 & 2",
+  subtitle: "Course Completion Certificates",
+  issuer: "Cisco Networking Academy",
+  year: "2026",
+  description:
+    "Menyelesaikan dua seri kursus JavaScript dari Cisco Networking Academy, mencakup fundamental hingga konsep menengah seperti fungsi, object, array, DOM, dan asynchronous programming.",
+  link: "https://bit.ly/sertifikat-javascript",
+  color: "yellow",
+  icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2"/>
+    <path d="M8 17c0 0 1.5-1 1.5-3.5V10"/>
+    <path d="M12.5 10v4.5c0 1.5.8 2.5 2.5 2.5s2.5-1 2.5-2.5"/>
+  </svg>`,
+  highlights: [
+    "JavaScript Fundamentals",
+    "DOM Manipulation",
+    "Asynchronous Programming",
+    "Cisco Networking Academy",
+  ],
+  },
+  {
+    id: 3,
     title: "Hak Cipta (HKI): Document Scanner & Archive Digital",
     subtitle: "Program Komputer",
     issuer: "Kementerian Hukum RI",
