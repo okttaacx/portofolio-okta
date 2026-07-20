@@ -443,5 +443,23 @@ export const certifications = [
       "Sistem Arsip Digital Otomatis",
       "Kolaborasi Tim Peneliti"
     ]
+  },
+  {
+    id: 4,
+    title: "Test of English Language Proficiency (TAEP)",
+    subtitle: "Sertifikat Kemampuan Bahasa Inggris",
+    issuer: "Universitas Muhammadiyah Malang",
+    credentialId: "SPs7K-MZhm1bY",
+    year: "2026",
+    description: "Sertifikat kemampuan Bahasa Inggris dari Language Center UMM dengan skor TAEP 455, mencakup kemampuan Listening, Grammar, dan Reading. Digunakan sebagai bukti pendukung kemampuan komunikasi dalam Bahasa Inggris.",
+    link: "https://drive.google.com/file/d/11IHPsPA_aj3vKfQlHs_tOewb0yiDhxA1/view?usp=sharing",
+    color: "purple",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M8 8h6M8 16h4"/></svg>`,
+    highlights: [
+      "Skor 455 (C2 - Proficient)",
+      "Listening, Grammar & Reading",
+      "Language Center UMM",
+      "Berlaku hingga 2028"
+    ]
   }
 ];
