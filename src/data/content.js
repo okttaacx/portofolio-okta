@@ -1,6 +1,6 @@
 export const profile = {
   name: "Okta Ramji Saputra",
-  tagline: "Web Developer • UI/UX Designer",
+  tagline: "Web Developer • Backend & Frontend",
   taglineSub: "Crafting web experiences with clean code & thoughtful design",
   email: "oktaramji10@gmail.com",
   phone: "08885963424",
@@ -337,6 +337,7 @@ export const experiences = [
     company: "Himpunan Mahasiswa Teknik Informatika — Universitas Muhammadiyah Malang",
     period: "Oktober 2023 – Juli 2024",
     type: "org",
+    link: "https://drive.google.com/file/d/1LTTDYLefdhCdfgxiDzc3XIwTNAG4wVUo/view?usp=sharing",
     points: [
       "Mendesain konten promosi media sosial (Instagram) menggunakan Canva",
       "Mengelola komunikasi dan koordinasi antar divisi sebagai bagian tim Humas"

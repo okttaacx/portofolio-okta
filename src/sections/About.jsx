@@ -1,11 +1,11 @@
 import './About.css'
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
-  FaFigma, FaGithub, FaGitAlt, FaPhp,
+  FaFigma, FaGithub, FaGitAlt, FaPhp, FaAngular,
 } from 'react-icons/fa'
 import {
   SiLaravel, SiMongodb, SiMysql,
-  SiCanva, SiPhpmyadmin,
+  SiCanva, SiPhpmyadmin, SiCodeigniter,
 } from 'react-icons/si'
 import { VscCode } from 'react-icons/vsc'
 
@@ -16,6 +16,8 @@ const iconMap = {
   'PHP (Laravel)': <FaPhp />,
   'React.js':      <FaReact />,
   'Node.js':       <FaNodeJs />,
+  'Angular':       <FaAngular />,
+  'CodeIgniter':   <SiCodeigniter />,
   'Figma':         <FaFigma />,
   'Canva':         <SiCanva />,
   'GitHub':        <FaGithub />,
@@ -33,6 +35,7 @@ const row1Skills = [
   { name: 'JavaScript',    cls: 'sp-blue'  },
   { name: 'PHP (Laravel)', cls: 'sp-sage'  },
   { name: 'React.js',      cls: 'sp-blue'  },
+  { name: 'Angular',       cls: 'sp-coral' },
   { name: 'Node.js',       cls: 'sp-sage'  },
   { name: 'Figma',         cls: 'sp-amber' },
   { name: 'Canva',         cls: 'sp-amber' },
@@ -51,6 +54,7 @@ const row2Skills = [
   { name: 'React.js',      cls: 'sp-blue'  },
   { name: 'Node.js',       cls: 'sp-sage'  },
   { name: 'Laravel',       cls: 'sp-amber' },
+  { name: 'CodeIgniter',   cls: 'sp-sage'  },
 ]
 
 function Pill({ name, cls }) {
@@ -96,13 +100,13 @@ export default function About() {
 
         <StarBorder className="ab-bio-card" speed="5s">
           <p className="about__bio">
-            Berfokus pada Web Development, Frontend Development, dan UI/UX Design.
-            Berpengalaman mengembangkan aplikasi web menggunakan Laravel, React.js,
-            dan Node.js, serta merancang UI/UX modern dan user-friendly menggunakan
-            Figma. Memiliki pengalaman internship di Dinas Tenaga Kerja Kota Batu
-            dalam pengembangan sistem berbasis Laravel dan pengelolaan data pelatihan.
-            Adaptif, berorientasi pada solusi, dan mampu bekerja secara mandiri
-            maupun dalam tim untuk menciptakan produk digital yang fungsional dan responsif.
+           Berfokus pada Web Development dan Frontend Development. Berpengalaman
+           mengembangkan aplikasi web menggunakan Laravel, CodeIgniter 4, React.js,
+           Angular, dan Node.js, serta merancang antarmuka menggunakan Figma. Memiliki
+           pengalaman internship di Dinas Tenaga Kerja Kota Batu dalam pengembangan
+           sistem berbasis Laravel dan pengelolaan data pelatihan. Adaptif, berorientasi
+           pada solusi, dan mampu bekerja secara mandiri maupun dalam tim untuk
+           menciptakan produk digital yang fungsional dan responsif.
           </p>
         </StarBorder>
 
