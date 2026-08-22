@@ -70,48 +70,77 @@ export const projects = [
   },
   {
     id: 2,
-    title: "FlowBoost",
-    type: "mobile",
-    subtitle: "Aplikasi Mobile Motivasi",
-    description: "Aplikasi mobile Flutter dengan fitur video motivasi. UI/UX dirancang dengan Figma, pendekatan user-friendly dengan tampilan responsif dan modern.",
-    stack: ["Flutter", "Figma", "Dart"],
-    color: "coral",
-    icon: `<svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">  <rect x="6" y="3" width="16" height="22" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>  <path d="M10 8h8M10 12h8M10 16h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>  <circle cx="18" cy="20" r="3.5" fill="currentColor"/>  <path d="M16.8 20l.8.8 1.6-1.6" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M9 3.5 C9 3.5 14 5.5 19 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
-    highlights: ["Desain UI/UX Figma", "Video motivasi terintegrasi", "Responsive & user-friendly"],
-    github: "https://github.com/Firdig/Flowboost-mobileapp.git",
-    figma: "https://www.figma.com/design/DKMYWMdf6pzBcBUszDaVzl/Untitled?node-id=0-1&p=f",
+    title: "Vehicle Booking System",
+    type: "web",
+    subtitle: "Sistem Pemesanan Kendaraan Perusahaan",
+    description: "Sistem berbasis web untuk pemesanan dan monitoring kendaraan perusahaan tambang nikel, dilengkapi dashboard monitoring, alur persetujuan berjenjang 2 level, kalender pemakaian, serta pemantauan BBM dan jadwal service.",
+    stack: ["PHP (CodeIgniter 4)", "Angular", "MySQL"],
+    color: "green",
+    icon: `<svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M5 17l1.8-6.2A2 2 0 018.7 9.5h10.6a2 2 0 011.9 1.3L23 17" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>  <rect x="3.5" y="17" width="21" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>  <circle cx="8.5" cy="22.5" r="2" fill="currentColor"/>  <circle cx="19.5" cy="22.5" r="2" fill="currentColor"/>  <path d="M8 13.5h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>  <circle cx="21" cy="6" r="4" fill="currentColor"/>  <path d="M19.3 6l1.1 1.1L22.7 5" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    highlights: ["Persetujuan Berjenjang 2 Level", "Kalender Gantt Chart Mingguan", "Monitoring BBM & Jadwal Service"],
+    github: "https://github.com/okttaacx/fullstack-vehicle-booking",
     live: "",
     features: [
       {
-        name: "Sistem Kategori Vidio",
-        desc: "Memungkinkan pengguna mengeksplorasi motivasi berdasarkan topik spesifik melalui antarmuka kategori yang terorganisir.",
-        img: "/kategori_vidio.png"
+        name: "Login & Autentikasi",
+        desc: "Halaman login berbasis role (Admin dan Approver) sebagai gerbang masuk sistem, memastikan setiap pengguna hanya mengakses fitur sesuai hak aksesnya.",
+        img: "/vbs-login.png"
+      },  
+      {
+        name: "Dashboard Monitoring Real-time",
+        desc: "Ringkasan operasional real-time meliputi total kendaraan, total pemesanan, jumlah yang menunggu persetujuan, dan rata-rata konsumsi BBM, dilengkapi grafik tren pemesanan 7 hari terakhir, distribusi kepemilikan armada, ketersediaan armada, tingkat persetujuan, serta pengingat jadwal servis kendaraan.",
+        img:  "/vbs-dashboard.png"
       },
       {
-        name: "Katalog Daftar Vidio",
-        desc: "Menampilkan daftar lengkap video motivasi yang tersedia, memudahkan pengguna memilih konten yang ingin ditonton.",
-        img: "/daftar_vidio.png"
+        name: "Manajemen Kendaraan",
+        desc: "Daftar kendaraan dengan pencarian dan filter tipe/kepemilikan, menampilkan ringkasan total unit, kepemilikan (milik perusahaan/sewa), tipe angkutan, konsumsi BBM, serta jadwal service tiap unit — lengkap dengan aksi tambah, edit, dan hapus data kendaraan",
+        img:  "/vbs-kendaraan.png"
       },
       {
-        name: "Pengalaman Tonton Vidio",
-        desc: "Pemutar video yang mulus dengan interface minimalis untuk kenyamanan maksimal saat menyerap materi inspiratif.",
-        img: "/tonton_vidio.png"
+        name: "Pemesanan Kendaraan - Admin",
+        desc: "Admin mengelola seluruh pemesanan kendaraan dari satu halaman — mencatat kode booking, kendaraan, driver, pemohon, dan periode pemakaian, dengan ringkasan status (total, menunggu persetujuan, disetujui, ditolak), pencarian, filter, serta export laporan ke Excel berdasarkan rentang tanggal",
+        img:  "/vbs-pemesanan.png"
       },
       {
-        name: "Koleksi Vidio Favorit",
-        desc: "Fitur bookmark untuk menyimpan video pilihan ke dalam daftar koleksi pribadi agar dapat diakses kembali kapan saja.",
-        img: "/vidio_favorit.png"
+        name: "Kalender Pemakaian Kendaraan",
+        desc: "Tampilan Gantt chart mingguan yang menampilkan jadwal pemakaian seluruh kendaraan sekaligus dalam satu baris per unit, dengan kode booking dan warna status (Menunggu L1, Menunggu L2, Disetujui, Selesai), lengkap navigasi minggu dan tombol kembali ke hari ini.",
+        img:  "/vbs-kalender.png"
       },
       {
-        name: "Fitur Berbagi (Share)",
-        desc: "Memudahkan pengguna untuk menyebarkan semangat positif dengan membagikan video inspiratif ke berbagai platform media sosial.",
-        img: "/share_vidio.png"
+        name: "Manajemen Driver",
+        desc: "Daftar driver lengkap dengan data kontak, nomor SIM, dan masa berlaku SIM, disertai peringatan otomatis untuk SIM yang akan habis dalam waktu dekat, serta riwayat pemakaian per driver dan aksi edit/hapus data.",
+        img : "/vbs-driver.png"
       },
       {
-        name: "Fitur Unduhan (Download)",
-        desc: "Menyediakan opsi unduhan video agar pengguna dapat menonton konten motivasi secara offline tanpa kendala koneksi internet.",
-        img: "/downlod_vidio.png"
-      }
+        name: "Kelola User & Approver",
+        desc: "Halaman khusus Admin untuk mengelola seluruh akun sistem — menambah, mengedit, dan menghapus user, serta mengatur role (Admin/Approver) beserta level persetujuan (Level 1 atau Level 2) untuk setiap approver.",
+        img: "/vbs-user.png"
+      },
+      {
+        name: "Riwayat Aktivitas (Activity Log)",
+        desc: "Halaman khusus Admin yang mencatat seluruh jejak aktivitas penting di sistem — login, pembuatan pemesanan, perubahan data service, dan lainnya — lengkap dengan pelaku, waktu, dan alamat IP, serta pencarian bebas dan filter berdasarkan jenis aksi maupun rentang tanggal.",
+        img: "/vbs-riwayat.png"
+      },
+      {
+        name: "Ganti Password Mandiri",
+        desc: "Setiap user dapat mengubah password akunnya sendiri melalui form sederhana (password lama, password baru, konfirmasi), dengan verifikasi password lama wajib sebelum password baru disimpan.",
+        img: "/vbs-ganti-password.png"
+      },
+      {
+        name: "Notifikasi In-App",
+        desc: "Lonceng notifikasi floating di sidebar dengan badge jumlah item belum ditinjau dan auto-refresh berkala — Admin mendapat notifikasi saat ada pemesanan yang siap ditandai selesai, langsung mengarahkan ke halaman terkait saat diklik.",
+        img: "/vbs-notifikasi.png"
+      },
+      {
+        name: "Halaman Approval (Persetujuan Berjenjang)",
+        desc: "Halaman khusus role Approver untuk meninjau permintaan pemesanan sesuai levelnya — menampilkan ringkasan status (menunggu, disetujui, ditolak), detail tujuan dan keperluan perjalanan, tanggal, serta aksi Setujui/Tolak langsung dari daftar.",
+        img: "/vbs-approval.png"
+      },
+      {
+        name: "Export Laporan Excel",
+        desc: "Laporan pemesanan periodik yang dapat diunduh dalam format .xlsx, bisa difilter berdasarkan rentang tanggal, mencakup kolom odometer awal/akhir, jarak tempuh, BBM terisi, serta catatan penyelesaian untuk pemesanan yang sudah rampung.",
+        img: "/vbs-excel.png"
+      },
     ]
   },
   {
@@ -171,6 +200,52 @@ export const projects = [
   },
   {
     id: 4,
+    title: "FlowBoost",
+    type: "mobile",
+    subtitle: "Aplikasi Mobile Motivasi",
+    description: "Aplikasi mobile Flutter dengan fitur video motivasi. UI/UX dirancang dengan Figma, pendekatan user-friendly dengan tampilan responsif dan modern.",
+    stack: ["Flutter", "Figma", "Dart"],
+    color: "coral",
+    icon: `<svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">  <rect x="6" y="3" width="16" height="22" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/>  <path d="M10 8h8M10 12h8M10 16h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>  <circle cx="18" cy="20" r="3.5" fill="currentColor"/>  <path d="M16.8 20l.8.8 1.6-1.6" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M9 3.5 C9 3.5 14 5.5 19 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>`,
+    highlights: ["Desain UI/UX Figma", "Video motivasi terintegrasi", "Responsive & user-friendly"],
+    github: "https://github.com/Firdig/Flowboost-mobileapp.git",
+    figma: "https://www.figma.com/design/DKMYWMdf6pzBcBUszDaVzl/Untitled?node-id=0-1&p=f",
+    live: "",
+    features: [
+      {
+        name: "Sistem Kategori Vidio",
+        desc: "Memungkinkan pengguna mengeksplorasi motivasi berdasarkan topik spesifik melalui antarmuka kategori yang terorganisir.",
+        img: "/kategori_vidio.png"
+      },
+      {
+        name: "Katalog Daftar Vidio",
+        desc: "Menampilkan daftar lengkap video motivasi yang tersedia, memudahkan pengguna memilih konten yang ingin ditonton.",
+        img: "/daftar_vidio.png"
+      },
+      {
+        name: "Pengalaman Tonton Vidio",
+        desc: "Pemutar video yang mulus dengan interface minimalis untuk kenyamanan maksimal saat menyerap materi inspiratif.",
+        img: "/tonton_vidio.png"
+      },
+      {
+        name: "Koleksi Vidio Favorit",
+        desc: "Fitur bookmark untuk menyimpan video pilihan ke dalam daftar koleksi pribadi agar dapat diakses kembali kapan saja.",
+        img: "/vidio_favorit.png"
+      },
+      {
+        name: "Fitur Berbagi (Share)",
+        desc: "Memudahkan pengguna untuk menyebarkan semangat positif dengan membagikan video inspiratif ke berbagai platform media sosial.",
+        img: "/share_vidio.png"
+      },
+      {
+        name: "Fitur Unduhan (Download)",
+        desc: "Menyediakan opsi unduhan video agar pengguna dapat menonton konten motivasi secara offline tanpa kendala koneksi internet.",
+        img: "/downlod_vidio.png"
+      }
+    ]
+  },
+  {
+    id: 5,
     title: "Jurnal SINTA 3",
     subtitle: "Penelitian Ilmiah Terindeks",
     description: "Penelitian terkait pengembangan sistem informasi jaringan tenaga kerja berbasis web menggunakan metode prototyping. Terpublikasi di jurnal terindeks SINTA 3.",
@@ -182,7 +257,7 @@ export const projects = [
     live: "https://jurnal.polbeng.ac.id/index.php/ISI/article/view/1374"
   },
   {
-    id: 5,
+    id: 6,
     title: "Toko Sembako Berkah",
     type: "web",
     subtitle: "UI/UX Website Design",
@@ -258,7 +333,7 @@ export const projects = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     title: "HealthTalk",
     type: "mobile",
     subtitle: "Desain UI/UX Aplikasi Kesehatan",
@@ -395,11 +470,11 @@ export const certifications = [
     year: "2026",
     description:
       "Berhasil menyelesaikan 5 ECTS kursus online Full Stack Open dengan nilai tertinggi (Grade 5). Membahas pengembangan web modern secara mendalam menggunakan React, Node.js, Express, MongoDB, REST API, autentikasi, dan pengujian aplikasi.",
-    link: "https://bit.ly/sertifikat-fullstackopen", // Tautan verifikasi asli agar recruiter bisa cek langsung
+    link: "https://bit.ly/sertifikat-fullstackopen",
     color: "green",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M8 12l2.5 2.5L16 9"/></svg>`,
     highlights: [
-      "Lulus dengan Grade 5", // Tambahan highlight nilai
+      "Lulus dengan Grade 5",
       "React & Node.js",
       "MongoDB & REST API",
       "Autentikasi & Pengujian"

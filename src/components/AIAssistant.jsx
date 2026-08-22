@@ -10,43 +10,64 @@ const getGroqClient = () => new Groq({
 
 // ── System prompt dinamis dari data.js ───────────────────────────────────────
 const buildSystemPrompt = () => {
+  // Ambil SEMUA detail project, termasuk fitur-fitur di dalamnya,
+  // supaya AI bisa menjawab pertanyaan spesifik (mis. "fitur approval-nya gimana?")
   const projectSummary = projects.map((p) => ({
     title: p.title,
+    type: p.type || null,
     subtitle: p.subtitle,
     description: p.description,
     stack: p.stack,
     highlights: p.highlights,
     github: p.github || null,
     figma: p.figma || null,
+    live: p.live || null,
+    features: Array.isArray(p.features) && p.features.length > 0
+      ? p.features.map((f) => ({ nama: f.name, deskripsi: f.desc }))
+      : null,
   }));
 
   const expSummary = experiences.map((e) => ({
     role: e.role,
     company: e.company,
     period: e.period,
-    points: e.points,
+    tipe: e.type,
+    poin: e.points,
   }));
 
   const certSummary = certifications.map((c) => ({
     title: c.title,
+    subtitle: c.subtitle || null,
     issuer: c.issuer,
     year: c.year,
     description: c.description,
+    highlights: c.highlights || null,
   }));
 
   return `
-Kamu adalah asisten virtual resmi untuk portofolio ${profile.name}.
-Tugasmu adalah menjawab pertanyaan dari HRD, Recruiter, atau pengunjung secara profesional, singkat, dan meyakinkan.
-Gunakan bahasa Indonesia yang baku namun ramah. Jawab maksimal 3–4 kalimat per respons.
-Jika ada pertanyaan di luar pekerjaan, pendidikan, atau portofolio ${profile.name}, tolak dengan sopan.
+Kamu adalah asisten virtual resmi di website portofolio ${profile.name}.
+Kamu berbicara MEWAKILI ${profile.name} kepada HRD, recruiter, atau pengunjung website — bersikap seperti rekan kerja yang mengenal Okta dengan baik, bukan chatbot generik.
+
+ATURAN GAYA JAWABAN:
+1. Gunakan Bahasa Indonesia yang natural, sopan, dan percaya diri — bukan kaku seperti membaca CV.
+2. Jawaban singkat, padat, maksimal 3–5 kalimat, kecuali diminta detail/rincian (misalnya "sebutkan semua fitur X").
+3. Jawab HANYA berdasarkan DATA di bawah ini. Jangan mengarang link, angka, atau fakta yang tidak ada di data.
+4. Jika ditanya sesuatu yang datanya tidak tersedia (misalnya gaji, ketersediaan interview, atau info pribadi lain), jawab jujur bahwa informasi itu belum tersedia dan sarankan untuk menghubungi Okta langsung lewat email/LinkedIn yang tercantum.
+5. Jika pertanyaan menyebut nama project secara tidak persis (typo/singkatan/bahasa sehari-hari, mis. "yang toko sembako", "yang kendaraan", "yang kesehatan"), cocokkan ke project yang paling relevan di data sebelum menjawab.
+6. Jika ditanya soal fitur teknis suatu project, jawab berdasarkan field "features" project tersebut — sebutkan nama fitur dan jelaskan singkat, jangan hanya highlight umum.
+7. Jika pertanyaan di luar topik pekerjaan, pendidikan, skill, atau portofolio Okta (misalnya obrolan random, topik sensitif, atau hal tidak relevan), tolak dengan sopan dan arahkan kembali ke topik seputar Okta.
+8. Jangan pernah menyebut dirimu sebagai "model AI", "large language model", atau semacamnya — cukup perkenalkan diri sebagai asisten portofolio Okta.
+9. Boleh menggunakan sedikit emoji secukupnya (maks 1 per jawaban) agar terasa ramah, tapi jangan berlebihan.
 
 === DATA LENGKAP ${profile.name.toUpperCase()} ===
 
 PROFIL:
 - Nama: ${profile.name}
 - Tagline: ${profile.tagline}
+- Sub-tagline: ${profile.taglineSub}
 - Lokasi: ${profile.location}
 - Email: ${profile.email}
+- No. HP: ${profile.phone}
 - LinkedIn: ${profile.linkedin}
 - GitHub: ${profile.github}
 - Tentang: ${profile.about}
@@ -57,10 +78,10 @@ KEAHLIAN:
 - Tools: ${skills.tools.join(', ')}
 - Soft Skills: ${skills.soft.join(', ')}
 
-PROYEK:
+PROYEK (lengkap dengan fitur-fitur di dalamnya):
 ${JSON.stringify(projectSummary, null, 2)}
 
-PENGALAMAN & ORGANISASI:
+PENGALAMAN KERJA & ORGANISASI:
 ${JSON.stringify(expSummary, null, 2)}
 
 SERTIFIKASI & HKI:
@@ -154,9 +175,9 @@ export default function AIAssistant() {
       const groq = getGroqClient();
 
       const response = await groq.chat.completions.create({
-        model: 'llama-3.3-70b-versatile',
-        temperature: 0.5,
-        max_tokens: 400,
+        model: 'openai/gpt-oss-120b',
+        temperature: 0.4,
+        max_tokens: 500,
         messages: [
           { role: 'system', content: systemPrompt },
           ...recentHistory,
