@@ -1,11 +1,11 @@
 import './About.css'
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs,
-  FaFigma, FaGithub, FaGitAlt, FaPhp, FaAngular,
+  FaFigma, FaGithub, FaGitAlt, FaPhp, FaAngular, FaVuejs,
 } from 'react-icons/fa'
 import {
   SiLaravel, SiMongodb, SiMysql,
-  SiCanva, SiPhpmyadmin, SiCodeigniter,
+  SiCanva, SiPhpmyadmin, SiCodeigniter, SiTypescript, SiNestjs,  SiPostgresql,
 } from 'react-icons/si'
 import { VscCode } from 'react-icons/vsc'
 
@@ -13,30 +13,34 @@ const iconMap = {
   'HTML':          <FaHtml5 />,
   'CSS':           <FaCss3Alt />,
   'JavaScript':    <FaJs />,
-  'PHP (Laravel)': <FaPhp />,
+  'TypeScript':    <SiTypescript />,
+  'Vue.js':        <FaVuejs />,
   'React.js':      <FaReact />,
-  'Node.js':       <FaNodeJs />,
   'Angular':       <FaAngular />,
+  'Node.js':       <FaNodeJs />,
+  'NestJS':        <SiNestjs />,
+  'PHP (Laravel)': <FaPhp />,
+  'Laravel':       <SiLaravel />,
   'CodeIgniter':   <SiCodeigniter />,
-  'Figma':         <FaFigma />,
-  'Canva':         <SiCanva />,
-  'GitHub':        <FaGithub />,
-  'VS Code':       <VscCode />,
+  'PostgreSQL':    <SiPostgresql />,
   'MySQL':         <SiMysql />,
   'phpMyAdmin':    <SiPhpmyadmin />,
   'MongoDB':       <SiMongodb />,
+  'Figma':         <FaFigma />,
+  'Canva':         <SiCanva />,
   'Git':           <FaGitAlt />,
-  'Laravel':       <SiLaravel />,
+  'GitHub':        <FaGithub />,
+  'VS Code':       <VscCode />,
 }
 
 const row1Skills = [
-  { name: 'HTML',          cls: 'sp-blue'  },
-  { name: 'CSS',           cls: 'sp-coral' },
-  { name: 'JavaScript',    cls: 'sp-blue'  },
-  { name: 'PHP (Laravel)', cls: 'sp-sage'  },
+  { name: 'TypeScript',    cls: 'sp-blue'  },
+  { name: 'Vue.js',        cls: 'sp-sage'  },
   { name: 'React.js',      cls: 'sp-blue'  },
   { name: 'Angular',       cls: 'sp-coral' },
-  { name: 'Node.js',       cls: 'sp-sage'  },
+  { name: 'JavaScript',    cls: 'sp-blue'  },
+  { name: 'HTML',          cls: 'sp-blue'  },
+  { name: 'CSS',           cls: 'sp-coral' },
   { name: 'Figma',         cls: 'sp-amber' },
   { name: 'Canva',         cls: 'sp-amber' },
   { name: 'GitHub',        cls: 'sp-blue'  },
@@ -44,17 +48,17 @@ const row1Skills = [
 ]
 
 const row2Skills = [
+  { name: 'NestJS',        cls: 'sp-coral' },
+  { name: 'PostgreSQL',    cls: 'sp-blue'  },
+  { name: 'Node.js',       cls: 'sp-sage'  },
+  { name: 'PHP (Laravel)', cls: 'sp-sage'  },
+  { name: 'Laravel',       cls: 'sp-amber' },
+  { name: 'CodeIgniter',   cls: 'sp-sage'  },
   { name: 'MySQL',         cls: 'sp-coral' },
   { name: 'phpMyAdmin',    cls: 'sp-coral' },
   { name: 'MongoDB',       cls: 'sp-sage'  },
   { name: 'Git',           cls: 'sp-amber' },
-  { name: 'HTML',          cls: 'sp-blue'  },
-  { name: 'CSS',           cls: 'sp-coral' },
-  { name: 'JavaScript',    cls: 'sp-blue'  },
-  { name: 'React.js',      cls: 'sp-blue'  },
-  { name: 'Node.js',       cls: 'sp-sage'  },
-  { name: 'Laravel',       cls: 'sp-amber' },
-  { name: 'CodeIgniter',   cls: 'sp-sage'  },
+  { name: 'TypeScript',    cls: 'sp-blue'  },
 ]
 
 function Pill({ name, cls }) {

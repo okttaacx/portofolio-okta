@@ -1,12 +1,11 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- FIX #1: Theme script PERTAMA sebelum apapun — cegah flash of wrong theme -->
-    <!-- FIX #2: Konsistenkan ke document.body (sama dengan semua komponen React) -->
+    <!-- ── THEME INITIALIZATION (Zero Flash of Incorrect Theme) ── -->
     <script>
       (function() {
         if (localStorage.getItem('theme') === 'dark') {
@@ -16,93 +15,131 @@
       })();
     </script>
 
-    <title>Okta Ramji Saputra — Web Developer</title>
-    <meta name="title" content="Okta Ramji Saputra — Web Developer" />
-    <meta name="description" content="Portofolio digital Okta Ramji Saputra, Web Developer. Berpengalaman dengan React.js, Angular, Laravel, CodeIgniter 4, dan Node.js." />
-    <meta name="keywords" content="Okta Ramji Saputra, Web Developer, Backend Developer, Frontend Developer, React, Angular, Laravel, CodeIgniter, Portofolio, Malang" />
+    <!-- ── PRIMARY SEO & METADATA ── -->
+    <title>Okta Ramji Saputra — Full Stack Developer | Jakarta & Remote</title>
+    <meta name="title" content="Okta Ramji Saputra — Full Stack Developer | Jakarta & Remote" />
+    <meta
+      name="description"
+      content="Digital portfolio of Okta Ramji Saputra, a Full Stack Developer specializing in React.js, Node.js, Laravel, CodeIgniter 4, and modern cloud architectures. Based in Jakarta / Indonesia, available for full-time and remote opportunities."
+    />
+    <meta
+      name="keywords"
+      content="Okta Ramji Saputra, Full Stack Developer, Web Developer Jakarta, Software Engineer Indonesia, React Developer, Laravel Developer, Node.js Developer, Frontend Engineer, Backend Developer, Fullstack Portfolio Jakarta"
+    />
     <meta name="author" content="Okta Ramji Saputra" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://portofolio-okta.vercel.app/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+    <!-- ── OPEN GRAPH / FACEBOOK / LINKEDIN ── -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://portofolio-okta.vercel.app/" />
-    <meta property="og:title" content="Okta Ramji Saputra — Web Developer" />
-    <meta property="og:description" content="Portofolio digital Okta Ramji Saputra, Web Developer. Berpengalaman dengan React.js, Angular, Laravel, CodeIgniter 4, dan Node.js." />
+    <meta property="og:title" content="Okta Ramji Saputra — Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Explore production-ready web applications, modern architectures, and engineering case studies crafted with React, Node.js, and Laravel."
+    />
     <meta property="og:image" content="https://portofolio-okta.vercel.app/og-preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Okta Ramji Saputra — Full Stack Developer Portfolio Preview" />
     <meta property="og:site_name" content="Okta Ramji Saputra Portfolio" />
-    <meta property="og:locale" content="id_ID" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
+    <!-- ── TWITTER / X CARD ── -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://portofolio-okta.vercel.app/" />
-    <meta name="twitter:title" content="Okta Ramji Saputra — Web Developer" />
-    <meta name="twitter:description" content="Portofolio digital Okta Ramji Saputra, Web Developer. Berpengalaman dengan React.js, Angular, Laravel, CodeIgniter 4, dan Node.js." />
+    <meta name="twitter:title" content="Okta Ramji Saputra — Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Explore production-ready web applications, modern architectures, and engineering case studies crafted with React, Node.js, and Laravel."
+    />
     <meta name="twitter:image" content="https://portofolio-okta.vercel.app/og-preview.jpg" />
     <meta name="twitter:creator" content="@oktaramji" />
 
-    <!-- FIX #3: Preconnect + preload font dengan display=swap -->
-    <!-- Dulu tidak ada display=swap → font blocking render sampai download selesai -->
+    <!-- ── FONT OPTIMIZATION (Includes Plus Jakarta Sans, Poppins, Fira Code) ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- FIX #3b: Hapus weight 300 Poppins — tidak dipakai di CSS, hanya tambah download size -->
 
-    <!-- FIX #4: Preload foto profil (LCP element) -->
-    <!-- Browser fetch gambar lebih awal, tidak nunggu JS/React jalan dulu -->
+    <!-- ── CRITICAL RESOURCE PRELOADS (LCP Optimization) ── -->
     <link rel="preload" as="image" href="/foto-profil.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/foto-profil-dark.webp" />
-
-    <!-- FIX #5: Preload audio music player — supaya tidak block saat user klik play -->
-    <!-- Gunakan prefetch (bukan preload) karena tidak dibutuhkan langsung -->
     <link rel="prefetch" as="audio" href="/bgmusic.mp3" />
 
-    <!-- Schema.org untuk Person -->
+    <!-- ── STRUCTURED DATA (JSON-LD Schema for Google Rich Snippets) ── -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": "Okta Ramji Saputra",
-      "jobTitle": "Web Developer",
-      "url": "https://portofolio-okta.vercel.app/",
-      "email": "oktaramji10@gmail.com",
-      "image": "https://portofolio-okta.vercel.app/og-preview.jpg",
-      "description": "Web Developer berpengalaman dengan React.js, Angular, Laravel, CodeIgniter 4, dan Node.js.",
-      "knowsAbout": ["React.js", "Angular", "Laravel", "CodeIgniter", "Node.js", "MySQL", "MongoDB"],
-      "affiliation": {
-        "@type": "Organization",
-        "name": "Universitas Muhammadiyah Malang"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Malang",
-        "addressRegion": "Jawa Timur",
-        "addressCountry": "ID"
-      },
-      "sameAs": [
-        "https://github.com/okttaacx",
-        "https://www.linkedin.com/in/oktaramji/"
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfilePage",
+          "@id": "https://portofolio-okta.vercel.app/#profilepage",
+          "url": "https://portofolio-okta.vercel.app/",
+          "name": "Okta Ramji Saputra — Full Stack Developer Portfolio",
+          "isPartOf": {
+            "@id": "https://portofolio-okta.vercel.app/#website"
+          },
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Okta Ramji Saputra",
+            "jobTitle": "Full Stack Developer",
+            "url": "https://portofolio-okta.vercel.app/",
+            "email": "oktaramji10@gmail.com",
+            "image": "https://portofolio-okta.vercel.app/og-preview.jpg",
+            "description": "Full Stack Developer specializing in React.js, Angular, Laravel, CodeIgniter 4, Node.js, and high-performance database architectures.",
+            "knowsAbout": [
+              "Full Stack Web Development",
+              "React.js",
+              "Angular",
+              "Node.js",
+              "PHP Laravel",
+              "CodeIgniter 4",
+              "RESTful APIs",
+              "MySQL",
+              "MongoDB",
+              "UI/UX Design",
+              "Figma",
+              "System Architecture"
+            ],
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Universitas Muhammadiyah Malang"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Jakarta",
+              "addressRegion": "DKI Jakarta",
+              "addressCountry": "ID"
+            },
+            "sameAs": [
+              "https://github.com/okttaacx",
+              "https://www.linkedin.com/in/oktaramji/"
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://portofolio-okta.vercel.app/#website",
+          "url": "https://portofolio-okta.vercel.app/",
+          "name": "Okta Ramji Saputra Portfolio",
+          "url": "https://portofolio-okta.vercel.app/",
+          "publisher": {
+            "@type": "Person",
+            "name": "Okta Ramji Saputra"
+          }
+        }
       ]
     }
     </script>
 
-    <!-- Schema.org untuk WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Okta Ramji Saputra Portfolio",
-      "url": "https://portofolio-okta.vercel.app/"
-    }
-    </script>
-
-    <!-- FIX #6: Google Analytics dipindah ke bawah — load setelah konten kritis -->
-    <!-- Pakai defer supaya tidak blocking parser HTML sama sekali -->
+    <!-- ── GOOGLE ANALYTICS (Deferred for Zero Render Blocking) ── -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HLMCMZGPJ8"></script>
     <script defer>
       window.dataLayer = window.dataLayer || [];
@@ -114,7 +151,7 @@
   <body>
     <div id="root"></div>
 
-    <!-- FIX #2 lanjutan: Sync dark-mode ke body setelah body tersedia -->
+    <!-- Dark Mode Body Sync -->
     <script>
       (function() {
         if (localStorage.getItem('theme') === 'dark') {

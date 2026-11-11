@@ -394,6 +394,17 @@ export const projects = [
 ];
 
 export const experiences = [
+    {
+    role: "Full-Stack Developer (Contract)",
+    company: "Sagara Asia Teknologi",
+    period: "September 2026 – Present",
+    type: "work",
+    points: [
+      "Built an e-commerce platform using Vue 3, TypeScript, NestJS, and PostgreSQL, translating Figma designs into responsive interfaces.",
+      "Engineered core B2B workflows for System Distributor, covering business catalogs, order processing, and admin dashboards.",
+      "Integrated frontend apps with NestJS REST APIs and maintained the CEO Suite room booking system."
+    ]
+  },
   {
     role: "Web Developer Intern",
     company: "Batu City Department of Manpower (Disnaker Kota Batu)",
