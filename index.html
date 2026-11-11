@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Icon Tab Browser (Logo Burung Hantu Neon) -->
+    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── THEME INITIALIZATION (Zero Flash of Incorrect Theme) ── -->
@@ -68,9 +69,7 @@
       rel="stylesheet"
     />
 
-    <!-- ── CRITICAL RESOURCE PRELOADS (LCP Optimization) ── -->
-    <link rel="preload" as="image" href="/foto-profil.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/foto-profil-dark.webp" />
+    <!-- Background Music Prefetch -->
     <link rel="prefetch" as="audio" href="/bgmusic.mp3" />
 
     <!-- ── STRUCTURED DATA (JSON-LD Schema for Google Rich Snippets) ── -->
@@ -129,7 +128,6 @@
           "@id": "https://portofolio-okta.vercel.app/#website",
           "url": "https://portofolio-okta.vercel.app/",
           "name": "Okta Ramji Saputra Portfolio",
-          "url": "https://portofolio-okta.vercel.app/",
           "publisher": {
             "@type": "Person",
             "name": "Okta Ramji Saputra"
@@ -139,7 +137,7 @@
     }
     </script>
 
-    <!-- ── GOOGLE ANALYTICS (Deferred for Zero Render Blocking) ── -->
+    <!-- ── GOOGLE ANALYTICS (Deferred) ── -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HLMCMZGPJ8"></script>
     <script defer>
       window.dataLayer = window.dataLayer || [];
