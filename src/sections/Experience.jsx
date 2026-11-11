@@ -33,9 +33,9 @@ export default function Experience() {
   };
 
   const getBadgeText = (type) => {
-    if (type === 'org') return 'Organisasi';
-    if (type === 'committee') return 'Kepanitiaan';
-    return 'Pekerjaan';
+    if (type === 'org') return 'Organization';
+    if (type === 'committee') return 'Committe';
+    return 'Work Experience';
   };
 
   return (
@@ -45,7 +45,7 @@ export default function Experience() {
         {/* HEADER: Tanpa animasi */}
         <div className="section-header">
           <span className="section-tag">Experience</span>
-          <h2 className="section-title">Perjalanan Karir</h2>
+          <h2 className="section-title">Career Journey</h2>
         </div>
 
         {/* GRID: Tanpa animasi */}

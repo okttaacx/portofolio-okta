@@ -65,8 +65,8 @@ export default function Certifications() {
         
         {/* Header tanpa animasi */}
         <div className="section-header">
-          <span className="section-tag">Licenses & Certifications</span>
-          <h2 className="section-title">Sertifikasi & Penghargaan</h2>
+          <span className="section-tag">Credentials</span>
+          <h2 className="section-title">Certifications & Honors</h2>
         </div>
 
         {/* Grid tanpa animasi */}
@@ -125,7 +125,7 @@ export default function Certifications() {
                         className="cert-card__btn"
                         style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                       >
-                        Lihat Dokumen <IconArrowUpRight />
+                        View Document <IconArrowUpRight />
                       </a>
                     )}
                   </div>

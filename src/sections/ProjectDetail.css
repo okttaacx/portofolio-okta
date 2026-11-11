@@ -5,99 +5,120 @@
 
 /* ── 1. CSS VARIABLES (Tema Terang / Default) ── */
 :root {
-  /* Layout & Background */
-  --detail-bg: transparent; /* Diubah ke transparent agar Orb terlihat */
+  --detail-bg: transparent;
   
   /* Text & Link Colors */
-  --detail-back-link: #3b82f6; /* Bright Blue */
-  --detail-back-link-hover: #2563eb; /* Darker Blue */
-  --detail-title-main: #1e40af; /* Deep Navy Blue */
-  --detail-subtitle: #0ea5e9; /* Cyan */
+  --detail-back-link: #2563eb;
+  --detail-back-link-hover: #1d4ed8;
+  --detail-title-main: #1e40af;
+  --detail-subtitle: #0ea5e9;
   --detail-heading: #1e40af;
-  --detail-desc-text: #475569; /* Slate Gray */
+  --detail-desc-text: #475569;
 
   /* Feature Sections */
   --feature-title: #1e40af;
   --feature-item-title: #1e40af;
   --feature-item-desc: #475569;
 
+  /* Tag */
+  --detail-tag-bg: rgba(59, 130, 246, 0.08);
+  --detail-tag-color: #2563eb;
+  --detail-tag-border: rgba(59, 130, 246, 0.2);
+
   /* Frames (Laptop / Mobile) */
-  --frame-laptop-bg: #1e293b; /* Slate Dark untuk bezel laptop */
-  --frame-laptop-border: rgba(59, 130, 246, 0.4); /* Blue Tint */
-  --frame-laptop-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); /* Cyan Shadow */
+  --frame-laptop-bg: #1e293b;
+  --frame-laptop-border: rgba(59, 130, 246, 0.35);
+  --frame-laptop-shadow: 0 20px 40px rgba(14, 165, 233, 0.12);
   --frame-laptop-notch: #0f172a;
   
-  --frame-mobile-bg: rgba(255, 255, 255, 0.5);
+  --frame-mobile-bg: rgba(255, 255, 255, 0.65);
   --frame-mobile-border: rgba(255, 255, 255, 0.9);
-  --frame-mobile-shadow-1: 30px 30px 60px rgba(14, 165, 233, 0.1);
-  --frame-mobile-shadow-2: -10px -10px 30px rgba(255, 255, 255, 0.5);
+  --frame-mobile-shadow-1: 25px 25px 50px rgba(14, 165, 233, 0.12);
+  --frame-mobile-shadow-2: -10px -10px 30px rgba(255, 255, 255, 0.7);
   --frame-mobile-inset: inset 0 0 15px rgba(255, 255, 255, 0.6);
-  --frame-mobile-notch: rgba(255, 255, 255, 0.9);
-  --frame-mobile-hover-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+  --frame-mobile-notch: rgba(148, 163, 184, 0.6);
+  --frame-mobile-hover-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
 }
 
 /* ── 2. OVERRIDE SAAT DARK MODE AKTIF ── */
 body.dark-mode {
-  /* Layout & Background */
   --detail-bg: transparent; 
   
   /* Text & Link Colors */
-  --detail-back-link: #c084fc; /* Light Purple */
+  --detail-back-link: #c084fc;
   --detail-back-link-hover: #ffffff;
-  --detail-title-main: #F8FAFC;
-  --detail-subtitle: #a855f7; /* Purple */
-  --detail-heading: #F8FAFC;
-  --detail-desc-text: #94A3B8;
+  --detail-title-main: #f8fafc;
+  --detail-subtitle: #a855f7;
+  --detail-heading: #f8fafc;
+  --detail-desc-text: #94a3b8;
 
   /* Feature Sections */
-  --feature-title: #F8FAFC;
-  --feature-item-title: #F8FAFC;
-  --feature-item-desc: #94A3B8;
+  --feature-title: #f8fafc;
+  --feature-item-title: #f8fafc;
+  --feature-item-desc: #94a3b8;
 
-  /* Frames (Laptop / Mobile) - Dark Mode Adjustments */
-  --frame-laptop-bg: #0B0F19; 
-  --frame-laptop-border: rgba(124, 58, 237, 0.3); /* Purple Tint */
-  --frame-laptop-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  /* Tag */
+  --detail-tag-bg: rgba(168, 85, 247, 0.12);
+  --detail-tag-color: #d8b4fe;
+  --detail-tag-border: rgba(168, 85, 247, 0.25);
+
+  /* Frames (Laptop / Mobile) */
+  --frame-laptop-bg: #0b0f19; 
+  --frame-laptop-border: rgba(124, 58, 237, 0.35);
+  --frame-laptop-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
   --frame-laptop-notch: #000000;
   
-  /* Efek Glass untuk Mobile di Dark Mode */
-  --frame-mobile-bg: rgba(15, 23, 42, 0.6);
-  --frame-mobile-border: rgba(124, 58, 237, 0.25);
-  --frame-mobile-shadow-1: 30px 30px 60px rgba(0, 0, 0, 0.6);
-  --frame-mobile-shadow-2: -5px -5px 20px rgba(255, 255, 255, 0.03);
-  --frame-mobile-inset: inset 0 0 15px rgba(124, 58, 237, 0.1);
-  --frame-mobile-notch: rgba(124, 58, 237, 0.4);
-  --frame-mobile-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  --frame-mobile-bg: rgba(15, 23, 42, 0.65);
+  --frame-mobile-border: rgba(168, 85, 247, 0.3);
+  --frame-mobile-shadow-1: 25px 25px 50px rgba(0, 0, 0, 0.7);
+  --frame-mobile-shadow-2: -5px -5px 20px rgba(255, 255, 255, 0.02);
+  --frame-mobile-inset: inset 0 0 15px rgba(168, 85, 247, 0.15);
+  --frame-mobile-notch: rgba(168, 85, 247, 0.5);
+  --frame-mobile-hover-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
 }
 
-
 /* ── 3. STRUKTUR UTAMA CSS ── */
-
-/* Container Utama */
 .project-detail {
-  padding: 2rem 0 4rem;
+  padding: 2rem 0 5rem;
   min-height: 100vh;
   background: var(--detail-bg);
   transition: background 0.4s ease;
 }
 
-/* Navigasi */
+/* ── 4. NAVIGASI (BACK TO HOME - TANPA ANIMASI GERAK) ── */
 .back-link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
-  color: var(--detail-back-link);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.25rem 0;
+  margin-bottom: 1.75rem;
+  
+  font-family: inherit;
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--detail-back-link);
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.back-link svg {
+  display: inline-block;
+  stroke-width: 2.4;
+  /* TIDAK ADA animasi pergeseran transform */
 }
 
 .back-link:hover {
-  transform: translateX(-5px);
+  opacity: 0.75;
   color: var(--detail-back-link-hover);
+  /* Diam di tempat tanpa loncat/gerak */
 }
 
-/* Layout Grid */
+/* ── 5. LAYOUT GRID ── */
 .detail__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -105,53 +126,181 @@ body.dark-mode {
   align-items: start;
 }
 
-/* Kolom Info Kiri (Sticky di Desktop) */
+/* ── 6. KOLOM KIRI (INFO CARD - TANPA SCROLLBAR) ── */
+.detail__info {
+  text-align: left;
+  border-radius: 16px;
+  padding: 1.75rem;
+  background: var(--bg-card, rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .detail__info {
+  background: var(--bg-card, rgba(15, 23, 42, 0.6));
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 .detail__title-wrapper {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
-.detail__small-icon { font-size: 1.5rem; }
+.detail__small-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail__small-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
 .detail__title-main { 
   font-size: 1.8rem; 
   color: var(--detail-title-main); 
+  font-weight: 700;
   margin: 0; 
+  line-height: 1.25;
   transition: color 0.3s ease;
 }
+
 .detail__subtitle-small { 
   color: var(--detail-subtitle); 
   font-size: 0.95rem; 
+  font-weight: 500;
+  margin: 0;
   transition: color 0.3s ease;
 }
 
 .detail__info h3 { 
-  margin: 1.5rem 0 1rem; 
+  margin: 1.5rem 0 0.75rem; 
   color: var(--detail-heading); 
-  font-size: 1.3rem; 
+  font-size: 1.2rem; 
+  font-weight: 600;
   transition: color 0.3s ease;
 }
+
 .detail__desc-text { 
-  line-height: 1.7; 
+  line-height: 1.75; 
   color: var(--detail-desc-text); 
-  font-size: 0.95rem; 
+  font-size: 0.925rem; 
   transition: color 0.3s ease;
 }
-.detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
-/* --- STYLE FITUR & BINGKAI --- */
+/* Tech Stack Tags */
+.detail__stack { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.5rem; 
+  margin-top: 0.75rem; 
+}
 
+.detail__stack .project-card__tag {
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--detail-tag-bg);
+  color: var(--detail-tag-color);
+  border: 1px solid var(--detail-tag-border);
+  transition: all 0.25s ease;
+}
+
+/* ── TOMBOL AKSI (SOURCE CODE & LIVE) UKURAN PAS & HOVER ENAK ── */
+.detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.detail__action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem; /* Ukuran pas, tidak kebesaran */
+  border-radius: 8px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+/* Primary Button (Live Demo / Read Paper) */
+.detail__action-btn--primary {
+  background: #2563eb;
+  color: #ffffff !important;
+  border: 1px solid #2563eb;
+}
+
+.detail__action-btn--primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* Secondary Button (Source Code / Figma) */
+.detail__action-btn--secondary {
+  background: rgba(255, 255, 255, 0.8);
+  color: #334155 !important;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.detail__action-btn--secondary:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+  color: #2563eb !important;
+}
+
+/* Dark Mode untuk Tombol */
+body.dark-mode .detail__action-btn--primary {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+body.dark-mode .detail__action-btn--primary:hover {
+  background: #9333ea;
+  border-color: #9333ea;
+}
+
+body.dark-mode .detail__action-btn--secondary {
+  background: rgba(30, 41, 59, 0.65);
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .detail__action-btn--secondary:hover {
+  background: rgba(51, 65, 85, 0.9);
+  border-color: #c084fc;
+  color: #c084fc !important;
+}
+
+/* Efek saat tombol diklik (Pressed) */
+.detail__action-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── 7. KOLOM KANAN (FITUR & BINGKAI) ── */
 .features-title { 
   margin-bottom: 2rem; 
   color: var(--feature-title); 
   font-size: 1.4rem; 
+  font-weight: 700;
   transition: color 0.3s ease;
 }
 
 .feature-item { 
   padding: 0; 
-  margin-bottom: 6rem; 
+  margin-bottom: 5rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,18 +308,17 @@ body.dark-mode {
   perspective: 1200px;
 }
 
-/* Base Wrapper untuk Screenshot */
 .feature-img-wrapper {
   position: relative;
   overflow: hidden;
   transition: transform 0.5s ease-out;
 }
 
-/* 1. FRAME LAPTOP (SiJoker) */
+/* Frame Laptop / Desktop */
 .desktop-frame {
   width: 100%;
   max-width: 850px;
-  padding: 12px 12px 4px 12px;
+  padding: 12px 12px 6px 12px;
   border-radius: 16px;
   background: var(--frame-laptop-bg);
   border: 1px solid var(--frame-laptop-border);
@@ -189,29 +337,23 @@ body.dark-mode {
   transition: background 0.4s ease;
 }
 
-/* 2. FRAME SMARTPHONE (MOBILE 3D SLIM GLASSMorphism - FlowBoost) */
+/* Frame Mobile 3D Slim Glassmorphism */
 .mobile-frame {
   width: 280px;
   padding: 10px;
   border-radius: 40px;
-  
-  /* --- EFEK PUTIH KACA (GLASSMORPHISM) --- */
   background: var(--frame-mobile-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--frame-mobile-border);
-  
-  /* --- EFEK SHADOW 3D MELAYANG --- */
   transform: rotateX(5deg) rotateY(-5deg);
   box-shadow: 
     var(--frame-mobile-shadow-1),
     var(--frame-mobile-shadow-2),
     var(--frame-mobile-inset);
-  
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hover Effect: HP jadi tegak saat disentuh kursor */
 .mobile-frame:hover {
   transform: rotateX(0deg) rotateY(0deg) scale(1.03);
   box-shadow: 
@@ -219,7 +361,6 @@ body.dark-mode {
     var(--frame-mobile-inset);
 }
 
-/* Notch/Speaker HP Slim */
 .mobile-frame::after {
   content: '';
   position: absolute;
@@ -231,52 +372,82 @@ body.dark-mode {
   transition: background 0.4s ease;
 }
 
-/* Gambar di Dalam Bingkai */
 .feature-img-wrapper img {
   width: 100%;
+  height: auto;
   display: block;
   object-fit: cover;
 }
 
-.desktop-frame img { border-radius: 8px; }
-.mobile-frame img { 
-  border-radius: 32px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+.desktop-frame img { 
+  border-radius: 8px; 
 }
 
-/* Teks Deskripsi Fitur */
+.mobile-frame img { 
+  border-radius: 32px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Deskripsi Teks Fitur */
 .feature-text { 
-  padding: 2.5rem 0.5rem; 
+  padding: 2rem 0.5rem; 
   width: 100%;
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .feature-text h4 { 
   margin-bottom: 0.6rem; 
   color: var(--feature-item-title); 
   font-size: 1.25rem; 
+  font-weight: 600;
   transition: color 0.3s ease;
 }
+
 .feature-text p { 
   font-size: 0.95rem; 
   color: var(--feature-item-desc); 
-  line-height: 1.6; 
+  line-height: 1.65; 
   transition: color 0.3s ease;
 }
 
-/* Responsive Desktop */
+/* ── 8. RESPONSIVE QUERIES ── */
 @media (min-width: 992px) {
-  .detail__grid { grid-template-columns: 350px 1fr; }
-  .detail__info { position: sticky; top: 2rem; }
-  .feature-item { align-items: center; } 
+  .detail__grid { 
+    grid-template-columns: 360px 1fr; 
+    gap: 3.5rem;
+  }
+  
+  /* HAPUS OVERFLOW-Y & SCROLLBAR: Kartu tetap sticky tapi tidak ada scrollbar */
+  .detail__info { 
+    position: sticky; 
+    top: 2rem; 
+  }
 }
 
-/* Animasi Fade In */
+@media (max-width: 768px) {
+  .project-detail {
+    padding: 1.5rem 0 3.5rem;
+  }
+
+  .mobile-frame {
+    transform: none !important;
+  }
+
+  .mobile-frame:hover {
+    transform: scale(1.02) !important;
+  }
+
+  .feature-item {
+    margin-bottom: 3.5rem;
+  }
+}
+
+/* ── 9. ANIMASI FADE IN ── */
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }

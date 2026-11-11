@@ -46,7 +46,7 @@ export default function Projects() {
         {/* Header Tanpa Animasi */}
         <div className="section-header">
           <span className="section-tag">Projects</span>
-          <h2 className="section-title">Yang Sudah Dibuat</h2>
+          <h2 className="section-title">What I've Built</h2>
         </div>
 
         {/* Grid Tanpa Animasi */}
@@ -124,14 +124,14 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="project-card__btn project-card__btn--live"
                       >
-                        Baca Jurnal <IconArrowUpRight />
+                        Read Paper <IconArrowUpRight />
                       </a>
                     ) : (
                       <Link
                         to={`/project/${p.id}`}
                         className="project-card__btn project-card__btn--live"
                       >
-                        Lihat Detail <IconArrowRight />
+                        View Details <IconArrowRight />
                       </Link>
                     )}
                   </div>

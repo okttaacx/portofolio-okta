@@ -94,19 +94,13 @@ export default function About() {
         <div className="section-header">
           <span className="section-tag">About Me</span>
           <h2 className="section-title">
-            Halo, saya <span className="title-accent">Okta</span>
+            Hi, I'm <span className="title-accent">Okta</span>
           </h2>
         </div>
 
         <StarBorder className="ab-bio-card" speed="5s">
           <p className="about__bio">
-           Berfokus pada Web Development dan Frontend Development. Berpengalaman
-           mengembangkan aplikasi web menggunakan Laravel, CodeIgniter 4, React.js,
-           Angular, dan Node.js, serta merancang antarmuka menggunakan Figma. Memiliki
-           pengalaman internship di Dinas Tenaga Kerja Kota Batu dalam pengembangan
-           sistem berbasis Laravel dan pengelolaan data pelatihan. Adaptif, berorientasi
-           pada solusi, dan mampu bekerja secara mandiri maupun dalam tim untuk
-           menciptakan produk digital yang fungsional dan responsif.
+           Focused on Fullstack Web Development, with experience in developing web applications across both frontend and backend. Proficient in technologies such as Laravel, CodeIgniter 4, React.js, Vue.js, Angular, Node.js, and NestJS, as well as database management using MySQL, PostgreSQL, and MongoDB. Experienced in building information systems, e-commerce applications, and integrating RESTful APIs through professional projects and internships. Adaptable, solution-oriented, and capable of working independently or collaboratively to deliver functional, responsive, and user-centered web applications.
           </p>
         </StarBorder>
 
