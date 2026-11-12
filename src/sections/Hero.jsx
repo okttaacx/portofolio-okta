@@ -225,7 +225,7 @@ export default function Hero() {
           <div className={`hero__divider ${mounted ? 'anim-in' : ''}`} style={{ '--d': '300ms' }} />
 
           <p className={`hero__tagline ${mounted ? 'anim-in' : ''}`} style={{ '--d': '380ms', minHeight: '1.5em' }}>
-            <Typewriter text={profile.tagline || "Web Developer • UI/UX Designer"} delay={500} speed={100} pause={3000} />
+            <Typewriter text={profile.tagline || "Fullstack Developer"} delay={500} speed={100} pause={3000} />
           </p>
 
           <p className={`hero__sub ${mounted ? 'anim-in' : ''}`} style={{ '--d': '420ms' }}>
@@ -240,7 +240,7 @@ export default function Hero() {
           <div className={`hero__ctas ${mounted ? 'anim-in' : ''}`} style={{ '--d': '720ms' }}>
 
             <a href="#projects" className="btn btn--primary hero__cta-btn">
-              <span>Lihat Projects</span>
+              <span>Explore Projects</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -278,7 +278,7 @@ export default function Hero() {
                     onClick={() => setShowCVMenu(false)}
                   >
                     <span>🇮🇩</span>
-                    <span>Versi Indonesia</span>
+                    <span>Indonesian Version</span>
                   </a>
                   <a
                     href="/CV_Okta_EN.pdf"
